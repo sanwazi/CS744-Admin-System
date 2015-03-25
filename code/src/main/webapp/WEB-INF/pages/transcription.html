@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="">
+<meta name="author" content="">
+
+<title></title>
+
+<!-- Bootstrap Core CSS -->
+<link
+	href="/resources/css/theme/bootstrap-simplex.min.css"
+	rel="stylesheet">
+
+<!-- MetisMenu CSS -->
+<link
+	href="/resources/bower_components/metisMenu/dist/metisMenu.min.css"
+	rel="stylesheet">
+
+<!-- DataTables CSS -->
+<link
+	href="/resources/bower_components/datatables-plugins/integration/bootstrap/3/dataTables.bootstrap.css"
+	rel="stylesheet">
+
+<!-- DataTables Responsive CSS -->
+<link
+	href="/resources/bower_components/datatables-responsive/css/dataTables.responsive.css"
+	rel="stylesheet">
+
+<!-- Bootstrap Editable CSS -->
+<link href="/resources/bootstrap-editable/css/bootstrap-editable.css"
+	rel="stylesheet">
+
+<!-- Custom CSS -->
+<link href="/resources/dist/css/sb-admin-2.css" rel="stylesheet">
+
+<!-- Custom Fonts -->
+<link
+	href="/resources/bower_components/font-awesome/css/font-awesome.min.css"
+	rel="stylesheet" type="text/css">
+
+<link href="/resources/css/common.css" rel="stylesheet" type="text/css">
+<link href="/resources/css/dropzone.css" rel="stylesheet"
+	type="text/css">
+<link href="/resources/css/basic.css" rel="stylesheet" type="text/css">
+
+<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+<!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+<style>
+.label {
+	padding: 1px 3px 2px;
+	font-size: 13.75px;
+	font-weight: bold;
+	color: #ffffff;
+	text-transform: uppercase;
+	white-space: nowrap;
+	background-color: #bfbfbf;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
+}
+
+.label.important {
+	background-color: #c43c35;
+}
+
+.label.warning {
+	background-color: #f89406;
+}
+
+.label.success {
+	background-color: #46a546;
+}
+
+.label.notice {
+	background-color: #62cffc;
+}
+
+td.details-control {
+	background: url('/resources/img/details_open.png') no-repeat center
+		center;
+	cursor: pointer;
+}
+
+tr.shown td.details-control {
+	background: url('/resources/img/details_close.png') no-repeat center
+		center;
+}
+
+td .drugname {
+	font-family: Arial, Helvetica, sans-serif;
+	color: red;
+	text-decoration: underline;
+}
+
+td .drugamount {
+	color: red;
+	text-decoration: underline;
+}
+
+#diagnostic-test {
+	font-family: Arial, Helvetica, sans-serif;
+	color: red;
+	text-decoration: underline;
+}
+
+#surgery {
+	font-family: Arial, Helvetica, sans-serif;
+	color: red;
+	text-decoration: underline;
+}
+</style>
+</head>
+
+<body>
+
+	<div id="wrapper">
+
+		<!-- Navigation -->
+		<nav class="navbar navbar-default navbar-static-top" role="navigation"
+			style="margin-bottom: 0">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="collapse"
+					data-target=".navbar-collapse">
+					<span class="sr-only">Toggle navigation</span> <span
+						class="icon-bar"></span> <span class="icon-bar"></span> <span
+						class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="index.html">EMR Version 1.0</a>
+			</div>
+			<!-- /.navbar-header -->
+
+			<ul class="nav navbar-top-links navbar-right">
+				<li class="dropdown"><a class="dropdown-toggle"
+					data-toggle="dropdown" href="#"> <i
+						class="fa fa-envelope fa-fw"></i> <i class="fa fa-caret-down"></i>
+				</a>
+					<ul class="dropdown-menu dropdown-messages">
+						<li><a href="#">
+								<div>
+									<strong>John Smith</strong> <span class="pull-right text-muted">
+										<em>Yesterday</em>
+									</span>
+								</div>
+								<div>Lorem ipsum dolor sit amet, consectetur adipiscing
+									elit. Pellentesque eleifend...</div>
+						</a></li>
+						<li class="divider"></li>
+						<li><a class="text-center" href="#"> <strong>Read
+									All Messages</strong> <i class="fa fa-angle-right"></i>
+						</a></li>
+					</ul> <!-- /.dropdown-messages --></li>
+				<!-- /.dropdown -->
+				<li class="dropdown"><a class="dropdown-toggle"
+					data-toggle="dropdown" href="#"> <i class="fa fa-tasks fa-fw"></i>
+						<i class="fa fa-caret-down"></i>
+				</a>
+					<ul class="dropdown-menu dropdown-tasks">
+						<li><a href="#">
+								<div>
+									<p>
+										<strong>Task 1</strong> <span class="pull-right text-muted">40%
+											Complete</span>
+									</p>
+									<div class="progress progress-striped active">
+										<div class="progress-bar progress-bar-success"
+											role="progressbar" aria-valuenow="40" aria-valuemin="0"
+											aria-valuemax="100" style="width: 40%">
+											<span class="sr-only">40% Complete (success)</span>
+										</div>
+									</div>
+								</div>
+						</a></li>
+						<li class="divider"></li>
+						<li><a class="text-center" href="#"> <strong>See
+									All Tasks</strong> <i class="fa fa-angle-right"></i>
+						</a></li>
+					</ul> <!-- /.dropdown-tasks --></li>
+				<!-- /.dropdown -->
+				<li class="dropdown"><a class="dropdown-toggle"
+					data-toggle="dropdown" href="#"> <i class="fa fa-bell fa-fw"></i>
+						<i class="fa fa-caret-down"></i>
+				</a>
+					<ul class="dropdown-menu dropdown-alerts">
+						<li><a href="#">
+								<div>
+									<i class="fa fa-comment fa-fw"></i> New Comment <span
+										class="pull-right text-muted small">4 minutes ago</span>
+								</div>
+						</a></li>
+						<li class="divider"></li>
+						<li><a href="#">
+								<div>
+									<i class="fa fa-twitter fa-fw"></i> 3 New Followers <span
+										class="pull-right text-muted small">12 minutes ago</span>
+								</div>
+						</a></li>
+						<li class="divider"></li>
+						<li><a href="#">
+								<div>
+									<i class="fa fa-envelope fa-fw"></i> Message Sent <span
+										class="pull-right text-muted small">4 minutes ago</span>
+								</div>
+						</a></li>
+						<li class="divider"></li>
+						<li><a href="#">
+								<div>
+									<i class="fa fa-tasks fa-fw"></i> New Task <span
+										class="pull-right text-muted small">4 minutes ago</span>
+								</div>
+						</a></li>
+						<li class="divider"></li>
+						<li><a href="#">
+								<div>
+									<i class="fa fa-upload fa-fw"></i> Server Rebooted <span
+										class="pull-right text-muted small">4 minutes ago</span>
+								</div>
+						</a></li>
+						<li class="divider"></li>
+						<li><a class="text-center" href="#"> <strong>See
+									All Alerts</strong> <i class="fa fa-angle-right"></i>
+						</a></li>
+					</ul> <!-- /.dropdown-alerts --></li>
+				<!-- /.dropdown -->
+				<li class="dropdown"><a class="dropdown-toggle"
+					data-toggle="dropdown" href="#"> <i class="fa fa-user fa-fw"></i>
+						<i class="fa fa-caret-down"></i>
+				</a>
+					<ul class="dropdown-menu dropdown-user">
+						<li><a href="#"><i class="fa fa-user fa-fw"></i> User
+								Profile</a></li>
+						<li><a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a>
+						</li>
+						<li class="divider"></li>
+						<li><a href="login.html"><i class="fa fa-sign-out fa-fw"></i>
+								Logout</a></li>
+					</ul> <!-- /.dropdown-user --></li>
+				<!-- /.dropdown -->
+			</ul>
+			<!-- /.navbar-top-links -->
+
+			<div class="navbar-default sidebar" role="navigation">
+				<div class="sidebar-nav navbar-collapse">
+					<ul class="nav" id="side-menu">
+						<li class="sidebar-search">
+							<div class="input-group custom-search-form">
+								<input type="text" class="form-control" placeholder="Search...">
+								<span class="input-group-btn">
+									<button class="btn btn-default" type="button">
+										<i class="fa fa-search"></i>
+									</button>
+								</span>
+							</div> <!-- /input-group -->
+						</li>
+						<li><a href="index.html"><i class="fa fa-dashboard fa-fw"></i>
+								Dashboard</a></li>
+						<li><a href="patients.html"><i class="fa fa-table fa-fw"></i>
+								Patients</a></li>
+						<li><a href="emr.html"><i class="fa fa-edit fa-fw"></i>
+								EMR</a></li>
+						<li><a href="transcription.html"><i
+								class="fa fa-file-text fa-fw"></i> Transcripts</a></li>
+						<li><a href="#"><i class="fa fa-list fa-fw"></i> To do</a> <!-- /.nav-second-level -->
+						</li>
+					</ul>
+				</div>
+				<!-- /.sidebar-collapse -->
+			</div>
+			<!-- /.navbar-static-side -->
+		</nav>
+
+		<div id="page-wrapper">
+			<table id="user" class="table table-bordered table-striped"
+				style="clear: both">
+				<tbody>
+					<tr>
+						<td width="35%">Patient Name</td>
+						<td width="65%"><span class="label important"
+							id="patient_name"></span></td>
+					</tr>
+					<tr>
+						<td width="35%">Physician Name(create examination)</td>
+						<td width="65%"><span class="label notice"
+							id="physician_name">Success</span></td>
+					</tr>
+				</tbody>
+			</table>
+			<table id="user" class="table table-bordered table-striped"
+				style="clear: both">
+				<tbody>
+					<tr>
+						<td width="35%">Diagnostic Test<br>
+							<button class="btn btn-xs btn-info" id="showimg">
+								show test image</button></td>
+						<td width="65%"><p id="diagnostic-test"></p></td>
+					</tr>
+					<tr>
+						<td width="35%">Surgery</td>
+						<td width="65%"><p id="surgery"></p></td>
+					</tr>
+				</tbody>
+			</table>
+			<div id="slider1_container"
+				style="position: relative; top: 0px; left: 0px; width: 600px; height: 520px; display: none;">
+				<!-- Slides Container -->
+				<div u="slides"
+					style="cursor: move; position: absolute; overflow: hidden; left: 0px; top: 0px; width: 600px; height: 520px;">
+					<div>
+						<img u="image" src="/resources/img/x-ray-1.jpg" />
+					</div>
+					<div>
+						<img u="image" src="/resources/img/ct1.jpg" />
+					</div>
+					<div>
+						<img u="image" src="/resources/img/ct2.jpg" />
+					</div>
+				</div>
+				<!-- Arrow Navigator Skin Begin -->
+				<style>
+/* jssor slider arrow navigator skin 02 css */
+/*
+            .jssora02l              (normal)
+            .jssora02r              (normal)
+            .jssora02l:hover        (normal mouseover)
+            .jssora02r:hover        (normal mouseover)
+            .jssora02ldn            (mousedown)
+            .jssora02rdn            (mousedown)
+            */
+.jssora02l, .jssora02r, .jssora02ldn, .jssora02rdn {
+	position: absolute;
+	cursor: pointer;
+	display: block;
+	background: url(../resources/bower_components/slider-master/img/a02.png)
+		no-repeat;
+	overflow: hidden;
+}
+
+.jssora02l {
+	background-position: -3px -33px;
+}
+
+.jssora02r {
+	background-position: -63px -33px;
+}
+
+.jssora02l:hover {
+	background-position: -123px -33px;
+}
+
+.jssora02r:hover {
+	background-position: -183px -33px;
+}
+
+.jssora02ldn {
+	background-position: -3px -33px;
+}
+
+.jssora02rdn {
+	background-position: -63px -33px;
+}
+</style>
+				<!-- Arrow Left -->
+				<span u="arrowleft" class="jssora02l"
+					style="width: 55px; height: 55px; top: 123px; left: 8px;"> </span>
+				<!-- Arrow Right -->
+				<span u="arrowright" class="jssora02r"
+					style="width: 55px; height: 55px; top: 123px; right: 8px"> </span>
+				<!-- Arrow Navigator Skin End -->
+			</div>
+			<!-- Prescription -->
+			<div class="row">
+				<div class="col-lg-12">
+					<div class="panel panel-info">
+						<div class="panel-heading">
+							<div class="row">
+								<div class="col-lg-10">Prescription</div>
+							</div>
+						</div>
+						<div class="panel-body">
+							<!-- <table id="user" class="table table-bordered table-striped"
+								style="clear: both">
+								<thead>
+									<th>Drug Name</th>
+									<th>Sig (instructions)</th>
+									<th>Disp (dispense)</th>
+									<th>Refills</th>
+								</thead>
+								<tbody id="prescription-body">
+									<tr>
+										<td>Buproprion SR, 150 mg.</td>
+										<td>1 tab po BID</td>
+										<td>60 (sixty) tabs</td>
+										<td>3 (or NO refills)</td>
+									</tr>
+									<tr>
+										<td>Amoxicillin , 150 mg.</td>
+										<td>1 tab po BID</td>
+										<td>60 (sixty) tabs</td>
+										<td>7 (or NO refills)</td>
+									</tr>
+								</tbody>
+							</table> -->
+							<table class="table table-striped table-bordered table-hover"
+								id="example">
+								<thead>
+									<tr>
+										<th></th>
+										<th>prescription_id</th>
+										<th>patient_name</th>
+										<th>physician_name</th>
+										<th>create_date</th>
+									</tr>
+								</thead>
+
+								<tfoot>
+									<tr>
+										<th></th>
+										<th>prescription_id</th>
+										<th>patient_name</th>
+										<th>physician_name</th>
+										<th>create_date</th>
+									</tr>
+								</tfoot>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-lg-12">
+					<textarea class="form-control" rows="25" id="comment" disabled>CASE HISTORY:
+
+The patient tells me that on ____ she was the belted passenger riding in the front seat of her car that apparently ran into the side of a van at approximately 30 miles per hour. The patient sustained a temporary loss of consciousness. She was taken to the emergency room where cervical spine x-rays were taken. She was given a soft cervical collar and she was given medication. She was subsequently released.
+
+She then came under the care of her family physician for further evaluation. The patient presented to my office on ____ for evaluation and further treatment options. She had a chief complaint of ongoing neck pain and pain that was radiating across her upper back and both shoulders. This was aggravated with prolonged sitting.
+
+PAST HISTORY:
+
+The patient denies any previous injuries or accidents to her cervical spine prior to the incident of ______________.
+
+WORK HISTORY:
+
+Work history reveals that at the time of the accident, the patient was a student at college. She also did some social work-type activity while at college. She was able to continue doing such, yet she was attending classes and doing her social work duties through her neck pain. For the most part, she was inconvenienced by such.
+
+REVIEW OF DIAGNOSTIC IMAGING:
+
+Review of diagnostic imaging notes that an MRI was taken of her cervical spine because of ongoing neck pain. This was taken at a local MRI center on ________. This was reported as an unremarkable study.
+
+PHYSICAL EXAMINATION:
+
+Initial evaluation of the cervical spine demonstrated that flexion was capable of 50/60 degrees. Extension was 45/50 degrees. Right lateral bending was 40/45 degrees. Left lateral bending was 45/45 degrees. Right rotation was 75/80 degrees and left rotation was 70/80 degrees. Most of her pain noted was with end range with flexion and extension. Sensory, motor, and reflex examinations were within normal limits. Compression test was positive for increasing neck pain. Distraction test was positive whereas traction gave relief. Jackson test was positive. O'Donoghue was positive. Subluxation was detected at C4, C5, and T1. Muscle spasm was noted in the trapezius.
+
+TREATMENT:
+
+Treatment consisted of spinal manipulation adjunct with therapeutic modalities of ultrasound, intersegmental traction, myofascial release, and a home-based exercise program. As previously mentioned, she had emergency medical care and followup with her family physician.
+
+DIAGNOSIS AND CAUSAL RELATION:
+
+Cervical spine facet syndrome, subluxation to the cervical spine, myofascial pain syndrome, all of which are directly causally related to the accident of _________________.
+
+PROGRESS:
+
+At the time of the patient's last visit with me on ________, she had noted improved status in regard to her initial chief complaint of cervical spine pain. Her range of motion returned back to full range. She had intermittent discomfort in her cervical spine that was no longer constant. She felt she benefitted from her treatment, of which she required for over a 9-month period. She was to continue with home exercises. She had no upper extremity pain or complaints to report.
+
+PROGNOSIS:
+
+The patient's overall prognosis appeared to be good with the treatment plan, which consisted of chiropractic care and rehabilitation over a 9-month period. With such, her prognosis may have been fair. Overall, in my opinion, the patient sustained a temporary disabling condition, not allowing her to perform usual and all normal activities of daily living at her regular capacity because of her motor vehicle accident. She continued to go through school and yet was attending with pain. In my opinion, if she was in the workforce with a moderate to heavy job classification demand, she would have been classified as being totally disabled for approximately a 4-month time period where at the juncture she was under regular active and aggressive care in this office. Nonetheless, because of the traumatic impact she was involved in, the likelihood of future posttraumatic degenerative changes in her involved joints would certainly be considered a significant one. She is to continue with home spinal exercises.
+
+Respectfully submitted,
+
+					</textarea>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-lg-6"></div>
+				<div class="col-lg-4">
+					<p>
+						<a type="button" class="btn btn-danger" href="emr.html"> <i
+							class="fa fa-pencil-square-o"></i> Cancel
+						</a>
+					</p>
+				</div>
+			</div>
+		</div>
+		<!-- /#page-wrapper -->
+	</div>
+	<!-- /#wrapper -->
+
+	<!-- jQuery -->
+	<script src="/resources/bower_components/jquery/dist/jquery.min.js"></script>
+
+	<!-- Bootstrap Core JavaScript -->
+	<script
+		src="/resources/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+
+	<!-- Metis Menu Plugin JavaScript -->
+	<script
+		src="/resources/bower_components/metisMenu/dist/metisMenu.min.js"></script>
+
+	<!-- DataTables JavaScript -->
+	<script
+		src="/resources/bower_components/datatables/media/js/jquery.dataTables.min.js"></script>
+	<script
+		src="/resources/bower_components/datatables-plugins/integration/bootstrap/3/dataTables.bootstrap.min.js"></script>
+
+	<!-- Bootstrap Editable -->
+	<script src="/resources/bootstrap-editable/js/bootstrap-editable.js"></script>
+	<!-- Custom Theme JavaScript -->
+	<script src="/resources/dist/js/sb-admin-2.js"></script>
+	<!-- Dropzone dropzone.js and include it like this -->
+	<script src="/resources/bower_components/dropzone/dropzone.js"></script>
+	<script
+		src="/resources/bower_components/slider-master/js/jssor.slider.mini.js"></script>
+	<script>
+		jQuery(document).ready(
+				function($) {
+					var options = {
+						$ArrowNavigatorOptions : {
+							$Class : $JssorArrowNavigator$,
+							$ChanceToShow : 2
+						}
+					};
+					var jssor_slider1 = new $JssorSlider$('slider1_container',
+							options);
+				});
+	</script>
+	<!-- Transcription JavaScript -->
+	<script src="/resources/js/transcription.js"></script>
+
+	<!-- Page-Level Demo Scripts - Tables - Use for reference -->
+	<script>
+		$(document).ready(function() {
+			$('#options').editable({
+				placement : 'bottom',
+				value : [ 2, 3 ],
+				source : [ {
+					value : 1,
+					text : 'Blood pressure'
+				}, {
+					value : 2,
+					text : 'Tuberculosis'
+				}, {
+					value : 3,
+					text : 'Lead testing '
+				}, {
+					value : 4,
+					text : 'Malaria '
+				}, {
+					value : 5,
+					text : 'Intestinal and Tissue Invasive Parasites (ITIP)  '
+				}, {
+					value : 6,
+					text : 'X ray '
+				}, {
+					value : 7,
+					text : 'CT '
+				}, {
+					value : 8,
+					text : 'Blood testing '
+				}, {
+					value : 9,
+					text : 'Pregnancy test '
+				} ]
+			});
+		});
+	</script>
+
+</body>
+
+</html>
