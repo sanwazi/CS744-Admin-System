@@ -9,6 +9,7 @@ import org.hibernate.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.example.EMR_Admin.authentication.data.Admin;
 import com.example.EMR_Admin.authentication.data.Physician;
 
 @Repository
@@ -20,8 +21,11 @@ public class UserAuthenticationDao {
 	public List<Physician> listUser() {
 		Session session = sessionFactory.openSession();
 		List<Physician> list = null;
+//		List<Admin> adminList = null;
 		try {
 			list = session.createQuery("from Physician").list();
+//			adminList = session.createQuery("from Admin").list();
+//			System.out.println(adminList.get(0).getAdminAccount());
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
@@ -29,6 +33,7 @@ public class UserAuthenticationDao {
 		}
 		return list;
 	}
+	
 
 	public String addUser(Physician user) {
 		Session session = sessionFactory.openSession();
