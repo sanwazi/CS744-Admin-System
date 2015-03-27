@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>SB Admin 2 - Bootstrap Admin Theme</title>
+    <title>EMR Administrative System</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="/EMR_Admin/views/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -45,13 +45,17 @@
                         <form role="form">
                             <fieldset>
                                 <div class="form-group">
-                                    <input class="form-control" placeholder="E-mail" name="email" type="email" autofocus>
+                                    <input class="form-control" placeholder="E-mail" name="admin_account" type="email" autofocus>
                                 </div>
                                 <div class="form-group">
-                                    <input class="form-control" placeholder="Password" name="password" type="password" value="">
+                                    <input class="form-control" placeholder="Password" name="admin_password" type="password" value="">
                                 </div>
                                 <!-- Change this to a button or input when using this as a form -->
+                                 
                                 <a href="/EMR_Admin/views/pages/index.html" class="btn btn-lg btn-success btn-block">Login</a>
+                                <!-- 
+                                <button>Log in</button>
+                                -->
                             </fieldset>
                         </form>
                     </div>
