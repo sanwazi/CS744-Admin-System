@@ -40,5 +40,15 @@ public class PhysicianDao {
 		return list;
 	}
 	
+	public List<Physician> getPhysiciansByIds(List<Integer> physicianIds){
+		Session session = sessionFactory.openSession();
+		List<Physician> physicians = null;
+		for(int i : physicianIds){
+			Query q = session.createQuery("from Physician where physicianId = '"+i+"'");
+			q.list();
+			Physician p =
+		}
+	}
+	
 
 }

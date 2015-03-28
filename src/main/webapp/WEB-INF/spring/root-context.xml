@@ -37,6 +37,7 @@
 		<property name="dataSource" ref="myDataSource" />
 		<property name="packagesToScan">
 			<array>
+				<value>com.example.EMR_Admin.department.data</value>
 				<value>com.example.EMR_Admin.authentication.data</value>
 				<value>com.example.EMR_Admin.patient_physician_relation.data</value>
 				<value>com.example.EMR_Admin.emr.data</value>
