@@ -1,5 +1,7 @@
 package com.example.EMR_Admin.authentication.data;
 
+import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -7,6 +9,14 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
+
+import org.codehaus.jackson.JsonGenerator;
+import org.codehaus.jackson.JsonProcessingException;
+import org.codehaus.jackson.map.JsonSerializer;
+import org.codehaus.jackson.map.SerializerProvider;
+import org.codehaus.jackson.map.annotate.JsonSerialize;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 @Entity
 @Table(name = "physician")
@@ -21,8 +31,9 @@ public class Physician {
 
 	@Column(name = "physician_gender")
 	private String physicianGender;
-
+	
 	@Column(name = "physician_birthday")
+	//@JsonSerialize(using = CustomDateSerializer.class)
 	private Date physicianBirthday;
 
 	@Column(name = "account")
@@ -77,6 +88,20 @@ public class Physician {
 
 	public void setPassword(String password) {
 		this.password = password;
+	}
+	
+	//CustomDateSerializer class
+	public class CustomDateSerializer extends JsonSerializer<Date> {    
+	    @Override
+	    public void serialize(Date value, JsonGenerator gen, SerializerProvider arg2) throws 
+	        IOException, JsonProcessingException {      
+
+	        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+	        String formattedDate = formatter.format(value);
+
+	        gen.writeString(formattedDate);
+
+	    }
 	}
 
 }

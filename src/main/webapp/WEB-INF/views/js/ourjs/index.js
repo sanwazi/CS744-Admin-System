@@ -1,4 +1,4 @@
-var urllink = "departmentDetail.html";
+var urllink = "/EMR_Admin/department/viewPhysicians?department_name=";
 
 $(document).ready(function() {
 	loadDepartment();
@@ -26,9 +26,9 @@ function addli(n/*需要加入的li的个数*/,text/*要加入的文字*/){
         var li= document.createElement("li");
 //        var t=document.createTextNode(text);
         console.log(text);
-        
+        var departmentName = text;
       //li.innerHTML="<a href=\"#\">"+text+"</a>";
-        li.innerHTML="<a href=\""+urllink+"\">"+text+"</a>";
+        li.innerHTML="<a href=\""+urllink+departmentName+"\">"+text+"</a>";
       //li.appendChild(t);
         ul.appendChild(li);
     }

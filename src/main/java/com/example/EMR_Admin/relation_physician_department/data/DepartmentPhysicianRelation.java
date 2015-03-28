@@ -26,7 +26,7 @@ public class DepartmentPhysicianRelation {
 	private int department_id;
 	
 	@Column(name = "department_name")
-	private int department_name;
+	private String department_name;
 
 	public int getRelation_id() {
 		return relation_id;
@@ -60,11 +60,11 @@ public class DepartmentPhysicianRelation {
 		this.department_id = department_id;
 	}
 
-	public int getDepartment_name() {
+	public String getDepartment_name() {
 		return department_name;
 	}
 
-	public void setDepartment_name(int department_name) {
+	public void setDepartment_name(String department_name) {
 		this.department_name = department_name;
 	}
 	
