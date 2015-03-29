@@ -8,6 +8,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 @Entity
 @Table(name = "physician")
 public class Physician {
@@ -22,6 +24,7 @@ public class Physician {
 	@Column(name = "physician_gender")
 	private String physicianGender;
 
+	@JsonFormat(shape=JsonFormat.Shape.STRING, pattern="yyyy-MM-dd")
 	@Column(name = "physician_birthday")
 	private Date physicianBirthday;
 

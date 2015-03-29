@@ -26,4 +26,9 @@ public class PhysicianService {
 		List<Physician> list = physicianDao.serachWithInput(input);
 		return list;
 	}
+	
+	public List<Physician> getPhysicianList(){
+		List<Physician> list = physicianDao.getPhysicianList();
+		return list;
+	}
 }
