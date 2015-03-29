@@ -3,6 +3,7 @@ package com.example.EMR_Admin.patient.service;
 import java.sql.Date;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.List;
 import java.util.TimeZone;
 import java.lang.Object;
 
@@ -25,6 +26,11 @@ public class PatientService {
 	public String dateToString(java.util.Date date){
 		SimpleDateFormat sdf = new SimpleDateFormat(dateFormat);
 		return sdf.format(date);
+	}
+	
+	public List<Patient> patientList(){
+		List<Patient> list = pDao.patientList();
+		return list;
 	}
 	
 	public String computeAge(java.util.Date date){

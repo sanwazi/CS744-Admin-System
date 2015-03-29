@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.example.EMR_Admin.authentication.data.Admin;
 import com.example.EMR_Admin.authentication.data.Physician;
 import com.example.EMR_Admin.drug.data.Drug;
 import com.example.EMR_Admin.physician.service.PhysicianService;
@@ -25,6 +26,14 @@ public class PhysicianController {
 	public @ResponseBody List<Physician> searchWithInput(
 			@RequestParam(value = "input", required = true) String input) {
 		List<Physician> list = pService.searchWithInput(input);
+		return list;
+	}
+	
+	@RequestMapping(value = "/physicianList", method = RequestMethod.GET)
+	@Secured(value = { "ROLE_ADMIN" })
+	public @ResponseBody List<Physician> getAdminList(
+			) {
+		List<Physician> list = pService.getPhysicianList();
 		return list;
 	}
 }

@@ -12,28 +12,28 @@
 <title>EMR Admin System</title>
 
 <!-- Bootstrap Core CSS -->
-<link href="../bower_components/bootstrap/dist/css/bootstrap.min.css"
+<link href="/EMR_Admin/views/bower_components/bootstrap/dist/css/bootstrap.min.css"
 	rel="stylesheet">
 
 <!-- MetisMenu CSS -->
-<link href="../bower_components/metisMenu/dist/metisMenu.min.css"
+<link href="/EMR_Admin/views/bower_components/metisMenu/dist/metisMenu.min.css"
 	rel="stylesheet">
 
 <!-- DataTables CSS -->
 <link
-	href="../bower_components/datatables-plugins/integration/bootstrap/3/dataTables.bootstrap.css"
+	href="/EMR_Admin/views/bower_components/datatables-plugins/integration/bootstrap/3/dataTables.bootstrap.css"
 	rel="stylesheet">
 
 <!-- DataTables Responsive CSS -->
 <link
-	href="../bower_components/datatables-responsive/css/dataTables.responsive.css"
+	href="/EMR_Admin/views/bower_components/datatables-responsive/css/dataTables.responsive.css"
 	rel="stylesheet">
 
 <!-- Custom CSS -->
-<link href="../dist/css/sb-admin-2.css" rel="stylesheet">
+<link href="/EMR_Admin/views/dist/css/sb-admin-2.css" rel="stylesheet">
 
 <!-- Custom Fonts -->
-<link href="../bower_components/font-awesome/css/font-awesome.min.css"
+<link href="/EMR_Admin/views/bower_components/font-awesome/css/font-awesome.min.css"
 	rel="stylesheet" type="text/css">
 
 <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -76,7 +76,7 @@
 									</span>
 								</div>
 								<div>Lorem ipsum dolor sit amet, consectetur adipiscing
-									elit. Pellentesque eleifend...</div>
+									elit. Pellentesque eleifend/EMR_Admin/views.</div>
 						</a></li>
 						<li class="divider"></li>
 						<li><a href="#">
@@ -86,7 +86,7 @@
 									</span>
 								</div>
 								<div>Lorem ipsum dolor sit amet, consectetur adipiscing
-									elit. Pellentesque eleifend...</div>
+									elit. Pellentesque eleifend/EMR_Admin/views.</div>
 						</a></li>
 						<li class="divider"></li>
 						<li><a href="#">
@@ -96,7 +96,7 @@
 									</span>
 								</div>
 								<div>Lorem ipsum dolor sit amet, consectetur adipiscing
-									elit. Pellentesque eleifend...</div>
+									elit. Pellentesque eleifend/EMR_Admin/views.</div>
 						</a></li>
 						<li class="divider"></li>
 						<li><a class="text-center" href="#"> <strong>Read
@@ -290,30 +290,10 @@
 			<div id="example_wrapper"
 				class="dataTables_wrapper form-inline dt-bootstrap">
 				<div class="row">
-					<div class="col-sm-6">
-						<div class="dataTables_length" id="example_length">
-							<label>Show <select name="example_length"
-								aria-controls="example" class="form-control input-sm"><option
-										value="10">10</option>
-									<option value="25">25</option>
-									<option value="50">50</option>
-									<option value="100">100</option></select> entries
-							</label>
-						</div>
-					</div>
-					<div class="col-sm-6">
-						<div id="example_filter" class="dataTables_filter">
-							<label>Search:<input type="search"
-								class="form-control input-sm" placeholder=""
-								aria-controls="example"></label>
-						</div>
-					</div>
-				</div>
-				<div class="row">
 					<div class="col-sm-12">
 						<table
 							class="table table-striped table-bordered table-hover dataTable"
-							id="physicianTable" role="grid" aria-describedby="example_info">
+							id="dataTables-admin" role="grid" aria-describedby="example_info">
 							<thead>
 								<tr role="row">
 
@@ -343,27 +323,6 @@
 						</table>
 					</div>
 				</div>
-				<div class="row">
-					<div class="col-sm-6">
-						<div class="dataTables_info" id="example_info" role="status"
-							aria-live="polite">Showing 1 to 1 of 1 entries</div>
-					</div>
-					<div class="col-sm-6">
-						<div class="dataTables_paginate paging_simple_numbers"
-							id="example_paginate">
-							<ul class="pagination">
-								<li class="paginate_button previous disabled"
-									aria-controls="example" tabindex="0" id="example_previous"><a
-									href="#">Previous</a></li>
-								<li class="paginate_button active" aria-controls="example"
-									tabindex="0"><a href="#">1</a></li>
-								<li class="paginate_button next disabled"
-									aria-controls="example" tabindex="0" id="example_next"><a
-									href="#">Next</a></li>
-							</ul>
-						</div>
-					</div>
-				</div>
 			</div>
 			<!-- /.row -->
 		</div>
@@ -373,32 +332,24 @@
 	<!-- /#wrapper -->
 
 	<!-- jQuery -->
-	<script src="../bower_components/jquery/dist/jquery.min.js"></script>
+	<script src="/EMR_Admin/views/bower_components/jquery/dist/jquery.min.js"></script>
 
 	<!-- Bootstrap Core JavaScript -->
-	<script src="../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+	<script src="/EMR_Admin/views/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 
 	<!-- Metis Menu Plugin JavaScript -->
-	<script src="../bower_components/metisMenu/dist/metisMenu.min.js"></script>
+	<script src="/EMR_Admin/views/bower_components/metisMenu/dist/metisMenu.min.js"></script>
 
 	<!-- DataTables JavaScript -->
 	<script
-		src="../bower_components/DataTables/media/js/jquery.dataTables.min.js"></script>
+		src="/EMR_Admin/views/bower_components/datatables/media/js/jquery.dataTables.min.js"></script>
 	<script
-		src="../bower_components/datatables-plugins/integration/bootstrap/3/dataTables.bootstrap.min.js"></script>
+		src="/EMR_Admin/views/bower_components/datatables-plugins/integration/bootstrap/3/dataTables.bootstrap.min.js"></script>
 
 	<!-- Custom Theme JavaScript -->
-	<script src="../dist/js/sb-admin-2.js"></script>
+	<script src="/EMR_Admin/views/dist/js/sb-admin-2.js"></script>
 
-	<!-- Page-Level Demo Scripts - Tables - Use for reference -->
-	<script>
-		$(document).ready(function() {
-			$('#dataTables-example').DataTable({
-				responsive : true
-			});
-		});
-	</script>
-
+	<script src="/EMR_Admin/views/js/ourjs/admin.js"></script>
 </body>
 
 </html>

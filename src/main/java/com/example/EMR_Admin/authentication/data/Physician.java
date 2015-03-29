@@ -16,6 +16,7 @@ import org.codehaus.jackson.map.JsonSerializer;
 import org.codehaus.jackson.map.SerializerProvider;
 import org.codehaus.jackson.map.annotate.JsonSerialize;
 
+
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 @Entity
@@ -31,7 +32,9 @@ public class Physician {
 
 	@Column(name = "physician_gender")
 	private String physicianGender;
-	
+
+
+	@JsonFormat(shape=JsonFormat.Shape.STRING, pattern="yyyy-MM-dd")
 	@Column(name = "physician_birthday")
 	//@JsonSerialize(using = CustomDateSerializer.class)
 	private Date physicianBirthday;

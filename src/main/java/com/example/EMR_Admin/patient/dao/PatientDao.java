@@ -29,4 +29,13 @@ public class PatientDao {
 		Patient patient = (Patient) ((list.size() != 0) ? list.remove(0) : null);
 		return patient;
 	}
+	public List<Patient> patientList(){
+		Session session = sessionFactory.openSession();
+		Query q = session.createQuery("from Patient");
+		Transaction transaction = session.beginTransaction();
+		List<Patient> list = q.list();
+		transaction.commit();
+		session.close();	
+		return list;
+	}
 }
