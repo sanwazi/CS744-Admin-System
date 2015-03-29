@@ -23,10 +23,17 @@ public class DrugController {
 	DrugService drugService;
 	
 	@RequestMapping(value = "/drug/searchWithInput", method = RequestMethod.GET)
-	@Secured(value = { "ROLE_PHYSICIAN" })
+	@Secured(value = { "ROLE_ADMIN" })
 	public @ResponseBody List<Drug> searchWithInput(
 			@RequestParam(value = "drugInput", required = true) String input) {
 		List<Drug> list = drugService.searchWithInput(input);
+		return list;
+	}
+	
+	@RequestMapping(value = "/drug/getDrug", method = RequestMethod.GET)
+	@Secured(value = { "ROLE_ADMIN" })
+	public @ResponseBody List<Drug> getAll() {
+		List<Drug> list = drugService.getAll();
 		return list;
 	}
 	

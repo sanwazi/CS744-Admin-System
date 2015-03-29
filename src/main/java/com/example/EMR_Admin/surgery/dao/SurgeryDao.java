@@ -28,5 +28,15 @@ public class SurgeryDao {
 		session.close();
 		return list;
 	}
+	
+	public List<Surgery> getAll(){
+		Session session = sessionFactory.openSession();
+		Query q = session.createQuery("from Surgery");
+		Transaction transaction = session.beginTransaction();
+		List<Surgery> list = q.list();
+		transaction.commit();
+		session.close();
+		return list;
+	}
 
 }

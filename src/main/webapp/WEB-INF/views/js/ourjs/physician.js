@@ -25,7 +25,7 @@ function loadPhysicianData(physicians) {
 		dataSet.push(physician);
 	}
 
-	$('#dataTables-physician').DataTable({
+	$('.table tree').DataTable({
 		"responsive" : true,
 		"data" : dataSet,
 		"columns" : [ {

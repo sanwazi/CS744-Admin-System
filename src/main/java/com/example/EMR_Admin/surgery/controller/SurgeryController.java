@@ -19,10 +19,17 @@ public class SurgeryController {
 	SurgeryService sService;
 	
 	@RequestMapping(value = "/surgery/autocomplete", method = RequestMethod.GET)
-	@Secured(value = { "ROLE_PHYSICIAN" })
+	@Secured(value = { "ROLE_ADMIN" })
 	public @ResponseBody List<Surgery> searchWithInput(
 			@RequestParam(value = "input", required = true) String input) {
 		List<Surgery> list =sService.searchWithInput(input);
+		return list;
+	}
+	
+	@RequestMapping(value = "/surgery/getSurgery", method = RequestMethod.GET)
+	@Secured(value = { "ROLE_ADMIN" })
+	public @ResponseBody List<Surgery> getAll() {
+		List<Surgery> list =sService.getAll();
 		return list;
 	}
 

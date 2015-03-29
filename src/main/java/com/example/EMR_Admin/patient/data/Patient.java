@@ -27,6 +27,7 @@ public class Patient {
 	private String patient_name;
 	@Column(name = "patient_gender")
 	private String patient_gender;
+	
 	@JsonFormat(shape=JsonFormat.Shape.STRING, pattern="yyyy-MM-dd")
 	@Column(name = "patient_birthday")
 	private Date patient_birthday;

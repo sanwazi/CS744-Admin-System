@@ -17,4 +17,8 @@ public class DrugService {
 	public List<Drug> searchWithInput( String input ){
 		return drugDao.searchWithInput(input);
 	}
+	
+	public List<Drug> getAll(){
+		return drugDao.getAll();
+	}
 }
