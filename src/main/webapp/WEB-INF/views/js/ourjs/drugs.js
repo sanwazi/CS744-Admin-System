@@ -3,6 +3,7 @@ $(document).ready(function() {
 
 	loadAllDrug();
 	showAddingDrugTable();
+	addDrug();
 });
 //Get drugs list
 function loadAllDrug() {
@@ -62,6 +63,14 @@ function addDrug() {
 							+ amount,
 					success : function(data) {
 						//TODO
+						if(data=="s"){
+							$('#addingResult').atrr('h1','Success!');
+							$('#addingResult').show();
+						}
+						else if(data=="d"){
+							$('#addingResult').atrr('h1','Failed!');
+							$('#addingResult').show();
+						}
 //						var row = '<tr>';
 //						row += '<td>' + id_drug + '</td>';
 //						row += '<td>' + amount + '</td>';

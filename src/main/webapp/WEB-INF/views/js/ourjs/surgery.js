@@ -25,6 +25,7 @@ function loadSurgery(surgeryList) {
 	var dataSet = [];
 	for ( var i in surgeryList) {
 		var surgeryItems = [];
+		surgeryItems.push(surgeryList[i].surgery_id);
 		surgeryItems.push(surgeryList[i].surgery_name);
 		surgeryItems.push(surgeryList[i].cost);
 //		surgeryItems.push(convertMillisecondsToDate(physicianList[i].physicianBirthday));
@@ -47,6 +48,9 @@ function loadSurgery(surgeryList) {
 		responsive : true,
 		data : dataSet,
 		columns : [ {
+			"title" : "Surgery Id",
+			"class" : "center"
+		},{
 			"title" : "Surgery Name",
 			"class" : "center"
 		}, {
