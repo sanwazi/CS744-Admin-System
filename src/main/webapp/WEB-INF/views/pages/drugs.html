@@ -736,11 +736,23 @@
 											<div class="panel panel-default">
 												<div class="panel-heading">
 													<div class="row">
-														<div class="col-lg-10">Prescription</div>
+														<div class="col-lg-10">Add new drug</div>
+														<!-- 
+														<button id="btn-showAddingDrugsTable" class="btn btn-primary" type="button" 
+														data-toggle="collapse" data-target="#collapseExample" 
+														aria-expanded="false" aria-controls="collapseExample">
+  															Button with data-target
+														</button>
+														<div class="collapse" id="collapseExample">
+														  <div class="well">
+														      ...
+														  </div>
+														</div>
+														 -->
 														<div class="col-lg-2">
-															<button type="button" class="btn btn-primary btn-xs"
-																id="createPrescription">
-																<i class="fa fa-pencil-square-o"></i> Add
+															<button type="button" class="btn btn-primary btn-xs" 
+															id="btn-showAddingDrugsTable">
+																<i class="fa fa-pencil-square-o"></i>Add
 															</button>
 														</div>
 													</div>
@@ -760,7 +772,7 @@
 														<label for="textArea" class="col-lg-2 control-label">Drug
 															Name </label>
 														<div class="col-lg-4">
-															<input type="text" id='drugInput' class="form-control"
+															<input type="text" id='drugName' class="form-control"
 																placeholder="drug name...">
 														</div>
 														<label for="textArea" class="col-lg-2 control-label">Drug
@@ -768,11 +780,11 @@
 														<div class="col-lg-4">
 															<div class="input-group">
 																<input type="text" id="amount" class="form-control"
-																	placeholder="surgery name..."> <span
+																	placeholder="Amount..."> <span
 																	class="input-group-btn">
 																	<button class="btn btn-primary" id='addDrug'
 																		type="button">
-																		<i class="fa fa-pencil-square-o"></i> add
+																		<i class="fa fa-pencil-square-o"></i>Add Drug
 																	</button>
 																</span>
 															</div>
@@ -824,6 +836,7 @@
 	<script src="../dist/js/sb-admin-2.js"></script>
 	<script src="../js/ourjs/drugs.js"></script>
 	<script src="../js/ourjs/index.js"></script>
+	<script src="../bootstrap-3.3.4-dist/js/bootstrap.min.js"></script>
 
 	<!-- Page-Level Demo Scripts - Tables - Use for reference -->
 	<!--     <script> 
