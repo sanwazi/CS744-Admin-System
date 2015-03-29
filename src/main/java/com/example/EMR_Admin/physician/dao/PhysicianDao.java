@@ -53,7 +53,7 @@ public class PhysicianDao {
 		return list;
 	}
 
-	
+
 	public List<Physician> getPhysiciansByIds(List<Integer> physicianIds){
 		Session session = sessionFactory.openSession();
 		List<Physician> physicians = new ArrayList<Physician>();
@@ -68,6 +68,7 @@ public class PhysicianDao {
 		session.close(); 
 		return physicians;
 	}
-	
+
+
 
 }

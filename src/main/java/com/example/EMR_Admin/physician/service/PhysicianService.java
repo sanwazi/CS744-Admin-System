@@ -35,7 +35,6 @@ public class PhysicianService {
 		return list;
 	}
 	
-
 	public List<Physician> getPhysiciansByIds(List<Integer> physicianIds){
 		
 		return physicianDao.getPhysiciansByIds(physicianIds);
@@ -44,6 +43,5 @@ public class PhysicianService {
 	public List<Physician> getPhysicianList(){
 		List<Physician> list = physicianDao.getPhysicianList();
 		return list;
-
 	}
 }

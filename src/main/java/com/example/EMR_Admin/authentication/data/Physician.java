@@ -35,6 +35,7 @@ public class Physician {
 
 
 	@JsonFormat(shape=JsonFormat.Shape.STRING, pattern="yyyy-MM-dd")
+
 	@Column(name = "physician_birthday")
 	//@JsonSerialize(using = CustomDateSerializer.class)
 	private Date physicianBirthday;
