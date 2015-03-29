@@ -1,4 +1,6 @@
-var urllink = "/EMR_Admin/department/viewPhysicians?department_name=";
+//var urllink = "/EMR_Admin/views/pages/departmentDetails.html";
+var urllink = "/EMR_Admin/views/pages/departmentDetail.html?department_name=";
+
 
 $(document).ready(function() {
 	loadDepartment();
@@ -29,6 +31,8 @@ function addli(n/*需要加入的li的个数*/,text/*要加入的文字*/){
         var departmentName = text;
       //li.innerHTML="<a href=\"#\">"+text+"</a>";
         li.innerHTML="<a href=\""+urllink+departmentName+"\">"+text+"</a>";
+       // li.attr('href','/EMR_Admin/views/pages/departmentDetails.html?department_name='+departmentName);
+        //li.innerHTML="<a href=\""+urllink+departmentName+"\">"+text+"</a>";
       //li.appendChild(t);
         ul.appendChild(li);
     }
