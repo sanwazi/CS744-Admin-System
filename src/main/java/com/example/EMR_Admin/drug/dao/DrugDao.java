@@ -29,4 +29,14 @@ public class DrugDao {
 		session.close();
 		return list;
 	}
+	
+	public List<Drug> getAll(){
+		Session session = sessionFactory.openSession();
+		Query q = session.createQuery("from Drug");
+		Transaction transaction = session.beginTransaction();
+		List<Drug> list = q.list();
+		transaction.commit();
+		session.close();
+		return list;
+	}
 }
