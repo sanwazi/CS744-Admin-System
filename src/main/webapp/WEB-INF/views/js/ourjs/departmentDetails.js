@@ -226,6 +226,6 @@ function getUrlParameter(sParam) {
 }
 function convertMillisecondsToDate(input){
 	var date = new Date(input);
-	return date.customFormat("#YYYY#-#MM#-#DD#-");
+	return date.customFormat("#YYYY#-#MM#-#DD#");
 } 
 

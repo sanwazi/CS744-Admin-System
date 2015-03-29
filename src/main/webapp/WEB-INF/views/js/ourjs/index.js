@@ -1,6 +1,6 @@
 //var urllink = "/EMR_Admin/views/pages/departmentDetails.html";
 var urllink = "/EMR_Admin/views/pages/departmentDetail.html?department_name=";
-
+var ul = document.getElementById("department_ul");
 
 $(document).ready(function() {
 	loadDepartment();
@@ -12,8 +12,10 @@ function loadDepartment(){
 		url: "/EMR_Admin/getDepartment",
 		success : function(data){
 			var len = Object.keys(data).length;
+			console.log(len);
+			
 			for(var i in data){
-				addli(len, data[i].department_name)
+				addli(data[i].department_name)
 			}
 		},
 		dataType: "json",
@@ -21,20 +23,18 @@ function loadDepartment(){
 }
 
 
-function addli(n/*需要加入的li的个数*/,text/*要加入的文字*/){
-	
-    var ul = document.getElementById("department_ul");
-    for(var i=0;i<n;i++){
-        var li= document.createElement("li");
-//        var t=document.createTextNode(text);
-        console.log(text);
-        var departmentName = text;
-      //li.innerHTML="<a href=\"#\">"+text+"</a>";
-        li.innerHTML="<a href=\""+urllink+departmentName+"\">"+text+"</a>";
-       // li.attr('href','/EMR_Admin/views/pages/departmentDetails.html?department_name='+departmentName);
-        //li.innerHTML="<a href=\""+urllink+departmentName+"\">"+text+"</a>";
-      //li.appendChild(t);
-        ul.appendChild(li);
-    }
+function addli(text/*要加入的文字*/){
+
+    var li= document.createElement("li");
+   //var t=document.createTextNode(text);
+    console.log(text);
+    var departmentName = text;
+  //li.innerHTML="<a href=\"#\">"+text+"</a>";
+    li.innerHTML="<a href=\""+urllink+departmentName+"\">"+text+"</a>";
+   // li.attr('href','/EMR_Admin/views/pages/departmentDetails.html?department_name='+departmentName);
+    //li.innerHTML="<a href=\""+urllink+departmentName+"\">"+text+"</a>";
+  //li.appendChild(t);
+    ul.appendChild(li);
+    
 }
 

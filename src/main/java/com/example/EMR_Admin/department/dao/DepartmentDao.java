@@ -40,5 +40,9 @@ public class DepartmentDao {
 		return list;
 	}
 	
+	public boolean addDepartment(){
+		return true;
+	}
+	
 
 }
