@@ -20,4 +20,8 @@ public class DiagnosticTestServcie {
 		return list;
 	}
 
+	public List<DiagnosticTest> findAll(){
+		List<DiagnosticTest> list = dtDao.findAll();
+		return list;
+	}
 }

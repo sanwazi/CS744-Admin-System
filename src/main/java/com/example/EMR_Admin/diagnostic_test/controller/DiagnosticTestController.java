@@ -25,4 +25,12 @@ public class DiagnosticTestController {
 		List<DiagnosticTest> list = dtService.searchWithInput(input);
 		return list;
 	}
+	
+	@RequestMapping(value = "/diagnosticList", method = RequestMethod.GET)
+	@Secured(value = { "ROLE_ADMIN" })
+	public @ResponseBody List<DiagnosticTest> findAll(
+			) {
+		List<DiagnosticTest> list = dtService.findAll();
+		return list;
+	}
 }

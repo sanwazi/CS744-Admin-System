@@ -29,5 +29,16 @@ public class DiagnosticTestDao {
 		session.close();
 		return list;
 	}
+	
+	public List<DiagnosticTest> findAll(){
+		Session session = sessionFactory.openSession();
+		Query q = session
+				.createQuery("from DiagnosticTest");
+		Transaction transaction = session.beginTransaction();
+		List<DiagnosticTest> list = q.list();
+		transaction.commit();
+		session.close();
+		return list;
+	}
 
 }
