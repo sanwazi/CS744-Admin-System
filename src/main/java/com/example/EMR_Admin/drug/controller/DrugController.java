@@ -37,4 +37,18 @@ public class DrugController {
 		return list;
 	}
 	
+	@RequestMapping(value = "/drug/addDrug", method = RequestMethod.GET)
+	@Secured(value = { "ROLE_ADMIN" })
+	public @ResponseBody String addDrug(
+			@RequestParam(value = "drugName", required = true) String drug_name
+			) {
+		Drug drug = new Drug();
+		drug.setDrug_name(drug_name);
+		boolean result = drugService.addDrug(drug);
+		if(result){
+			return "s";
+		}else return "d";
+	}
+	
+	
 }

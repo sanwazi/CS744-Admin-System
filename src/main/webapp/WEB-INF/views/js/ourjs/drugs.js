@@ -55,20 +55,21 @@ function addDrug() {
 			'click',
 			function() {
 				var drugName = $('#drugName').val();
-				var amount = $('#amount').val();
+				//var amount = $('#amount').val();
 				$.ajax({
 					type : "GET",
-					url : "/drug/add",
-					data : 'drugName=' + drugName + '&amount='
-							+ amount,
+					url : "/EMR_Admin/drug/addDrug",
+					data : 'drugName=' + drugName,
 					success : function(data) {
 						//TODO
 						if(data=="s"){
-							$('#addingResult').atrr('h1','Success!');
+							$('#addingResult').html("Success!");
 							$('#addingResult').show();
+							//loadAllDrug();
+							location.reload(true);
 						}
 						else if(data=="d"){
-							$('#addingResult').atrr('h1','Failed!');
+							$('#addingResult').html("Failure! Duplicated Name!");
 							$('#addingResult').show();
 						}
 //						var row = '<tr>';
