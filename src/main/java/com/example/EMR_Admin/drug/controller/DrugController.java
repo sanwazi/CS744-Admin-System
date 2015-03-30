@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.example.EMR_Admin.drug.data.Drug;
 import com.example.EMR_Admin.drug.service.DrugService;
 import com.example.EMR_Admin.emr.data.Emr;
+import com.example.EMR_Admin.patient.data.Patient;
 
 @Controller
 public class DrugController {
@@ -50,5 +51,25 @@ public class DrugController {
 		}else return "d";
 	}
 	
+	@RequestMapping(value = "/drug/getDrugById", method = RequestMethod.GET)
+	@Secured(value = { "ROLE_ADMIN" })
+	public @ResponseBody Drug searchWithInput(
+			@RequestParam(value = "drug_id", required = true) int drug_id) {
+		List<Drug> list = drugService.getDrugById(drug_id);
+		return list.get(0);
+	}
+	
+	@RequestMapping(value = "/drug/updateDrug", method = RequestMethod.GET)
+	@Secured(value = {"ROLE_ADMIN"})
+	public @ResponseBody String updateDrug(
+			@RequestParam(value = "drug_id", required=true) int drug_id,
+			@RequestParam(value = "drug_name") String drug_name){
+		Drug drug = new Drug();
+		drug.setDrug_id(drug_id);
+		drug.setDrug_name(drug_name);
+		boolean result = drugService.updateDrug(drug);
+		if(result) return "s";
+		else return "d";
+	}
 	
 }

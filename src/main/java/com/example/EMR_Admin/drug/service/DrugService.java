@@ -22,7 +22,15 @@ public class DrugService {
 		return drugDao.getAll();
 	}
 	
+	public List<Drug> getDrugById(int drug_id){
+		return drugDao.getDrugById(drug_id);
+	}
+	
 	public boolean addDrug(Drug drug){
 		return drugDao.addDrug(drug);
+	}
+	
+	public boolean updateDrug(Drug drug){
+		return drugDao.updateDrug(drug);
 	}
 }

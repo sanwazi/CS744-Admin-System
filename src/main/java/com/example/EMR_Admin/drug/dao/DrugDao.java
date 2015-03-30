@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.example.EMR_Admin.drug.data.Drug;
+import com.example.EMR_Admin.emr.data.Emr;
 
 @Repository
 public class DrugDao {
@@ -50,12 +51,40 @@ public class DrugDao {
 		return list;
 	}
 	
+	public List<Drug> getDrugById(int drug_id){
+		Session session = sessionFactory.openSession();
+		Query q = session.createQuery("from Drug where drug_id = '"+drug_id+"'");
+		Transaction transaction = session.beginTransaction();
+		List<Drug> list = q.list();
+		transaction.commit();
+		session.close();
+		return list;
+	}
+	
 	public boolean addDrug(Drug drug){
 		if(getDrugByName(drug.getDrug_name()).isEmpty()){
 			try {
 				Session session = sessionFactory.openSession();
 				session.beginTransaction();
 				session.save(drug);
+				session.getTransaction().commit();
+				session.close();
+			} catch (HibernateException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+				return false;
+			}
+			return true;
+		}
+		return false;
+	}
+	
+	public boolean updateDrug(Drug drug){
+		if (getDrugByName(drug.getDrug_name()).isEmpty()) {
+			try {
+				Session session = sessionFactory.openSession();
+				session.beginTransaction();
+				session.update(drug);
 				session.getTransaction().commit();
 				session.close();
 			} catch (HibernateException e) {
