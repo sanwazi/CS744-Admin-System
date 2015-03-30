@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.example.EMR_Admin.drug.data.Drug;
 import com.example.EMR_Admin.surgery.data.Surgery;
 import com.example.EMR_Admin.surgery.service.SurgeryService;
 
@@ -31,6 +32,44 @@ public class SurgeryController {
 	public @ResponseBody List<Surgery> getAll() {
 		List<Surgery> list =sService.getAll();
 		return list;
+	}
+	
+	@RequestMapping(value = "/surgery/addSurgery", method = RequestMethod.GET)
+	@Secured(value = { "ROLE_ADMIN" })
+	public @ResponseBody String addSurgery(
+			@RequestParam(value = "surgery_name") String surgery_name,
+			@RequestParam(value = "cost") int cost
+			) {
+		Surgery surgery = new Surgery();
+		surgery.setSurgery_name(surgery_name);
+		surgery.setCost(cost);
+		boolean result = sService.addSurgery(surgery);
+		if(result){
+			return "s";
+		}else return "d";
+	}
+	
+	@RequestMapping(value = "/surgery/getSurgeryById", method = RequestMethod.GET)
+	@Secured(value = { "ROLE_ADMIN" })
+	public @ResponseBody Surgery getSurgeryById(
+			@RequestParam(value = "surgery_id", required = true) int surgery_id) {
+		List<Surgery> list = sService.getById(surgery_id);
+		return list.get(0);
+	}
+	
+	@RequestMapping(value = "/surgery/updateSurgery", method = RequestMethod.GET)
+	@Secured(value = {"ROLE_ADMIN"})
+	public @ResponseBody String updateSurgery(
+			@RequestParam(value = "surgery_id", required=true) int surgery_id,
+			@RequestParam(value = "surgery_name") String surgery_name,
+			@RequestParam(value = "cost") int cost){
+		Surgery surgery = new Surgery();
+		surgery.setSurgery_id(surgery_id);
+		surgery.setSurgery_name(surgery_name);
+		surgery.setCost(cost);
+		boolean result = sService.updateSurgery(surgery);
+		if(result) return "s";
+		else return "d";
 	}
 
 }

@@ -13,6 +13,7 @@ function loadAllDrug() {
 
 		success : function(data) {
 			loadDrug(data);
+			//giveButtonLink();
 
 		},
 		dataType : "json",
@@ -20,13 +21,20 @@ function loadAllDrug() {
 }
 //Display drugs
 function loadDrug(drugList) {
+	console.log(drugList.length);
 	var dataSet = [];
 	for ( var i in drugList) {
 		var drugItems = [];
 		drugItems.push(drugList[i].drug_id);
 		drugItems.push(drugList[i].drug_name);
+		var editButton = generateEditButton(drugList[i].drug_id);
+		var deleteButton = generateDeleteButton(drugList[i].drug_id);
+		drugItems.push(editButton);
+		drugItems.push(deleteButton);
+		console.log(drugItems.length);
 		dataSet.push(drugItems);
 	}
+	console.log(dataSet.length);
 
 	$('#dataTables-example').DataTable({
 		responsive : true,
@@ -36,6 +44,12 @@ function loadDrug(drugList) {
 			"class" : "center"
 		}, {
 			"title" : "Drug Name",
+			"class" : "center"
+		},{
+			"title" : "Change",
+			"class" : "center"
+		},{
+			"title" : "Delete",
 			"class" : "center"
 		}]
 	});
@@ -66,7 +80,8 @@ function addDrug() {
 							$('#addingResult').html("Success!");
 							$('#addingResult').show();
 							//loadAllDrug();
-							location.reload(true);
+							setTimeout("location.reload(true);",1000);
+							
 						}
 						else if(data=="d"){
 							$('#addingResult').html("Failure! Duplicated Name!");
@@ -85,26 +100,40 @@ function addDrug() {
 			});
 }
 
-//function showAddingDrugTable(){
-//	$("#btn-showAddingDrugsTable").collapse();
-//}
+//generate button
+function generateEditButton(drugId) {
+	var button = "<a name=\"edit\" id=\""
+			+ drugId
+			+ "\" class=\"btn btn-warning btn-xs\" href=\"edit_drug.html?drug_id="
+			+drugId+"\"><i class=\"fa fa-edit\"></i>Edit</a>";
+	return button;
+}
+function generateDeleteButton(drugId) {
+	var button = "<a name=\"delete\" id=\""
+			+ drugId
+			+ "\" class=\"btn btn-danger btn-xs\" href=\"delete_drug.html?drug_id="
+			+drugId+"\"><i class=\"fa fa-edit\"></i>Delete</a>";
+	return button;
+}
 
-//function createNewTranscription() {
-//	var query = "emrId=" + emrId + "&patientId=" + patientId;
-//	$.ajax({
-//		type : "GET",
-//		url : "/transcription/create",
-//		data : query,
-//		success : function(data) {
-//			transcriptionId = data;
-//			getTranscriptionBasicContent(transcriptionId); // for 1st panel
-//			registerSurgeryInput();
-//			registerDiagnosticTestInput();
-//			$("#createPrescription").on('click', function() {
-//				createPrescription();
-//			});
-//			registerUpdateTranscriptionButton();
-//		},
-//		dataType : "text",
-//	});
+//var modifyButton = "<button name=\"relation_modify\" id=\""
+//	+ relations[i].relation_id
+//	+ "\" class=\"btn btn-warning btn-xs\"><i class=\"fa fa-pencil-square-o fa-lg\"></i> Change</button>";
+//relation.push(modifyButton);
+//var deleteButton = "<button name=\"relation_delete\" id=\""
+//	+ relations[i].relation_id
+//	+ "\" class=\"btn btn-danger btn-xs\"><i class=\"fa fa-trash-o fa-lg\"></i> Delete</button>";
+//
+//function giveButtonLink(){
+//	$('a[name=edit]').each(function(){
+//		var drug_id = $(this).attr("id");
+//		var drug_name = $(this).attr("drug_name");
+//		var $button = $(this);
+//		$button.attr("href", "edit_drug.html?drug_id="+drug_id);	
+//	})
+//	$('a[name=delete]').each(function(){
+//		var drug_id = $(this).attr("id");
+//		var $button = $(this);
+//		$button.attr("href", "delete_drug.html?drug_id="+drug_id);	
+//	})
 //}
