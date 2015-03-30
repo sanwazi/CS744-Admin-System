@@ -2,8 +2,10 @@
 $(document).ready(function() {
 
 	loadAllDrug();
+	showAddingDrugTable();
+	addDrug();
 });
-
+//Get drugs list
 function loadAllDrug() {
 	$.ajax({
 		type : "GET",
@@ -16,6 +18,7 @@ function loadAllDrug() {
 		dataType : "json",
 	});
 }
+//Display drugs
 function loadDrug(drugList) {
 	var dataSet = [];
 	for ( var i in drugList) {
@@ -37,3 +40,71 @@ function loadDrug(drugList) {
 		}]
 	});
 }
+
+//Add new drugs
+
+function showAddingDrugTable(){
+	$("#btn-showAddingDrugsTable").on('click', function() {
+		$("#panelcontent").show("slow");
+	});
+}
+
+
+function addDrug() {
+	$('#addDrug').on(
+			'click',
+			function() {
+				var drugName = $('#drugName').val();
+				//var amount = $('#amount').val();
+				$.ajax({
+					type : "GET",
+					url : "/EMR_Admin/drug/addDrug",
+					data : 'drugName=' + drugName,
+					success : function(data) {
+						//TODO
+						if(data=="s"){
+							$('#addingResult').html("Success!");
+							$('#addingResult').show();
+							//loadAllDrug();
+							location.reload(true);
+						}
+						else if(data=="d"){
+							$('#addingResult').html("Failure! Duplicated Name!");
+							$('#addingResult').show();
+						}
+//						var row = '<tr>';
+//						row += '<td>' + id_drug + '</td>';
+//						row += '<td>' + amount + '</td>';
+//						row += '</tr>';
+//						var $rowDom = $.parseHTML(row);
+//						$('#drugTableContent').append($rowDom);
+//						$rowDom.show('slow');
+					},
+					dataType : "text",
+				});
+			});
+}
+
+//function showAddingDrugTable(){
+//	$("#btn-showAddingDrugsTable").collapse();
+//}
+
+//function createNewTranscription() {
+//	var query = "emrId=" + emrId + "&patientId=" + patientId;
+//	$.ajax({
+//		type : "GET",
+//		url : "/transcription/create",
+//		data : query,
+//		success : function(data) {
+//			transcriptionId = data;
+//			getTranscriptionBasicContent(transcriptionId); // for 1st panel
+//			registerSurgeryInput();
+//			registerDiagnosticTestInput();
+//			$("#createPrescription").on('click', function() {
+//				createPrescription();
+//			});
+//			registerUpdateTranscriptionButton();
+//		},
+//		dataType : "text",
+//	});
+//}

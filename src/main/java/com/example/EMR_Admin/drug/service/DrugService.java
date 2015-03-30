@@ -21,4 +21,8 @@ public class DrugService {
 	public List<Drug> getAll(){
 		return drugDao.getAll();
 	}
+	
+	public boolean addDrug(Drug drug){
+		return drugDao.addDrug(drug);
+	}
 }
