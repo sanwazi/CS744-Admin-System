@@ -74,7 +74,6 @@ function addDrug() {
 			'click',
 			function() {
 				var drugName = $('#drugName').val();
-				//var amount = $('#amount').val();
 				$.ajax({
 					type : "GET",
 					url : "/EMR_Admin/drug/addDrug",
@@ -84,7 +83,8 @@ function addDrug() {
 						if(data=="s"){
 							$('#addingResult').html("Success!");
 							$('#addingResult').show();
-							//loadAllDrug();
+							location.reload(true);
+
 							setTimeout("location.reload(true);",1000);
 							
 						}
@@ -92,13 +92,6 @@ function addDrug() {
 							$('#addingResult').html("Failure! Duplicated Name!");
 							$('#addingResult').show();
 						}
-//						var row = '<tr>';
-//						row += '<td>' + id_drug + '</td>';
-//						row += '<td>' + amount + '</td>';
-//						row += '</tr>';
-//						var $rowDom = $.parseHTML(row);
-//						$('#drugTableContent').append($rowDom);
-//						$rowDom.show('slow');
 					},
 					dataType : "text",
 				});
@@ -170,3 +163,4 @@ function generateDeleteButton(drugId) {
 //		$button.attr("href", "delete_drug.html?drug_id="+drug_id);	
 //	})
 //}
+

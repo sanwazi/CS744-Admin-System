@@ -1,5 +1,8 @@
 $(document).ready(function() {
 	loadDiagnostic();
+	addDiagnostic();
+	showAddingDiagnosticTable();
+	deleteDiagnostic();
 });
 
 function loadDiagnostic() {
@@ -49,6 +52,67 @@ function loadDiagnosticData(diagnostics) {
 		}, {
 			"title" : "Delete",
 			"class" : "center"
-		}]
+		} ]
 	});
 }
+
+function showAddingDiagnosticTable() {
+	$("#btn-showAddingDiagnosticsTable").on('click', function() {
+		$("#panelcontent").show("slow");
+	});
+}
+
+function addDiagnostic() {
+	$('#addDiagnostic').on(
+			'click',
+			function() {
+				var DiagnosticName = $('#diagnosticName').val();
+				var DiagnosticCost = $('#diagnosticCost').val();
+				$.ajax({
+					type : "GET",
+					url : "/EMR_Admin/diagnostic/addDiagnostic",
+					data : 'diagnosticName=' + DiagnosticName
+							+ '&diagnosticCost=' + DiagnosticCost,
+					success : function(data) {
+						// TODO
+						if (data == "s") {
+							$('#addingResult').html("Success!");
+							$('#addingResult').show();
+							location.reload(true);
+						} else if (data == "d") {
+							$('#addingResult')
+									.html("Failure! Duplicated Name!");
+							$('#addingResult').show();
+						}
+					},
+					dataType : "text",
+				});
+			});
+}
+
+function deleteDiagnostic() {
+	$('button[name=diagnostic_delete]').each(
+			function() {
+				var diagnostic_Id = $(this).attr("id");
+				var $button = $(this);
+				$.ajax({
+					type : "GET",
+					url : "/EMR_Admin/diagnostic/deleteDiagnostic",
+					data : 'diagnosticId=' + diagnostic_Id,							
+					success : function(data) {
+						// TODO
+						if (data == "s") {
+							$('#addingResult').html("Delete Success!");
+							$('#addingResult').show();
+							location.reload(true);
+						} else if (data == "d") {
+							$('#addingResult')
+									.html("Delete Failure!");
+							$('#addingResult').show();
+						}
+					},
+					dataType : "text",
+				});
+			})
+}
+
