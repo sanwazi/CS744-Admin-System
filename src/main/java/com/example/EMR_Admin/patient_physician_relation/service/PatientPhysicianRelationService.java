@@ -11,6 +11,7 @@ import com.constant.ConstantValue;
 import com.example.EMR_Admin.patient_physician_relation.dao.PatientPhysicianRelationDao;
 import com.example.EMR_Admin.patient_physician_relation.data.RelationPhysicianPatient;
 import com.example.EMR_Admin.physician.service.PhysicianService;
+import com.example.EMR_Admin.surgery.data.Surgery;
 
 @Service
 public class PatientPhysicianRelationService implements
@@ -57,5 +58,9 @@ public class PatientPhysicianRelationService implements
 	public List<RelationPhysicianPatient> findAllRelation(){
 		List<RelationPhysicianPatient> list = ppRelationDao.find();
 		return list;
+	}
+	
+	public boolean updateRelation(RelationPhysicianPatient relation){
+		return ppRelationDao.updateRelation(relation);
 	}
 }

@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.example.EMR_Admin.patient_physician_relation.data.RelationPhysicianPatient;
 import com.example.EMR_Admin.patient_physician_relation.service.PatientPhysicianRelationService;
+import com.example.EMR_Admin.surgery.data.Surgery;
 
 @Controller
 public class PatientPhysicianRelationController {
@@ -54,4 +55,17 @@ public class PatientPhysicianRelationController {
 				.findAllRelation();
 		return list;
 	}
+	
+	//??????????
+	@RequestMapping(value = "/relation/updateRelation", method = RequestMethod.GET)
+	@Secured(value = {"ROLE_ADMIN"})
+	public @ResponseBody String updateRelation(
+			@RequestParam(value = "relation_id", required=true) int relation_id){
+		RelationPhysicianPatient relation = new RelationPhysicianPatient();
+		relation.setRelation_id(relation_id);
+		boolean result = pService.updateRelation(relation);
+		if(result) return "s";
+		else return "d";
+	}
+
 }
