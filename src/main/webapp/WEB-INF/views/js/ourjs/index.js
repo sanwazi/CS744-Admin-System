@@ -28,9 +28,9 @@ function addli(text/*要加入的文字*/){
     var li= document.createElement("li");
    //var t=document.createTextNode(text);
     console.log(text);
-    var departmentName = text;
+    var departmentName = text.replace('_',' ');
   //li.innerHTML="<a href=\"#\">"+text+"</a>";
-    li.innerHTML="<a href=\""+urllink+departmentName+"\">"+text+"</a>";
+    li.innerHTML="<a href=\""+urllink+text+"\">"+departmentName+"</a>";
    // li.attr('href','/EMR_Admin/views/pages/departmentDetails.html?department_name='+departmentName);
     //li.innerHTML="<a href=\""+urllink+departmentName+"\">"+text+"</a>";
   //li.appendChild(t);

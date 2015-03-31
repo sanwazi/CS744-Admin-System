@@ -40,9 +40,20 @@ public class DepartmentDao {
 		return list;
 	}
 	
+	//add
 	public boolean addDepartment(){
 		return true;
 	}
 	
+	//getIdbyName
+	public int getIdByDepartmentName(String dName){
+		Session session = sessionFactory.openSession();
+		Query q = session.createQuery("from Department where department_name='"+dName+"'");
+		Transaction transaction = session.beginTransaction();
+		List<Department> list = q.list();
+		transaction.commit();
+		session.close();
+		return list.get(0).getDepartment_id();
+	}
 
 }

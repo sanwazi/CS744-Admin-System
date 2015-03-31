@@ -48,7 +48,10 @@ $(document).ready(function() {
 	//loadPatient();
 	departmentName = getUrlParameter("department_name");
 	console.log(departmentName);
+	drawTableTitle();
 	loadPhysician(departmentName);
+	showAddingDrugTable();
+	registerSurgeryInput();
 });
 
 function loadPhysician(departmentName) {
@@ -58,7 +61,7 @@ function loadPhysician(departmentName) {
 		data: "department_name="+departmentName,
 		success : function(data) {
 			loadDepartmentPhysicians(data);
-			giveButtonLink();
+			//giveButtonLink();
 			//loadTemporaryPatient(data.temporary);
 			//updateButton();
 		},
@@ -72,17 +75,18 @@ function loadDepartmentPhysicians(physicianList) {
 		physicianItems.push(physicianList[i].physicianName);
 		physicianItems.push(physicianList[i].physicianGender);
 		physicianItems.push(convertMillisecondsToDate(physicianList[i].physicianBirthday));
-		physicianItems.push(physicianList[i].account);
-		physicianItems.push(physicianList[i].password);
+//		physicianItems.push(physicianList[i].account);
+//		physicianItems.push(physicianList[i].password);
 //		if (primary[i].access_right == '11') {
 //			patientItem.push('read/write');
 //		} else if (primary[i].access_right == '10') {
 //			patientItem.push('read');
 //		}
 		// patientItem.push(primary[i].access_right);
-		var editButton = generateEditButton(physicianList[i].physicianId);
+		//var editButton = generateEditButton(physicianList[i].physicianId);
 		var deleteButton = generateDeleteButton(physicianList[i].physicianId);
-		physicianItems.push(editButton+deleteButton);
+		//physicianItems.push(editButton);
+		physicianItems.push(deleteButton);
 		//physicianItems.push(deleteButton);
 		dataSet.push(physicianItems);
 	}
@@ -96,42 +100,39 @@ function loadDepartmentPhysicians(physicianList) {
 			"title" : "Physician Gender"
 		}, {
 			"title" : "Physician Birthday"
-		}, {
-			"title" : "Physician Account"
 		},{
-			"title" : "Physician Password"
-		},{
-			"title" : "Action",
+			"title" : "Delete",
 			"class" : "center"
-		} ]
+		}]
 	});
 }
 
-function generateEditButton(physicianId) {
-	var button = "<a name=\"edit\" id=\""
-			+ physicianId
-			+ "\" class=\"btn btn-warning btn-xs\"><i class=\"fa fa-edit\"></i>Edit</a>";
-	return button;
-}
-function generateDeleteButton(physicianId) {
+function generateDeleteButton(physician_id) {
 	var button = "<a name=\"delete\" id=\""
-			+ physicianId
-			+ "\" class=\"btn btn-danger btn-xs\"><i class=\"fa fa-edit\"></i>Delete</a>";
+			+ physician_id
+			+ "\" class=\"btn btn-danger btn-xs\" href=\"delete_relation_physician_department.html?physician_id="
+			+physician_id+"\"><i class=\"fa fa-edit\"></i>Delete</a>";
 	return button;
 }
 
-function giveButtonLink(){
-	$('a[name=edit]').each(function(){
-		var physician_id = $(this).attr("id");
-		var $button = $(this);
-		$button.attr("href", "edit_physician.html?physician_id="+physician_id);	
-	})
-	$('a[name=delete]').each(function(){
-		var physician_id = $(this).attr("id");
-		var $button = $(this);
-		$button.attr("href", "delete_physician.html?physician_id="+physician_id);	
-	})
+//function draw table title
+function drawTableTitle(){
+	var dname = departmentName.replace('_',' ');
+	$('#table_title').html(dname+" Physicians List");
 }
+
+//function giveButtonLink(){
+//	$('a[name=edit]').each(function(){
+//		var physician_id = $(this).attr("id");
+//		var $button = $(this);
+//		$button.attr("href", "edit_physician.html?physician_id="+physician_id);	
+//	})
+//	$('a[name=delete]').each(function(){
+//		var physician_id = $(this).attr("id");
+//		var $button = $(this);
+//		$button.attr("href", "delete_physician.html?physician_id="+physician_id);	
+//	})
+//}
 
 
 function getUrlParameter(sParam) {
@@ -156,3 +157,70 @@ function convertMillisecondsToDate(input){
 	return date.customFormat("#YYYY#-#MM#-#DD#");
 } 
 
+//Add new drugs
+
+function showAddingDrugTable(){
+	$("#btn-showAddingPhysicianTable").on('click', function() {
+		$("#panelcontent").show("slow");
+	});
+}
+
+
+//autocomplate
+function registerSurgeryInput() {
+	$("#physician_name").on(
+			"keyup",
+			function() {
+				console.log("here user input name");
+				var input = $('#physician_name').val();
+				$.ajax({
+					type : "GET",
+					url : "/EMR_Admin/department_physician/autocomplete",
+					data : 'input=' + input,
+					success : function(data) {
+						var suggestion = [];
+						for ( var i in data) {
+							suggestion.push(data[i].physicianId + "_"
+									+ data[i].physicianName+"_"
+									+ data[i].physicianGender);
+						}
+						$("#physician_name").autocomplete({
+							source : suggestion
+						});
+					},
+					dataType : "json",
+				});
+			});
+	registerPhysicianAddButton();
+}
+
+//add physician_department_relation
+function registerPhysicianAddButton() {
+	$('#addPhysician').on(
+			'click',
+			function() {
+				var input = $('#physician_name').val();
+				var physician_id = input.split('_')[0];
+				var physician_name = input.split('_')[1];
+				$.ajax({
+					type : "GET",
+					url : "/EMR_Admin/department_physician/add",
+					data : 'physician_id=' + physician_id + '&physician_name='
+							+ physician_name + '&departmentName=' + departmentName,
+					success : function(data) {
+						if(data=="s"){
+							$('#addingResult').html("Success!");
+							$('#addingResult').show();
+							//loadAllDrug();
+							setTimeout("location.reload(true);",1000);
+							
+						}
+						else if(data=="d"){
+							$('#addingResult').html("Failure! Something is wrong!");
+							$('#addingResult').show();
+						}
+					},
+					dataType : "text",
+				});
+			});
+}
