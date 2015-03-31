@@ -47,21 +47,42 @@ public class DepartmentPhysicianRelationController {
 	//add
 	@RequestMapping(value = "/department_physician/add", method = RequestMethod.GET)
 	@Secured(value = { "ROLE_ADMIN" })
-	public @ResponseBody String addSurgery(
-			@RequestParam(value = "physician_id", required = true)int physician_id,
+	public @ResponseBody String addRelation(
+			@RequestParam(value = "physician_id")String physician_id,
 			@RequestParam(value = "physician_name") String physician_name,
 			@RequestParam(value = "departmentName") String department_name
 			) {
-		int department_id = dService.getIdByDepartmentName(department_name);
-		DepartmentPhysicianRelation newR = new DepartmentPhysicianRelation();
-		newR.setDepartment_id(department_id);
-		newR.setDepartment_name(department_name);
-		newR.setPhysician_id(physician_id);
-		newR.setPhysician_name(physician_name);
-		boolean result = dpService.addRelation(newR);
-		if(result){
-			return "s";
-		}else return "d";
+		if(physician_id == null){
+			return "id_null";
+		}
+		else{
+			int department_id = dService.getIdByDepartmentName(department_name);
+			DepartmentPhysicianRelation newR = new DepartmentPhysicianRelation();
+			newR.setDepartment_id(department_id);
+			newR.setDepartment_name(department_name);
+			newR.setPhysician_id(Integer.parseInt(physician_id));
+			newR.setPhysician_name(physician_name);
+			return dpService.addRelation(newR);
+		}
+		
+	}
+	
+	@RequestMapping(value = "/department_physician/addByPhysicianName", method = RequestMethod.GET)
+	@Secured(value = { "ROLE_ADMIN" })
+	public @ResponseBody String addRelationByphyName(
+			@RequestParam(value = "physician_name") String physician_name,
+			@RequestParam(value = "departmentName") String department_name
+			) {
+			if(phyService.getPhysicianByName(physician_name).isEmpty())
+			return "noSuchPhysician";
+			else {
+				if(dpService.getRelationByPhysicianName(physician_name).isEmpty()){
+					return "need_phyid";
+				}
+				else return "exists";
+			} 
+		
+		
 	}
 	
 	@RequestMapping(value = "/department_physician/getRelationByPhysicianId", method = RequestMethod.GET)
@@ -80,5 +101,15 @@ public class DepartmentPhysicianRelationController {
 		boolean result = dpService.deleteRelationByPhysicianId(physician_id);
 		if(result) return "s";
 		else return "d";
+	}
+	
+	//get Relations by physician name
+	@RequestMapping(value = "/department_physician/getDepartmentNamesByPhysicianName", method = RequestMethod.GET)
+	@Secured(value = {"ROLE_ADMIN"})
+	public @ResponseBody List<DepartmentPhysicianRelation> getDepartmentNamesByPhysicianName(
+			@RequestParam(value = "physician_name", required=true) String physician_name){
+		List<DepartmentPhysicianRelation> list = dpService.getRelationByPhysicianName(physician_name);
+		System.out.println("here we got the list"+list.toString());
+		return list;
 	}
 }

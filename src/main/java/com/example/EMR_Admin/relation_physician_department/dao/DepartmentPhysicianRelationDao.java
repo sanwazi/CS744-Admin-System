@@ -11,14 +11,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.example.EMR_Admin.authentication.data.Physician;
+import com.example.EMR_Admin.physician.service.PhysicianService;
 import com.example.EMR_Admin.relation_physician_department.data.DepartmentPhysicianRelation;
-import com.example.EMR_Admin.surgery.data.Surgery;
 
 @Repository
 public class DepartmentPhysicianRelationDao {
 	
 	@Autowired
 	private SessionFactory sessionFactory;
+	@Autowired
+	private PhysicianService phyService;
 	
 	public List<DepartmentPhysicianRelation> getRelationByDepartmentName(String dName){
 		Session session = sessionFactory.openSession();
@@ -55,23 +57,26 @@ public class DepartmentPhysicianRelationDao {
 		return list;
 	}
 	
-	public boolean addRelation(DepartmentPhysicianRelation inputRelation){
+	public String addRelation(DepartmentPhysicianRelation inputRelation){
 		String physician_name = inputRelation.getPhysician_name();
 		if (getRelationByPhysicianName(physician_name).isEmpty()) {
-			try {
-				Session session = sessionFactory.openSession();
-				session.beginTransaction();
-				session.save(inputRelation);
-				session.getTransaction().commit();
-				session.close();
-			} catch (HibernateException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-				return false;
+			if (!phyService.getPhysicianByName(physician_name).isEmpty()) {
+				try {
+					Session session = sessionFactory.openSession();
+					session.beginTransaction();
+					session.save(inputRelation);
+					session.getTransaction().commit();
+					session.close();
+				} catch (HibernateException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+					return "addingToDbfalse";
+				}
+				return "addingToDbSuccess";
 			}
-			return true;
+			return "noSuchPhysician";
 		}
-		return false;
+		return "relationExists";
 	}
 	
 	public DepartmentPhysicianRelation getRelationByPhysicianId(int physician_id){
