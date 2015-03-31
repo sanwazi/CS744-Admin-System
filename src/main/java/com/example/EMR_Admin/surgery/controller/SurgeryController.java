@@ -71,5 +71,16 @@ public class SurgeryController {
 		if(result) return "s";
 		else return "d";
 	}
+	
+	@RequestMapping(value = "/surgery/deleteSurgery", method = RequestMethod.GET)
+	@Secured(value = {"ROLE_ADMIN"})
+	public @ResponseBody String deleteSurgery(
+			@RequestParam(value = "surgery_id", required=true) int surgery_id){
+		Surgery surgery = new Surgery();
+		surgery.setSurgery_id(surgery_id);
+		boolean result = sService.deleteSurgery(surgery);
+		if(result) return "s";
+		else return "d";
+	}
 
 }

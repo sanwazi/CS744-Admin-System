@@ -72,4 +72,15 @@ public class DrugController {
 		else return "d";
 	}
 	
+	@RequestMapping(value = "/drug/deleteDrug", method = RequestMethod.GET)
+	@Secured(value = {"ROLE_ADMIN"})
+	public @ResponseBody String deleteDrug(
+			@RequestParam(value = "drug_id", required=true) int drug_id){
+		Drug drug = new Drug();
+		drug.setDrug_id(drug_id);
+		boolean result = drugService.deleteDrug(drug);
+		if(result) return "s";
+		else return "d";
+	}
+	
 }
