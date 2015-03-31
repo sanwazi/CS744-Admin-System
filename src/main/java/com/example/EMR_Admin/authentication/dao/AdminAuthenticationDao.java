@@ -2,6 +2,7 @@ package com.example.EMR_Admin.authentication.dao;
 
 import java.util.List;
 
+import org.hibernate.HibernateException;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -22,12 +23,59 @@ public class AdminAuthenticationDao {
 		List<Admin> list = null;
 		try {
 			list = session.createQuery("from Admin").list();
-			System.out.println(list.toString());
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
 			session.close();
 		}
 		return list;
+	}
+	
+	public boolean addAdmin( Admin admin ){
+		if( !listAdmin().contains(admin) ){
+			try{
+				Session session = sessionFactory.openSession();
+				session.beginTransaction();
+				session.save(admin);
+				session.getTransaction().commit();
+				session.close();
+			}catch( HibernateException e ){
+				e.printStackTrace();
+				return false;
+			}
+			return true;
+		}
+		return false;
+	}
+	
+	public boolean deleteAdmin( Admin admin	){
+		if( listAdmin().contains(admin) ){
+			try{
+				Session session = sessionFactory.openSession();
+				session.beginTransaction();
+				session.delete(admin);
+				session.getTransaction().commit();
+				session.close();
+			}catch( HibernateException e ){
+				e.printStackTrace();
+				return false;
+			}
+			return true;
+		}
+		return false;
+	}
+	
+	public boolean updateAdmin( Admin admin ){
+		try{
+			Session session = sessionFactory.openSession();
+			session.beginTransaction();
+			session.update(admin);
+			session.getTransaction().commit();
+			session.close();
+		}catch( HibernateException e ){
+			e.printStackTrace();
+			return false;
+		}
+		return true;
 	}
 }

@@ -2,7 +2,8 @@ $(document).ready(function() {
 	loadDiagnostic();
 	addDiagnostic();
 	showAddingDiagnosticTable();
-	deleteDiagnostic();
+	//deleteDiagnostic();
+	editDiagnostic();
 });
 
 function loadDiagnostic() {
@@ -23,13 +24,19 @@ function loadDiagnosticData(diagnostics) {
 		diagnostic.push(diagnostics[i].diagnostic_test_id);
 		diagnostic.push(diagnostics[i].diagnostic_test_name);
 		diagnostic.push(diagnostics[i].cost);
-		var modifyButton = "<button name=\"diagnostic_modify\" id=\""
+		var modifyButton = "<a name=\"diagnostic_modify\" id=\""
 				+ diagnostics[i].diagnostic_test_id
-				+ "\" class=\"btn btn-warning btn-xs\"><i class=\"fa fa-pencil-square-o fa-lg\"></i> Change</button>";
+				+ "\" class=\"btn btn-warning btn-xs\" href=\"edit_diagnostic.html?diagnostic_id="
+			+diagnostics[i].diagnostic_test_id +"\"><i class=\"fa fa-pencil-square-o fa-lg\"></i> Edit</a>";
 		diagnostic.push(modifyButton);
-		var deleteButton = "<button name=\"diagnostic_delete\" id=\""
+		var deleteButton = "<a name=\"diagnostic_delete"
 				+ diagnostics[i].diagnostic_test_id
-				+ "\" class=\"btn btn-danger btn-xs\"><i class=\"fa fa-trash-o fa-lg\"></i> Delete</button>";
+				+ "\""
+				+ "id=\""
+				+ diagnostics[i].diagnostic_test_id
+				+ "\" class=\"btn btn-danger btn-xs\" href=\"/EMR_Admin/diagnostic/deleteDiagnostic?diagnosticId="
+				+ diagnostics[i].diagnostic_test_id + "\""
+				+ " ><i class=\"fa fa-trash-o fa-lg\"></i> Delete</a>";
 		diagnostic.push(deleteButton);
 		dataSet.push(diagnostic);
 	}
@@ -90,29 +97,7 @@ function addDiagnostic() {
 			});
 }
 
-function deleteDiagnostic() {
-	$('button[name=diagnostic_delete]').each(
-			function() {
-				var diagnostic_Id = $(this).attr("id");
-				var $button = $(this);
-				$.ajax({
-					type : "GET",
-					url : "/EMR_Admin/diagnostic/deleteDiagnostic",
-					data : 'diagnosticId=' + diagnostic_Id,							
-					success : function(data) {
-						// TODO
-						if (data == "s") {
-							$('#addingResult').html("Delete Success!");
-							$('#addingResult').show();
-							location.reload(true);
-						} else if (data == "d") {
-							$('#addingResult')
-									.html("Delete Failure!");
-							$('#addingResult').show();
-						}
-					},
-					dataType : "text",
-				});
-			})
-}
 
+function editDiagnostic() {
+
+}

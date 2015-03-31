@@ -1,9 +1,6 @@
 //var departmentName;
 //[{"surgery_id":1,"surgery_name":"Hand Surgery","cost":0},{"surgery_id":2,"surgery_name":"head and Neck Surgery","cost":0},{"surgery_id":3,"surgery_name":"Hernia Surgery","cost":0},{"surgery_id":4,"surgery_name":"Neurosurgery","cost":0},{"surgery_id":5,"surgery_name":"Orthopedic Surgery","cost":0},{"surgery_id":6,"surgery_name":"Ophthalmological Surgery","cost":0},{"surgery_id":7,"surgery_name":"Amputation","cost":121},{"surgery_id":8,"surgery_name":"Appendectomy","cost":0},{"surgery_id":9,"surgery_name":"Blepharoplasty","cost":0},{"surgery_id":10,"surgery_name":"Hysterectomy","cost":0}]
 $(document).ready(function() {
-	//loadPatient();
-	//departmentName = getUrlParameter("department_name");
-	//console.log(departmentName);
 	loadAllSurgerys();
 	showAddingDrugTable();
 	addSurgery();
@@ -92,32 +89,13 @@ function addSurgery() {
 							$('#addingResult').html("Failure! Duplicated Name!");
 							$('#addingResult').show();
 						}
-//						var row = '<tr>';
-//						row += '<td>' + id_drug + '</td>';
-//						row += '<td>' + amount + '</td>';
-//						row += '</tr>';
-//						var $rowDom = $.parseHTML(row);
-//						$('#drugTableContent').append($rowDom);
-//						$rowDom.show('slow');
+
 					},
 					dataType : "text",
 				});
 			});
 }
 
-//generate button
-//function generateEditButton(surgery_id) {
-//	var button = "<a name=\"edit\" id=\""
-//			+ surgery_id
-//			+ "\" class=\"btn btn-warning btn-xs\"><i class=\"fa fa-edit\"></i>Edit</a>";
-//	return button;
-//}
-//function generateDeleteButton(surgery_id) {
-//	var button = "<a name=\"delete\" id=\""
-//			+ surgery_id
-//			+ "\" class=\"btn btn-danger btn-xs\"><i class=\"fa fa-edit\"></i>Delete</a>";
-//	return button;
-//}
 
 function generateEditButton(surgery_id) {
 	var button = "<a name=\"edit\" id=\""
@@ -133,16 +111,3 @@ function generateDeleteButton(surgery_id) {
 			+surgery_id+"\"><i class=\"fa fa-edit\"></i>Delete</a>";
 	return button;
 }
-
-//function giveButtonLink(){
-//	$('a[name=edit]').each(function(){
-//		var surgery_id = $(this).attr("id");
-//		var $button = $(this);
-//		$button.attr("href", "edit_surgery.html?surgery_id="+surgery_id);	
-//	})
-//	$('a[name=delete]').each(function(){
-//		var surgery_id = $(this).attr("id");
-//		var $button = $(this);
-//		$button.attr("href", "delete_surgery.html?surgery_id="+surgery_id);	
-//	})
-//}

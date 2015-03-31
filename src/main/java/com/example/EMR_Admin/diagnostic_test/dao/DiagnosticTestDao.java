@@ -12,6 +12,7 @@ import org.springframework.stereotype.Repository;
 
 import com.example.EMR_Admin.diagnostic_test.data.DiagnosticTest;
 import com.example.EMR_Admin.drug.data.Drug;
+import com.example.EMR_Admin.surgery.data.Surgery;
 
 @Repository
 public class DiagnosticTestDao {
@@ -106,5 +107,20 @@ public class DiagnosticTestDao {
 			return dt;
 		}
 		return null;
+	}
+	
+	public boolean updateDiagnostic(DiagnosticTest dt){
+		try {
+			Session session = sessionFactory.openSession();
+			session.beginTransaction();
+			session.update(dt);
+			session.getTransaction().commit();
+			session.close();
+		} catch (HibernateException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return false;
+		}
+		return true;
 	}
 }

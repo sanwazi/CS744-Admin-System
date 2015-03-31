@@ -32,7 +32,7 @@ function loadRelationData(relations) {
 		
 		var modifyButton = "<button name=\"relation_modify\" id=\""
 				+ relations[i].relation_id
-				+ "\" class=\"btn btn-warning btn-xs\"><i class=\"fa fa-pencil-square-o fa-lg\"></i> Change</button>";
+				+ "\" class=\"btn btn-warning btn-xs\"><i class=\"fa fa-pencil-square-o fa-lg\"></i> Edit</button>";
 		relation.push(modifyButton);
 		var deleteButton = "<button name=\"relation_delete\" id=\""
 				+ relations[i].relation_id

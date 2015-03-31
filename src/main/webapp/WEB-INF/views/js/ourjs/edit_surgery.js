@@ -2,9 +2,7 @@
 //{"surgery_id":1,"surgery_name":"Hand Surgery","cost":0}
 
 $(document).ready(function() {
-	//loadPatient();
 	var surgery_id = getUrlParameter("surgery_id");
-	//drug_name = getUrlParameter("drug_name");
 	console.log(surgery_id);
 	getSurgeryBasicContent(surgery_id);
 	listeningUpdateButton();

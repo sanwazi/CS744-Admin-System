@@ -19,4 +19,17 @@ public class AdminService {
 		List<Admin> list = ADao.listAdmin();
 		return list;
 	}
+	
+	public boolean addAdmin( Admin admin ){
+		return ADao.addAdmin(admin);
+	}
+	
+	public boolean deleteAdmin( Admin admin ){
+		return ADao.deleteAdmin(admin);
+	}
+	
+	public boolean updateAdmin( Admin admin ){
+		return ADao.updateAdmin(admin);
+		
+	}
 }

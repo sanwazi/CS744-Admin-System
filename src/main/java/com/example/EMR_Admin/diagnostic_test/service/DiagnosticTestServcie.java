@@ -36,4 +36,8 @@ public class DiagnosticTestServcie {
 	public DiagnosticTest findDiagnosticById( int dt_id ){
 		return dtDao.findDiagnosticById(dt_id);
 	}
+	
+	public boolean updateDiagnostic( DiagnosticTest dt ){
+		return dtDao.updateDiagnostic(dt);
+	}
 }
