@@ -3,7 +3,9 @@ $(document).ready(function() {
 
 	loadAllDrug();
 	showAddingDrugTable();
+	
 	addDrug();
+	//listenToDelete();
 });
 //Get drugs list
 function loadAllDrug() {
@@ -14,6 +16,7 @@ function loadAllDrug() {
 		success : function(data) {
 			loadDrug(data);
 			//giveButtonLink();
+			
 
 		},
 		dataType : "json",
@@ -33,6 +36,7 @@ function loadDrug(drugList) {
 		drugItems.push(deleteButton);
 		console.log(drugItems.length);
 		dataSet.push(drugItems);
+		
 	}
 	console.log(dataSet.length);
 
@@ -53,6 +57,7 @@ function loadDrug(drugList) {
 			"class" : "center"
 		}]
 	});
+	
 }
 
 //Add new drugs
@@ -99,7 +104,35 @@ function addDrug() {
 				});
 			});
 }
-
+//delete button listener
+function listenToDelete(){
+	//var buttonId = "#"+drugId+"_delete";
+	$('#dataTable-example :button').click(
+		function(){
+			console.log(""+"button"+" has been clicked");
+			alert(""+"button"+" has been clicked");
+//			$.ajax({
+//				type: "GET",
+//				url: "/EMR_Admin/drug/deleteDrug",
+//				data: 'drug_id='+drugId,
+//				success:function(data){
+//					if(data=="s"){
+//						$('#deleteResult').html("Success!");
+//						$('#deleteResult').show();
+//						//loadAllDrug();
+//						setTimeout("location.reload(true);",1000);
+//						
+//					}
+//					else if(data=="d"){
+//						$('#deleteResult').html("Failure! Duplicated Name!");
+//						$('#deleteResult').show();
+//					}
+//				},dataType :"text",}
+//			);
+		
+		}
+	);
+}
 //generate button
 function generateEditButton(drugId) {
 	var button = "<a name=\"edit\" id=\""
@@ -111,7 +144,7 @@ function generateEditButton(drugId) {
 function generateDeleteButton(drugId) {
 	var button = "<a name=\"delete\" id=\""
 			+ drugId
-			+ "\" class=\"btn btn-danger btn-xs\" href=\"delete_drug.html?drug_id="
+			+ "_delete\" class=\"btn btn-danger btn-xs\" href=\"delete_drug.html?drug_id="
 			+drugId+"\"><i class=\"fa fa-edit\"></i>Delete</a>";
 	return button;
 }

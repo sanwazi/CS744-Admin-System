@@ -93,5 +93,23 @@ public class SurgeryDao {
 		}
 		return true;
 	}
+	
+	public boolean deleteSurgeryById(int surgery_id){
+		if(!getById(surgery_id).isEmpty()){
+			try {
+				Session session = sessionFactory.openSession();
+				Query q = session.createQuery("delete Surgery where surgery_id = '"+surgery_id+"'");
+				q.executeUpdate();
+				session.beginTransaction();
+				session.close();
+			} catch (HibernateException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+				return false;
+			}
+			return true;
+		}
+		return false;
+	}
 
 }

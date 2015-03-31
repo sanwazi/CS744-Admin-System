@@ -96,4 +96,22 @@ public class DrugDao {
 		}
 		return false;
 	}
+	
+	public boolean deleteDrugById(int drug_id){
+		if(!getDrugById(drug_id).isEmpty()){
+			try {
+				Session session = sessionFactory.openSession();
+				Query q = session.createQuery("delete Drug where drug_id = '"+drug_id+"'");
+				q.executeUpdate();
+				session.beginTransaction();
+				session.close();
+			} catch (HibernateException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+				return false;
+			}
+			return true;
+		}
+		return false;
+	}
 }

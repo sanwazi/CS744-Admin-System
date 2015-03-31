@@ -33,4 +33,9 @@ public class DrugService {
 	public boolean updateDrug(Drug drug){
 		return drugDao.updateDrug(drug);
 	}
+	
+	public boolean deleteDrug(Drug drug){
+		int drug_id = drug.getDrug_id();
+		return drugDao.deleteDrugById(drug_id);
+	}
 }

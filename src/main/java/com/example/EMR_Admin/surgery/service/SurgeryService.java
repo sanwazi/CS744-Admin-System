@@ -35,4 +35,9 @@ public class SurgeryService {
 	public boolean updateSurgery(Surgery surgery){
 		return sDao.updateSurgery(surgery);
 	}
+	
+	public boolean deleteSurgery(Surgery surgery){
+		int surgery_id = surgery.getSurgery_id();
+		return sDao.deleteSurgeryById(surgery_id);
+	}
 }
