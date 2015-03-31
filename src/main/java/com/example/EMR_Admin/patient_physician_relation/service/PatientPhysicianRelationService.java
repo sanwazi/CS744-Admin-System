@@ -72,4 +72,8 @@ public class PatientPhysicianRelationService implements
 	public boolean updateRelation(RelationPhysicianPatient relation) {
 		return ppRelationDao.updateRelation(relation);
 	}
+	
+	public boolean addRelation(RelationPhysicianPatient relation){
+		return ppRelationDao.addRelation(relation);
+	}
 }

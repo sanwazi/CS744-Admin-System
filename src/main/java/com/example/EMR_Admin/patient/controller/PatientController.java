@@ -42,6 +42,17 @@ public class PatientController {
 		return result;
 	}
 	
+	@RequestMapping(value = "/patient/validatePatientName", method = RequestMethod.GET)
+	@Secured(value = { "ROLE_ADMIN" })
+	public @ResponseBody boolean validatePatientName(
+			@RequestParam(value = "patientName", required = true) String input) {
+		List<Patient> list = pService.patientList();
+		for( Patient p: list )
+			if( p.getPatient_name().equals(input))
+				return true;
+		return false;
+	}
+	
 	@RequestMapping(value = "/patient/autocomplete", method = RequestMethod.GET)
 	@Secured(value = { "ROLE_ADMIN" })
 	public @ResponseBody List<Patient> searchWithInput(

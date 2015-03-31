@@ -155,4 +155,19 @@ public class PatientPhysicianRelationDao implements
 		}
 		return true;
 	}
+	
+	public boolean addRelation(RelationPhysicianPatient relation){
+		try {
+			Session session = sessionFactory.openSession();
+			session.beginTransaction();
+			session.save(relation);
+			session.getTransaction().commit();
+			session.close();
+		} catch (HibernateException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return false;
+		}
+		return true;
+	}
 }
