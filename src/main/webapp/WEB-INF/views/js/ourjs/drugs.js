@@ -105,34 +105,34 @@ function addDrug() {
 			});
 }
 //delete button listener
-function listenToDelete(){
-	//var buttonId = "#"+drugId+"_delete";
-	$('#dataTable-example :button').click(
-		function(){
-			console.log(""+"button"+" has been clicked");
-			alert(""+"button"+" has been clicked");
-//			$.ajax({
-//				type: "GET",
-//				url: "/EMR_Admin/drug/deleteDrug",
-//				data: 'drug_id='+drugId,
-//				success:function(data){
-//					if(data=="s"){
-//						$('#deleteResult').html("Success!");
-//						$('#deleteResult').show();
-//						//loadAllDrug();
-//						setTimeout("location.reload(true);",1000);
-//						
-//					}
-//					else if(data=="d"){
-//						$('#deleteResult').html("Failure! Duplicated Name!");
-//						$('#deleteResult').show();
-//					}
-//				},dataType :"text",}
-//			);
-		
-		}
-	);
-}
+//function listenToDelete(){
+//	//var buttonId = "#"+drugId+"_delete";
+//	$('#dataTable-example :button').click(
+//		function(){
+//			console.log(""+"button"+" has been clicked");
+//			alert(""+"button"+" has been clicked");
+////			$.ajax({
+////				type: "GET",
+////				url: "/EMR_Admin/drug/deleteDrug",
+////				data: 'drug_id='+drugId,
+////				success:function(data){
+////					if(data=="s"){
+////						$('#deleteResult').html("Success!");
+////						$('#deleteResult').show();
+////						//loadAllDrug();
+////						setTimeout("location.reload(true);",1000);
+////						
+////					}
+////					else if(data=="d"){
+////						$('#deleteResult').html("Failure! Duplicated Name!");
+////						$('#deleteResult').show();
+////					}
+////				},dataType :"text",}
+////			);
+//		
+//		}
+//	);
+//}
 //generate button
 function generateEditButton(drugId) {
 	var button = "<a name=\"edit\" id=\""

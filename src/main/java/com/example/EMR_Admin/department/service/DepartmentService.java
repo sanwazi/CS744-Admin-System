@@ -23,4 +23,8 @@ public class DepartmentService {
 		List<Department> list = DDao.displayAll();
 		return list;
 	}
+	
+	public int getIdByDepartmentName(String dName){
+		return DDao.getIdByDepartmentName(dName);
+	}
 }

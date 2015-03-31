@@ -36,4 +36,20 @@ public class DepartmentPhysicianRelationService {
 		List<Integer> phyIds = getPhysicianIdByRelationList(dName);
 		return phyService.getPhysiciansByIds(phyIds);
 	}
+	
+	public List<Physician> getNonRegisteredPhysiciansByInputPhysicianName(String input){
+		return drDao.getNonRegisteredPhysiciansByInputPhysicianName(input);
+	}
+	
+	public boolean addRelation(DepartmentPhysicianRelation newR){
+		return drDao.addRelation(newR);
+	}
+	
+	public DepartmentPhysicianRelation getRelationByPhysicianId(int physician_id){
+		return drDao.getRelationByPhysicianId(physician_id);
+	}
+	
+	public boolean deleteRelationByPhysicianId(int physician_id){
+		return drDao.deleteRelationByPhysicianId(physician_id);
+	}
 }

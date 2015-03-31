@@ -22,7 +22,7 @@ public class PhysicianController {
 	private PhysicianService pService;
 
 	@RequestMapping(value = "/physician/autocomplete", method = RequestMethod.GET)
-	@Secured(value = { "ROLE_PHYSICIAN" })
+	@Secured(value = { "ROLE_ADMIN" })
 	public @ResponseBody List<Physician> searchWithInput(
 			@RequestParam(value = "input", required = true) String input) {
 		List<Physician> list = pService.searchWithInput(input);
