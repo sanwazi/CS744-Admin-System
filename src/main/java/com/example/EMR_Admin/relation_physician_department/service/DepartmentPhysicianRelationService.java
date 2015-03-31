@@ -8,7 +8,6 @@ import org.springframework.stereotype.Service;
 
 import com.example.EMR_Admin.relation_physician_department.dao.DepartmentPhysicianRelationDao;
 import com.example.EMR_Admin.relation_physician_department.data.DepartmentPhysicianRelation;
-import com.example.EMR_Admin.surgery.data.Surgery;
 import com.example.EMR_Admin.authentication.data.Physician;
 import com.example.EMR_Admin.physician.service.PhysicianService;
 
@@ -37,5 +36,20 @@ public class DepartmentPhysicianRelationService {
 		List<Integer> phyIds = getPhysicianIdByRelationList(dName);
 		return phyService.getPhysiciansByIds(phyIds);
 	}
-
+	
+	public List<Physician> getNonRegisteredPhysiciansByInputPhysicianName(String input){
+		return drDao.getNonRegisteredPhysiciansByInputPhysicianName(input);
+	}
+	
+	public boolean addRelation(DepartmentPhysicianRelation newR){
+		return drDao.addRelation(newR);
+	}
+	
+	public DepartmentPhysicianRelation getRelationByPhysicianId(int physician_id){
+		return drDao.getRelationByPhysicianId(physician_id);
+	}
+	
+	public boolean deleteRelationByPhysicianId(int physician_id){
+		return drDao.deleteRelationByPhysicianId(physician_id);
+	}
 }

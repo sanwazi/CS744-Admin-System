@@ -288,41 +288,54 @@
 		</nav>
 
 		<div id="page-wrapper">
-			<div class="form-horizontal">
-				<fieldset>
-					<legend>Editing Drug</legend>
+			<fieldset>
+			<legend>Are you sure you want to delete this physician from this department?</legend>
+				<div class="form-horizontal">
 					<div class="form-group has-success">
-						<label for="inputEmail" class="col-lg-3 control-label">Drug ID</label>
+						<label for="inputEmail" class="col-lg-3 control-label">Physician ID</label>
 						<div class="col-lg-9">
-							<input type="text" class="form-control" id="drug_id"
+							<input type="text" class="form-control" id="physician_id"
 								placeholder="" disabled>
 						</div>
 					</div>
 					<div class="form-group has-success">
-						<label for="inputPassword" class="col-lg-3 control-label">Drug Name</label>
+						<label for="inputPassword" class="col-lg-3 control-label">Physician Name</label>
 						<div class="col-lg-9">
-							<input type="text" class="form-control" id="drug_name"
-								placeholder="">
+							<input type="text" class="form-control" id="physician_name"
+								placeholder="" disabled>
 						</div>
 					</div>
-				</fieldset>
-			</div>
-			<div class="row">
-				<div class="col-lg-6"></div>
-				<div class="col-lg-4">
-					<p>
-						<button type="button" class="btn btn-info"
-							id='update_drug'>
-							<i class="fa fa-pencil-square-o"></i> Update
-						</button>
-						<a type="button" class="btn btn-danger" href="drugs.html"> <i
-							class="fa fa-pencil-square-o"></i> Cancel
-						</a>
-					</p>
-				</div>
-			</div>
-			<h1 id="addingResult" style="display:none;"></h1>
+					<div class="form-group has-success">
+						<label for="inputPassword" class="col-lg-3 control-label">Department ID</label>
+						<div class="col-lg-9">
+							<input type="text" class="form-control" id="department_id"
+								placeholder="" disabled>
+						</div>
+					</div>
+					<div class="form-group has-success">
+						<label for="inputPassword" class="col-lg-3 control-label">Department Belongs To</label>
+						<div class="col-lg-9">
+							<input type="text" class="form-control" id="department_name"
+								placeholder="" disabled>
+						</div>
+					</div>
 
+				</div>
+				<div class="row">
+					<div class="col-lg-6"></div>
+					<div class="col-lg-4">
+						<p>
+							<button type="button" class="btn btn-info" id='delete_relation'>
+								<i class="fa fa-pencil-square-o"></i>Yes
+							</button>
+							<a type="button" class="btn btn-danger" id="btn-cancel">
+								<i class="fa fa-pencil-square-o"></i> Cancel
+							</a>
+						</p>
+					</div>
+				</div>
+			</fieldset>
+			<h1 id="deletingResult" style="display: none;"></h1>
 		</div>
 		<!-- /#page-wrapper -->
 
@@ -346,7 +359,7 @@
 
 	<!-- Custom Theme JavaScript -->
 	<script src="../dist/js/sb-admin-2.js"></script>
-	<script src="../js/ourjs/edit_drug.js"></script>
+	<script src="../js/ourjs/delete_relation_physician_department.js"></script>
 	<script src="../js/ourjs/index.js"></script>
 
 	<!-- Page-Level Demo Scripts - Tables - Use for reference -->
