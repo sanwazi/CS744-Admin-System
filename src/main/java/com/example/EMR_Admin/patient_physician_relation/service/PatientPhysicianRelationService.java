@@ -31,6 +31,15 @@ public class PatientPhysicianRelationService implements
 		return primaryCarePatients;
 	}
 
+	public boolean validatePatientByPatientId( String patient_id){
+		List<RelationPhysicianPatient>  list = ppRelationDao.findPrimaryRelationByPatientId(Integer.parseInt(patient_id));		
+		if( list.isEmpty() ){
+			return false;
+		}else
+			return true;
+		
+	}
+
 	@Override
 	public List<RelationPhysicianPatient> findTemporaryCaraPatient() {
 		// TODO Auto-generated method stub
@@ -55,12 +64,12 @@ public class PatientPhysicianRelationService implements
 		return temporaryCarePatients;
 	}
 
-	public List<RelationPhysicianPatient> findAllRelation(){
+	public List<RelationPhysicianPatient> findAllRelation() {
 		List<RelationPhysicianPatient> list = ppRelationDao.find();
 		return list;
 	}
-	
-	public boolean updateRelation(RelationPhysicianPatient relation){
+
+	public boolean updateRelation(RelationPhysicianPatient relation) {
 		return ppRelationDao.updateRelation(relation);
 	}
 }

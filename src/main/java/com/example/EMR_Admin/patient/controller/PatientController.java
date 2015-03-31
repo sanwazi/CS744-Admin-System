@@ -41,4 +41,12 @@ public class PatientController {
 		
 		return result;
 	}
+	
+	@RequestMapping(value = "/patient/autocomplete", method = RequestMethod.GET)
+	@Secured(value = { "ROLE_ADMIN" })
+	public @ResponseBody List<Patient> searchWithInput(
+			@RequestParam(value = "input", required = true) String input) {
+		List<Patient> list = pService.searchWithInput(input);
+		return list;
+	}
 }

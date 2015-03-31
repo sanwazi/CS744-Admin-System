@@ -338,44 +338,56 @@
 					</div>
 				</div>
 			</div>
+			<div class="form-horizontal">
+				<fieldset>
+					<legend>Add new surgery</legend>
+					<div class="form-group has-error">
+						<div class="col-lg-9">
+							<div class="panel panel-default">
+								<div class="panel-heading">
+									<div class="row">
+										<div class="col-lg-10">Add new Diagnostic</div>
+										<div class="col-lg-2 pull-right">
+											<button type="button" class="btn btn-primary btn-xs"
+												id="btn-showAddingDiagnosticsTable">
+												<i class="fa fa-pencil-square-o"></i>Add
+											</button>
+										</div>
+									</div>
+								</div>
+								<div class="panel-body" id='panelcontent' style="display: none;">
+									<div class="form-group has-warning">
+										<div class="row" style="margin-top: 10px">
+											<label for="textArea" class="col-lg-2 control-label">
+												Name </label>
 
-			<div class="panel-heading">
-				<div class="row">
-					<div class="col-lg-10">Add new Diagnostic</div>
-					<div class="col-lg-2 pull-right">
-						<button type="button" class="btn btn-primary btn-xs"
-							id="btn-showAddingDiagnosticsTable">
-							<i class="fa fa-pencil-square-o"></i>Add
-						</button>
-					</div>
-				</div>
-			</div>
-			<div class="panel-body" id='panelcontent' style="display: none;">
-				<div class="form-group has-warning">
-					<div class="row" style="margin-top: 10px">
-						<label for="textArea" class="col-lg-2 control-label"> Name
-						</label>
+											<div class="col-lg-4">
+												<input type="text" id='diagnosticName' class="form-control"
+													placeholder="diagnostic name...">
+											</div>
+										</div>
+										<div class="row" style="margin-top: 15px">
+											<label for="textArea" class="col-lg-2 control-label">
+												Cost </label>
 
-						<div class="col-lg-4">
-							<input type="text" id='diagnosticName' class="form-control"
-								placeholder="diagnostic name...">
+											<div class="col-lg-4">
+												<input type="text" id='diagnosticCost' class="form-control"
+													placeholder="diagnostic cost...">
+											</div>
+										</div>
+										<div class="row pull-right" style="margin-right: 20px">
+											<button class="btn btn-primary" id='addDiagnostic'
+												type="button">
+												<i class="fa fa-pencil-square-o"></i>Submit
+											</button>
+										</div>
+									</div>
+								</div>
+							</div>
 						</div>
 					</div>
-					<div class="row" style="margin-top: 15px">
-						<label for="textArea" class="col-lg-2 control-label"> Cost
-						</label>
-
-						<div class="col-lg-4">
-							<input type="text" id='diagnosticCost' class="form-control"
-								placeholder="diagnostic cost...">
-						</div>
-					</div>
-					<div class="row pull-right" style="margin-right: 20px">
-						<button class="btn btn-primary" id='addDiagnostic' type="button">
-							<i class="fa fa-pencil-square-o"></i>Submit
-						</button>
-					</div>
-				</div>
+				</fieldset>
+				<h1 id="addingResult" style="display: none;"></h1>
 			</div>
 			<!-- /.row -->
 		</div>

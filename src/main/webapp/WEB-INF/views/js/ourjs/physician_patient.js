@@ -1,5 +1,13 @@
 $(document).ready(function() {
 	loadRelation();
+	showAddingRelationTable();
+	addPrimaryRelation();
+	$("#patient_input").on('keyup', function() {
+		loadPatientAutocomplete();
+	});
+	$("#physician_input").on('keyup', function() {
+		loadPhysicianAutocomplete();
+	});
 });
 
 function loadRelation() {
@@ -60,5 +68,81 @@ function loadRelationData(relations) {
 			"title" : "Delete",
 			"class" : "center"
 		} ]
+	});
+}
+function showAddingRelationTable(){
+	$("#btn-showAddingRelationTable").on('click', function() {
+		$("#panelcontent-relation").show("slow");
+	});
+}
+function addPrimaryRelation(){
+	$('#addPrimaryRelation').on(
+			'click',
+			function() {
+				var surgeryName = $('#surgeryName').val();
+				var cost = $('#cost').val();
+				//var amount = $('#amount').val();
+				$.ajax({
+					type : "GET",
+					url : "/EMR_Admin/surgery/addSurgery",
+					data : 'surgery_name=' + surgeryName + "&cost="+cost,
+					success : function(data) {
+						//TODO
+						if(data=="s"){
+							$('#addingResult').html("Success!");
+							$('#addingResult').show();
+							//loadAllDrug();
+							setTimeout("location.reload(true);",1000);
+							
+						}
+						else if(data=="d"){
+							$('#addingResult').html("Failure! Duplicated Name!");
+							$('#addingResult').show();
+						}
+
+					},
+					dataType : "text",
+				});
+			});
+}
+
+function validatePatient(){
+	
+}
+
+function loadPatientAutocomplete(){
+	var input = $("#patient_input").val();
+	$.ajax({
+		type : "GET",
+		url : "/EMR_Admin/patient/autocomplete",
+		data : "input=" + input,
+		success : function(data) {
+			var suggestion = [];
+			for ( var i in data) {
+				suggestion.push(data[i].patient_name);
+			}
+
+			$("#patient_input").autocomplete({
+				source : suggestion
+			});
+		}
+	});
+}
+function loadPhysicianAutocomplete(){
+	var input = $("#physician_input").val();
+	$.ajax({
+		type : "GET",
+		url : "/EMR_Admin/physician/autocomplete",
+		data : "input=" + input,
+		success : function(data) {
+			var suggestion = [];
+			for ( var i in data) {
+				suggestion.push(data[i].physicianName);
+			}
+
+			$("#physician_input").autocomplete({
+				source : suggestion
+			});
+		}
 	});
 }

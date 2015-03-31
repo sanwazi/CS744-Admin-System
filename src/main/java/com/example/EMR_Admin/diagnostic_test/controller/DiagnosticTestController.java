@@ -46,24 +46,21 @@ public class DiagnosticTestController {
 			return "s";
 		} else
 			return "d";
-	
+
 	}
 
 	@RequestMapping(value = "/diagnostic/deleteDiagnostic", method = RequestMethod.GET)
 	@Secured(value = { "ROLE_ADMIN" })
-	public @ResponseBody List<DiagnosticTest> deleteDiagnostic(
-			@RequestParam(value = "diagnosticId", required = true) String dt_id) {
+	public @ResponseBody String deleteDiagnostic(
+			@RequestParam(value = "diagnostic_id", required = true) String dt_id) {
 		DiagnosticTest dt = dtService.findDiagnosticById(Integer
 				.parseInt(dt_id));
 		boolean result = dtService.deleteDiagnostic(dt);
-		
-//		if (result)
-//			return "s";
-//		else
-//			return "d";
-		
-		List<DiagnosticTest> list = dtService.findAll();
-		return list;
+
+		if (result)
+			return "s";
+		else
+			return "d";
 	}
 
 	@RequestMapping(value = "/diagnostic/updateDiagnostic", method = RequestMethod.GET)
@@ -82,12 +79,14 @@ public class DiagnosticTestController {
 		else
 			return "d";
 	}
-	
+
 	@RequestMapping(value = "/diagnostic/getdiagnosticById", method = RequestMethod.GET)
 	@Secured(value = { "ROLE_ADMIN" })
 	public @ResponseBody DiagnosticTest getdiagnosticById(
 			@RequestParam(value = "diagnostic_id", required = true) int diagnostic_test_id) {
-		DiagnosticTest diagnosticTest = dtService.findDiagnosticById(diagnostic_test_id);;
+		DiagnosticTest diagnosticTest = dtService
+				.findDiagnosticById(diagnostic_test_id);
+		;
 		return diagnosticTest;
 	}
 

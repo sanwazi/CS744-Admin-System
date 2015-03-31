@@ -14,7 +14,12 @@
 <!-- Bootstrap Core CSS -->
 <link href="../bower_components/bootstrap/dist/css/bootstrap.min.css"
 	rel="stylesheet">
-
+<link
+	href="../bower_components/font-awesome/css/font-awesome.min.css"
+	rel="stylesheet" type="text/css">
+<link rel="stylesheet"
+	href="//code.jquery.com/ui/1.11.3/themes/smoothness/jquery-ui.css">
+	
 <!-- MetisMenu CSS -->
 <link href="../bower_components/metisMenu/dist/metisMenu.min.css"
 	rel="stylesheet">
@@ -258,18 +263,21 @@
 						<li><a href="#"><i class="fa fa-sitemap fa-fw"></i>
 								Relationship<span class="fa arrow"></span></a>
 							<ul class="nav nav-second-level">
-								<li><a href="Physician_Patient.html">Physician and Patient</a></li>
-								<li><a href="Medical_Staff_Patient.html">Medical staff and Patient</a></li>
-								<li><a href="Physician_Medical_Staff.html">Physician and Medical staff </a></li>
+								<li><a href="Physician_Patient.html">Physician and
+										Patient</a></li>
+								<li><a href="Medical_Staff_Patient.html">Medical staff
+										and Patient</a></li>
+								<li><a href="Physician_Medical_Staff.html">Physician
+										and Medical staff </a></li>
 							</ul></li>
 
-						<li><a href="tables.html"><i class="fa fa-building-o"></i>
+						<li><a href="department.html"><i class="fa fa-building-o"></i>
 								Department</a></li>
-						<li><a href="forms.html"><i class="fa fa-edit fa-fw"></i>
+						<li><a href="diagnostic.html"><i class="fa fa-edit fa-fw"></i>
 								Diagnostic Test</a></li>
-						<li><a href="#"><i class="fa fa-medkit"></i> Drugs</a></li>
+						<li><a href="drugs.html"><i class="fa fa-medkit"></i> Drugs</a></li>
 
-						<li><a href="#"><i class="fa fa-files-o fa-fw"></i>
+						<li><a href="surgery.html"><i class="fa fa-files-o fa-fw"></i>
 								Surgery</a></li>
 					</ul>
 				</div>
@@ -314,7 +322,7 @@
 										rowspan="1" colspan="1"
 										aria-label="physician_name: activate to sort column ascending"
 										style="width: 168px;">Modify</th>
-										<th class="sorting" tabindex="0" aria-controls="example"
+									<th class="sorting" tabindex="0" aria-controls="example"
 										rowspan="1" colspan="1"
 										aria-label="physician_name: activate to sort column ascending"
 										style="width: 168px;">Delete</th>
@@ -333,10 +341,62 @@
 					</div>
 				</div>
 			</div>
+			<div class="form-horizontal">
+				<fieldset>
+					<legend>Connect a patient to a physician</legend>
+					<div class="form-group has-error">
+						<div class="col-lg-9">
+							<div class="panel panel-default">
+								<div class="panel-heading">
+									<div class="row">
+										<div class="col-lg-10">
+											<button type="button" class="btn btn-primary btn-xs">Primary</button>
+										</div>
+										<div class="col-lg-2 pull-right">
+											<button type="button" class="btn btn-primary btn-xs"
+												id="btn-showAddingRelationTable">
+												<i class="fa fa-pencil-square-o"></i>Add
+											</button>
+										</div>
+									</div>
+								</div>
+								<div class="panel-body" id='panelcontent-relation'
+									style="display: none;">
+									<div class="form-group has-warning">
+										<div class="row" style="margin-top: 10px">
+											<label for="textArea" class="col-lg-2 control-label">
+												Patient </label>
+
+											<div class="col-lg-4">
+												<input class="span2" id="patient_input" type="text">
+											</div>
+										</div>
+										<div class="row" style="margin-top: 15px">
+											<label for="textArea" class="col-lg-2 control-label">
+												Physician </label>
+
+											<div class="col-lg-4">
+												<input class="span2" id="physician_input" type="text">
+											</div>
+										</div>
+										<div class="row pull-right" style="margin-right: 20px">
+											<button class="btn btn-primary" id='addPrimaryRelation'
+												type="button">
+												<i class="fa fa-pencil-square-o"></i>Connect
+											</button>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</fieldset>
+				<h1 id="addingResult" style="display: none;"></h1>
+			</div>
 			<!-- /.row -->
-			
+
 		</div>
-		
+
 		<!-- /#page-wrapper -->
 
 	</div>
@@ -361,8 +421,8 @@
 	<script src="../dist/js/sb-admin-2.js"></script>
 
 	<!--  patient js -->
-	<script src = "../js/ourjs/physician_patient.js"></script>
-
+	<script src="../js/ourjs/physician_patient.js"></script>
+	<script src="//code.jquery.com/ui/1.11.3/jquery-ui.js"></script>
 </body>
 
 </html>

@@ -8,7 +8,6 @@ import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-
 import com.example.EMR_Admin.patient.data.*;
 
 @Repository
@@ -36,6 +35,15 @@ public class PatientDao {
 		List<Patient> list = q.list();
 		transaction.commit();
 		session.close();	
+		return list;
+	}
+	public List<Patient> serachWithInput( String input ){
+		Session session = sessionFactory.openSession();
+		Query q = session.createQuery("from Patient where patient_name like '" + input + "%'");
+		Transaction transaction = session.beginTransaction();
+		List<Patient> list = q.list();
+		transaction.commit();
+		session.close();
 		return list;
 	}
 }

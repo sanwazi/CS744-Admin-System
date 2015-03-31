@@ -46,6 +46,15 @@ public class PatientPhysicianRelationController {
 		return temporary;
 	}
 	
+//	@RequestMapping(value = "/relation/addPrimaryCare", method = RequestMethod.GET)
+//	@Secured(value = { "ROLE_PHYSICIAN" })
+//	public @ResponseBody boolean addPrimaryRelation() {
+//
+//		List<RelationPhysicianPatient> temporary = pService
+//				.findTemporaryCaraByPatientId( patient_id);
+//		return temporary;
+//	}
+	
 	@RequestMapping(value = "/relation/physician_patient_list", method = RequestMethod.GET)
 	@Secured(value = { "ROLE_ADMIN" })
 	public @ResponseBody List<RelationPhysicianPatient> findAllRelation(
@@ -54,6 +63,20 @@ public class PatientPhysicianRelationController {
 		List<RelationPhysicianPatient> list = pService
 				.findAllRelation();
 		return list;
+	}
+	
+	@RequestMapping(value = "/relation/validatePatient", method = RequestMethod.GET)
+	@Secured(value = { "ROLE_ADMIN" })
+	public @ResponseBody boolean validatePatientByPatienName(
+			@RequestParam (value ="patient_name", required = true) String name ) {
+
+		List<RelationPhysicianPatient> list = pService
+				.findAllRelation();
+		for( RelationPhysicianPatient relation : list ){
+			if( relation.getPatient_name().equals(name))
+				return false;
+		}
+		return true;
 	}
 	
 	//??????????

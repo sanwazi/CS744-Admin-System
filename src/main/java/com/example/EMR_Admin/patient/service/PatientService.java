@@ -64,5 +64,10 @@ public class PatientService {
         }
         return age+"";
 	}
+	
+	public List<Patient> searchWithInput( String input ){
+		List<Patient> list = pDao.serachWithInput(input);
+		return list;
+	}
 }
  

@@ -2,8 +2,6 @@ $(document).ready(function() {
 	loadDiagnostic();
 	addDiagnostic();
 	showAddingDiagnosticTable();
-	//deleteDiagnostic();
-	editDiagnostic();
 });
 
 function loadDiagnostic() {
@@ -24,17 +22,16 @@ function loadDiagnosticData(diagnostics) {
 		diagnostic.push(diagnostics[i].diagnostic_test_id);
 		diagnostic.push(diagnostics[i].diagnostic_test_name);
 		diagnostic.push(diagnostics[i].cost);
-		var modifyButton = "<a name=\"diagnostic_modify\" id=\""
+		var modifyButton = "<a name=\"diagnostic_edit\" id=\""
 				+ diagnostics[i].diagnostic_test_id
 				+ "\" class=\"btn btn-warning btn-xs\" href=\"edit_diagnostic.html?diagnostic_id="
-			+diagnostics[i].diagnostic_test_id +"\"><i class=\"fa fa-pencil-square-o fa-lg\"></i> Edit</a>";
+				+ diagnostics[i].diagnostic_test_id
+				+ "\"><i class=\"fa fa-pencil-square-o fa-lg\"></i> Edit</a>";
 		diagnostic.push(modifyButton);
 		var deleteButton = "<a name=\"diagnostic_delete"
-				+ diagnostics[i].diagnostic_test_id
-				+ "\""
 				+ "id=\""
 				+ diagnostics[i].diagnostic_test_id
-				+ "\" class=\"btn btn-danger btn-xs\" href=\"/EMR_Admin/diagnostic/deleteDiagnostic?diagnosticId="
+				+ "\" class=\"btn btn-danger btn-xs\" href=\"delete_diagnostic.html?diagnostic_id="
 				+ diagnostics[i].diagnostic_test_id + "\""
 				+ " ><i class=\"fa fa-trash-o fa-lg\"></i> Delete</a>";
 		diagnostic.push(deleteButton);
@@ -95,9 +92,4 @@ function addDiagnostic() {
 					dataType : "text",
 				});
 			});
-}
-
-
-function editDiagnostic() {
-
 }
