@@ -68,7 +68,15 @@ public class PhysicianDao {
 		session.close(); 
 		return physicians;
 	}
-
-
+	
+	public List<Physician> getPhysicianListByPhysicianName(String phyName){
+		Session session = sessionFactory.openSession();
+		Query q = session.createQuery("from Physician where physicianName = '"+phyName+"'");
+		Transaction transaction = session.beginTransaction();
+		List<Physician> list = q.list();
+		transaction.commit();
+		session.close(); 
+		return list;
+	}
 
 }

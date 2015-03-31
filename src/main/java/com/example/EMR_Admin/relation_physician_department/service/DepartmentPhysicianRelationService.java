@@ -41,7 +41,7 @@ public class DepartmentPhysicianRelationService {
 		return drDao.getNonRegisteredPhysiciansByInputPhysicianName(input);
 	}
 	
-	public boolean addRelation(DepartmentPhysicianRelation newR){
+	public String addRelation(DepartmentPhysicianRelation newR){
 		return drDao.addRelation(newR);
 	}
 	
@@ -51,5 +51,9 @@ public class DepartmentPhysicianRelationService {
 	
 	public boolean deleteRelationByPhysicianId(int physician_id){
 		return drDao.deleteRelationByPhysicianId(physician_id);
+	}
+	
+	public List<DepartmentPhysicianRelation> getRelationByPhysicianName(String physician_name){
+		return drDao.getRelationByPhysicianName(physician_name);
 	}
 }

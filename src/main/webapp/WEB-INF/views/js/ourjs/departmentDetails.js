@@ -179,10 +179,10 @@ function registerSurgeryInput() {
 					data : 'input=' + input,
 					success : function(data) {
 						var suggestion = [];
+						var sourceName = [];
 						for ( var i in data) {
 							suggestion.push(data[i].physicianId + "_"
-									+ data[i].physicianName+"_"
-									+ data[i].physicianGender);
+									+ data[i].physicianName);
 						}
 						$("#physician_name").autocomplete({
 							source : suggestion
@@ -200,27 +200,78 @@ function registerPhysicianAddButton() {
 			'click',
 			function() {
 				var input = $('#physician_name').val();
-				var physician_id = input.split('_')[0];
-				var physician_name = input.split('_')[1];
-				$.ajax({
-					type : "GET",
-					url : "/EMR_Admin/department_physician/add",
-					data : 'physician_id=' + physician_id + '&physician_name='
-							+ physician_name + '&departmentName=' + departmentName,
-					success : function(data) {
-						if(data=="s"){
-							$('#addingResult').html("Success!");
-							$('#addingResult').show();
-							//loadAllDrug();
-							setTimeout("location.reload(true);",1000);
-							
-						}
-						else if(data=="d"){
-							$('#addingResult').html("Failure! Something is wrong!");
-							$('#addingResult').show();
-						}
-					},
-					dataType : "text",
-				});
+				if(input.indexOf('_')!=-1){
+					var physician_id = input.split('_')[0];
+					var physician_name = input.split('_')[1];
+					$.ajax({
+						type : "GET",
+						url : "/EMR_Admin/department_physician/add",
+						data : 'physician_id=' + physician_id + '&physician_name='
+								+ physician_name + '&departmentName=' + departmentName,
+						success : function(data) {
+							if(data=="addingToDbSuccess"){
+								$('#addingResult').html("Success!");
+								$('#addingResult').show();
+								//loadAllDrug();
+								setTimeout("location.reload(true);",1000);
+								
+							}
+							else if(data=="d"){
+								$('#addingResult').html("Failure! Something is wrong!");
+								$('#addingResult').show();
+//								getDepartmentNamesByPhysicianName(physician_name);
+							}
+						},
+						dataType : "text",
+					});
+				}
+				else{
+					var physician_name = input;
+					$.ajax({
+						type : "GET",
+						url : "/EMR_Admin/department_physician/addByPhysicianName",
+						data : 'physician_name='
+								+ physician_name + '&departmentName=' + departmentName,
+						success : function(data) {
+							if(data=="need_phyid"){
+								$('#addingResult').html("please select a result from autocomplate dropdown box because system need physician id to avoid Duplicate Names");
+								$('#addingResult').show();
+								//loadAllDrug();
+								//setTimeout("location.reload(true);",1000);
+								
+							}
+							else if(data == "noSuchPhysician"){
+								$('#addingResult').html("No such physician exists, please check the name again.");
+								$('#addingResult').show();
+							}
+							else if(data=="exists"){
+	//							$('#addingResult').html("Failure! Something is wrong!");
+	//							$('#addingResult').show();
+								getDepartmentNamesByPhysicianName(physician_name);
+							}
+						},
+						dataType : "text",
+					});
+				}
 			});
+}
+//getDepartmentNamesByPhysicianName
+function getDepartmentNamesByPhysicianName(physician_name){
+	$.ajax({
+		type : "GET",
+		url : "/EMR_Admin/department_physician/getDepartmentNamesByPhysicianName",
+		data : 'physician_name='+physician_name,
+		success:function(data){
+			var result = jQuery.isEmptyObject(data);
+			if(!result){
+				for(i in data)
+					console.log(data.toString());
+					console.log(i.toString());
+				$('#addingResult').html("Failure! Found Physician named "
+						+physician_name+" at <a href = \"departmentDetail.html?department_name="
+						+data[i].department_name+"\">"+data[i].department_name+"</a>, please go to delete this physician from that department first.");
+			}
+			$('#addingResult').show();
+		}
+	});
 }

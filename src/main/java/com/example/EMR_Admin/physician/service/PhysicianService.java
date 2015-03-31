@@ -44,4 +44,8 @@ public class PhysicianService {
 		List<Physician> list = physicianDao.getPhysicianList();
 		return list;
 	}
+	
+	public List<Physician> getPhysicianByName(String phyName){
+		return physicianDao.getPhysicianListByPhysicianName(phyName);
+	}
 }
