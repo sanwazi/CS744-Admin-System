@@ -39,13 +39,11 @@ function loadRelationData(relations) {
 			relation.push(type);
 		}
 
-		var modifyButton = "<button name=\"relation_modify\" id=\""
+		var deleteButton = "<a name=\"delete_relation\" id=\""
 				+ relations[i].relation_id
-				+ "\" class=\"btn btn-warning btn-xs\"><i class=\"fa fa-pencil-square-o fa-lg\"></i> Edit</button>";
-		relation.push(modifyButton);
-		var deleteButton = "<button name=\"relation_delete\" id=\""
-				+ relations[i].relation_id
-				+ "\" class=\"btn btn-danger btn-xs\"><i class=\"fa fa-trash-o fa-lg\"></i> Delete</button>";
+				+ "\" class=\"btn btn-danger btn-xs\" href=\"delete_relation_PP.html?relation_id="
+				+ relations[i].relation_id + "\""
+				+ " ><i class=\"fa fa-trash-o fa-lg\"></i> Delete</a>";
 		relation.push(deleteButton);
 		dataSet.push(relation);
 	}
@@ -61,9 +59,6 @@ function loadRelationData(relations) {
 			"class" : "center"
 		}, {
 			"title" : "Care Privilege",
-			"class" : "center"
-		}, {
-			"title" : "Change",
 			"class" : "center"
 		}, {
 			"title" : "Delete",
@@ -126,11 +121,10 @@ function addPrimaryRelation() {
 														.html(
 																"Failure! this patient is registrated to some physician");
 												$('#addingResult').show();
-											} else{
-												$('#addingResult')
-												.html(
+											} else {
+												$('#addingResult').html(
 														"Failure");
-										$('#addingResult').show();
+												$('#addingResult').show();
 											}
 
 										},

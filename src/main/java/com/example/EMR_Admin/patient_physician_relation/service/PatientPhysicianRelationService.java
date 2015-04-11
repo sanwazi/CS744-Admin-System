@@ -76,4 +76,12 @@ public class PatientPhysicianRelationService implements
 	public boolean addRelation(RelationPhysicianPatient relation){
 		return ppRelationDao.addRelation(relation);
 	}
+	
+	public boolean deleteRelation( RelationPhysicianPatient relation ){
+		return ppRelationDao.deleteRelation(relation);
+	}
+	
+	public RelationPhysicianPatient findRelationById( int relation_id ){
+		return ppRelationDao.findRelationByRelationId(relation_id);
+	}
 }

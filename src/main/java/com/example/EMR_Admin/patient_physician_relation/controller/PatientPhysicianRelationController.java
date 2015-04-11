@@ -9,7 +9,6 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -21,7 +20,6 @@ import com.example.EMR_Admin.patient.service.PatientService;
 import com.example.EMR_Admin.patient_physician_relation.data.RelationPhysicianPatient;
 import com.example.EMR_Admin.patient_physician_relation.service.PatientPhysicianRelationService;
 import com.example.EMR_Admin.physician.service.PhysicianService;
-import com.example.EMR_Admin.surgery.data.Surgery;
 
 @Controller
 public class PatientPhysicianRelationController {
@@ -134,18 +132,24 @@ public class PatientPhysicianRelationController {
 		return true;
 	}
 
-	// ??????????
-	@RequestMapping(value = "/relation/updateRelation", method = RequestMethod.GET)
+
+	@RequestMapping(value = "/relation/getRelationById", method = RequestMethod.GET)
 	@Secured(value = { "ROLE_ADMIN" })
-	public @ResponseBody String updateRelation(
+	public @ResponseBody RelationPhysicianPatient getRelationById(
 			@RequestParam(value = "relation_id", required = true) int relation_id) {
-		RelationPhysicianPatient relation = new RelationPhysicianPatient();
-		relation.setRelation_id(relation_id);
-		boolean result = pService.updateRelation(relation);
+		return pService.findRelationById(relation_id);
+	}
+
+	@RequestMapping(value = "/relation/deleteRelation", method = RequestMethod.GET)
+	@Secured(value = { "ROLE_ADMIN" })
+	public @ResponseBody String deleteRelation(
+			@RequestParam(value = "relation_id", required = true) int relation_id) {
+		
+		RelationPhysicianPatient relation = pService.findRelationById( relation_id );
+		boolean result = pService.deleteRelation( relation );
 		if (result)
 			return "s";
 		else
 			return "d";
 	}
-
 }

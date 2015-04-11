@@ -113,7 +113,7 @@ public class PatientPhysicianRelationDao implements
 	}
 	
 	public boolean deleteRelation( RelationPhysicianPatient relation ){
-		if( !findRelationByRelationId(relation.getRelation_id()).isEmpty() ){
+		if( findRelationByRelationId(relation.getRelation_id()) != null ){
 			try {
 				Session session = sessionFactory.openSession();
 				session.beginTransaction();
@@ -130,15 +130,15 @@ public class PatientPhysicianRelationDao implements
 		return false;
 	}
 	
-	public List<RelationPhysicianPatient> findRelationByRelationId( int relationId ){
+	public RelationPhysicianPatient findRelationByRelationId( int relationId ){
 		Session session = sessionFactory.openSession();
 		Query q = session
-				.createQuery("from RelationPhysicianPatient where relation_id='" + relationId);
+				.createQuery("from RelationPhysicianPatient where relation_id='" + relationId +"'");
 		Transaction transaction = session.beginTransaction();
 		List<RelationPhysicianPatient> list = q.list();
 		transaction.commit();
 		session.close();
-		return list;
+		return list.isEmpty()? null: list.get(0)  ;
 	}
 	
 	public boolean updateRelation(RelationPhysicianPatient relation){

@@ -1,5 +1,4 @@
 
-//{"diagnostic_id":1,"diagnostic_name":"Hand diagnostic","cost":0}
 
 $(document).ready(function() {
 
