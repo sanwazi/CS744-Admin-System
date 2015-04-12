@@ -8,7 +8,6 @@ $(document).ready(function() {
 	$("#physician_input").on('keyup', function() {
 		loadPhysicianAutocomplete();
 	});
-	addPrimaryRelation();
 });
 
 function loadRelation() {

@@ -17,4 +17,20 @@ public class MedicalStaffService {
 	public List<MedicalStaff> medicalStaffList( ){
 		return msDao.listMedicalStaff();
 	}
+	
+	public MedicalStaff getMSByID( int id ){
+		return msDao.findMSbyID(id);
+	}
+	
+	public boolean addMS( MedicalStaff ms ){
+		return msDao.addMS(ms);
+	}
+	
+	public boolean updateMS( MedicalStaff ms ){
+		return msDao.updaateMS(ms);
+	}
+	
+	public boolean deleteMS( MedicalStaff ms ){
+		return msDao.deleteMS( ms );
+	}
 }

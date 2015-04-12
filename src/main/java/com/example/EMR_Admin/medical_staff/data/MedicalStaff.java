@@ -13,7 +13,7 @@ public class MedicalStaff {
 	@Id
 	@Column(name = "msid")
 	@GeneratedValue
-	private String ms_id;
+	private int ms_id;
 	
 	@Column(name = "ms_name")
 	private String ms_name;
@@ -30,11 +30,11 @@ public class MedicalStaff {
 	@Column(name = "physician_name")
 	private String physician_name;
 
-	public String getMs_id() {
+	public int getMs_id() {
 		return ms_id;
 	}
 
-	public void setMs_id(String ms_id) {
+	public void setMs_id(int ms_id) {
 		this.ms_id = ms_id;
 	}
 
