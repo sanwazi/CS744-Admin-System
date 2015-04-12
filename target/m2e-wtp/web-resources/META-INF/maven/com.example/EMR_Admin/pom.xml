@@ -35,7 +35,6 @@
 			<artifactId>spring-webmvc</artifactId>
 			<version>${org.springframework-version}</version>
 		</dependency>
-
 		<dependency>
 			<groupId>org.springframework.security</groupId>
 			<artifactId>spring-security-web</artifactId>
@@ -46,7 +45,6 @@
 			<artifactId>spring-security-config</artifactId>
 			<version>${org.spring-security-version}</version>
 		</dependency>
-
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-aspects</artifactId>
@@ -100,7 +98,7 @@
 			<artifactId>hibernate-validator</artifactId>
 			<version>4.3.1.Final</version>
 		</dependency>
-
+		
 		<!-- Json -->
 		<dependency>
 			<groupId>org.codehaus.jackson</groupId>
@@ -112,7 +110,7 @@
 			<artifactId>jackson-core-asl</artifactId>
 			<version>${jackson.version}</version>
 		</dependency>
-
+		
 		<dependency>
 			<groupId>com.googlecode.json-simple</groupId>
 			<artifactId>json-simple</artifactId>
@@ -201,7 +199,7 @@
 			<artifactId>json-simple</artifactId>
 			<version>1.1.1</version>
 		</dependency>
-
+		
 		<!-- Servlet -->
 		<dependency>
 			<groupId>javax.servlet</groupId>
