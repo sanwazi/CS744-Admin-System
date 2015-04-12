@@ -25,6 +25,17 @@ public class AdminController {
 		List<Admin> list = adminService.getAdminList();
 		return list;
 	}
+	
+	@RequestMapping(value = "/admin/getAdminById", method = RequestMethod.GET)
+	@Secured(value = { "ROLE_ADMIN" })
+	public @ResponseBody Admin getAdminById( 
+			@RequestParam( value="admin_id", required = true) int admin_id ) {
+		List<Admin> list = adminService.getAdminList();
+		for( Admin admin : list )
+			if( admin.getAdminId() == admin_id )
+				return admin;
+		return null;
+	}
 
 	@RequestMapping(value = "/admin/addAdmin", method = RequestMethod.GET)
 	@Secured(value = { "ROLE_ADMIN" })
@@ -44,15 +55,9 @@ public class AdminController {
 	@RequestMapping(value = "/admin/deleteAdmin", method = RequestMethod.GET)
 	@Secured(value = { "ROLE_ADMIN" })
 	public @ResponseBody String deleteAdmin(
-			@RequestParam(value = "AdminId", required = true) String admin_id) {
-		Admin admin = new Admin();
-		for (Admin a : adminService.getAdminList())
-			if (a.getAdminId() == admin_id){
-				admin.setAdminId(a.getAdminId());
-				admin.setAdminAccount(a.getAdminAccount());
-				admin.setAdminPassword(a.getAdminPassword());
-			}
-				
+			@RequestParam(value = "admin_id", required = true) int admin_id) {
+		Admin admin = adminService.findAdminById(admin_id);
+		System.out.println("account: " + admin.getAdminAccount() + "password: "+ admin.getAdminPassword());
 		boolean result = adminService.deleteAdmin(admin);
 
 		if (result)
@@ -63,7 +68,7 @@ public class AdminController {
 	
 	@RequestMapping(value = "/admin/updateAdmin", method = RequestMethod.GET )
 	@Secured (value = "ROLE_ADMIN" )
-	public @ResponseBody String updateAdmin( @RequestParam (value="adminId",required = true ) String admin_id,
+	public @ResponseBody String updateAdmin( @RequestParam (value="adminId",required = true ) int admin_id,
 			@RequestParam (value="adminAccount", required = true ) String admin_account,
 			@RequestParam (value = "adminPassword", required = true) String admin_password){
 		Admin admin = new Admin();

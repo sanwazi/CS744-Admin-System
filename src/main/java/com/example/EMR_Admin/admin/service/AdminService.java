@@ -32,4 +32,8 @@ public class AdminService {
 		return ADao.updateAdmin(admin);
 		
 	}
+	
+	public Admin findAdminById( int id ){
+		return ADao.findAdminById(id);
+	}
 }

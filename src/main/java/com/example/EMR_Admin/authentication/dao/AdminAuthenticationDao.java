@@ -17,8 +17,8 @@ public class AdminAuthenticationDao {
 
 	@Autowired
 	private SessionFactory sessionFactory;
-	
-	public List<Admin> listAdmin(){
+
+	public List<Admin> listAdmin() {
 		Session session = sessionFactory.openSession();
 		List<Admin> list = null;
 		try {
@@ -30,16 +30,16 @@ public class AdminAuthenticationDao {
 		}
 		return list;
 	}
-	
-	public boolean addAdmin( Admin admin ){
-		if( !listAdmin().contains(admin) ){
-			try{
+
+	public boolean addAdmin(Admin admin) {
+		if (!listAdmin().contains(admin)) {
+			try {
 				Session session = sessionFactory.openSession();
 				session.beginTransaction();
 				session.save(admin);
 				session.getTransaction().commit();
 				session.close();
-			}catch( HibernateException e ){
+			} catch (HibernateException e) {
 				e.printStackTrace();
 				return false;
 			}
@@ -47,35 +47,42 @@ public class AdminAuthenticationDao {
 		}
 		return false;
 	}
-	
-	public boolean deleteAdmin( Admin admin	){
-		if( listAdmin().contains(admin) ){
-			try{
-				Session session = sessionFactory.openSession();
-				session.beginTransaction();
-				session.delete(admin);
-				session.getTransaction().commit();
-				session.close();
-			}catch( HibernateException e ){
-				e.printStackTrace();
-				return false;
-			}
-			return true;
+
+	public boolean deleteAdmin(Admin admin) {
+
+		try {
+			Session session = sessionFactory.openSession();
+			session.beginTransaction();
+			session.delete(admin);
+			session.getTransaction().commit();
+			session.close();
+		} catch (HibernateException e) {
+			e.printStackTrace();
+			return false;
 		}
-		return false;
+		return true;
+
 	}
-	
-	public boolean updateAdmin( Admin admin ){
-		try{
+
+	public boolean updateAdmin(Admin admin) {
+		try {
 			Session session = sessionFactory.openSession();
 			session.beginTransaction();
 			session.update(admin);
 			session.getTransaction().commit();
 			session.close();
-		}catch( HibernateException e ){
+		} catch (HibernateException e) {
 			e.printStackTrace();
 			return false;
 		}
 		return true;
+	}
+
+	public Admin findAdminById(int id) {
+		List<Admin> list = listAdmin();
+		for (Admin a : list)
+			if (a.getAdminId() == id)
+				return a;
+		return null;
 	}
 }

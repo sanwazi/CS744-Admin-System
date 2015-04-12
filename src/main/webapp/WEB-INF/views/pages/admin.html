@@ -309,6 +309,11 @@
 										rowspan="1" colspan="1"
 										aria-label="patient_name: activate to sort column ascending"
 										style="width: 148px;">Admin_account</th>
+									<th class="sorting" tabindex="0" aria-controls="example"
+										rowspan="1" colspan="1"
+										aria-label="patient_name: activate to sort column ascending"
+										style="width: 148px;">Delete</th>
+
 								</tr>
 							</thead>
 
@@ -322,6 +327,66 @@
 				</div>
 			</div>
 			<!-- /.row -->
+			<div class="form-horizontal">
+				<fieldset>
+					<legend>Add a new administrator</legend>
+					<div class="form-group has-error">
+						<div class="col-lg-9">
+							<div class="panel panel-default">
+								<div class="panel-heading">
+									<div class="row">
+										<div class="col-lg-10">New Administrator</div>
+										<div class="col-lg-2 pull-right">
+											<button type="button" class="btn btn-primary btn-xs"
+												id="btn-showAddingAdminTable">
+												<i class="fa fa-pencil-square-o"></i>Add
+											</button>
+										</div>
+									</div>
+								</div>
+								<div class="panel-body" id='panelcontent' style="display: none;">
+									<div class="form-group has-warning">
+										<div class="row" style="margin-top: 10px">
+											<label for="textArea" class="col-lg-4 control-label">
+												Account </label>
+
+											<div class="col-lg-4">
+												<input type="text" id='adminAccount' class="form-control"
+													placeholder="account...">
+											</div>
+										</div>
+										<div class="row" style="margin-top: 15px">
+											<label for="textArea" class="col-lg-4 control-label">
+												Password </label>
+
+											<div class="col-lg-4">
+												<input type="password" id='password1' class="form-control"
+													placeholder="password...">
+											</div>
+										</div>
+										<div class="row" style="margin-top: 15px">
+											<label for="textArea" class="col-lg-4 control-label">
+												Password Confirm</label>
+
+											<div class="col-lg-4">
+												<input type="password" id='password2' class="form-control"
+													placeholder="password again...">
+											</div>
+										</div>
+										<div class="row pull-right" style="margin-right: 20px">
+											<button class="btn btn-primary" id='addAdmin'
+												type="button">
+												<i class="fa fa-pencil-square-o"></i>Submit
+											</button>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</fieldset>
+				<h1 id="addingResult" style="display: none;"></h1>
+			</div>
 		</div>
 		<!-- /#page-wrapper -->
 

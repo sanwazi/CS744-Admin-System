@@ -12,7 +12,7 @@ public class Admin {
 	@Id
 	@Column(name = "admin_id")
 	@GeneratedValue
-	private String adminId;
+	private int adminId;
 
 	@Column(name = "admin_account")
 	private String adminAccount;
@@ -23,14 +23,14 @@ public class Admin {
 	/**
 	 * @return the adminId
 	 */
-	public String getAdminId() {
+	public int getAdminId() {
 		return adminId;
 	}
 
 	/**
 	 * @param adminId the adminId to set
 	 */
-	public void setAdminId(String adminId) {
+	public void setAdminId(int adminId) {
 		this.adminId = adminId;
 	}
 
