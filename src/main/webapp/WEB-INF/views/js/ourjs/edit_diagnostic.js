@@ -14,10 +14,9 @@ function getdiagnosticBasicContent(diagnostic_id) {
 		url : "/EMR_Admin/diagnostic/getdiagnosticById",
 		data : "diagnostic_id=" + diagnostic_id,
 		success : function(data) {
-			//drug_id = data.drug_id;
 			var diagnostic_name = data.diagnostic_test_name;
 			var cost = data.cost;
-			fillTextboxes(diagnostic_id, diagnostic_name,cost);
+			fillTextboxes( diagnostic_name,cost);
 		},
 		dataType : "json",
 	});
@@ -59,8 +58,7 @@ function jump(){
 	location.href ="diagnostic.html";
 }
 
-function fillTextboxes(diagnostic_id, diagnostic_name, cost){
-	$("#diagnostic_id").val(diagnostic_id);
+function fillTextboxes( diagnostic_name, cost){
 	$("#diagnostic_name").val(diagnostic_name);
 	$("#diagnostic_cost").val(cost);
 }

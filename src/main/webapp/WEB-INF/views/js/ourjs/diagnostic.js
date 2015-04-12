@@ -19,7 +19,6 @@ function loadDiagnosticData(diagnostics) {
 	var dataSet = [];
 	for (var i = 0; i < diagnostics.length; i++) {
 		var diagnostic = [];
-		diagnostic.push(diagnostics[i].diagnostic_test_id);
 		diagnostic.push(diagnostics[i].diagnostic_test_name);
 		diagnostic.push(diagnostics[i].cost);
 		var modifyButton = "<a name=\"diagnostic_edit\" id=\""
@@ -42,9 +41,6 @@ function loadDiagnosticData(diagnostics) {
 		"responsive" : true,
 		"data" : dataSet,
 		"columns" : [ {
-			"title" : "Diagnostic ID",
-			"class" : "center"
-		}, {
 			"title" : "Diagnostic Name",
 			"class" : "center"
 		}, {
