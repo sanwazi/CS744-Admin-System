@@ -37,7 +37,18 @@ public class PatientDao {
 		session.close();	
 		return list;
 	}
-	public List<Patient> serachWithInput( String input ){
+	//?????????
+	public List<Patient> serachWithInputFirstName( String input ){
+		Session session = sessionFactory.openSession();
+		Query q = session.createQuery("from Patient where patient_name like '" + input + "%'");
+		Transaction transaction = session.beginTransaction();
+		List<Patient> list = q.list();
+		transaction.commit();
+		session.close();
+		return list;
+	}
+	
+	public List<Patient> serachWithInputFullName( String input ){
 		Session session = sessionFactory.openSession();
 		Query q = session.createQuery("from Patient where patient_name like '" + input + "%'");
 		Transaction transaction = session.beginTransaction();

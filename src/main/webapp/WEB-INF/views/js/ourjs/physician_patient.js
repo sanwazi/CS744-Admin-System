@@ -1,13 +1,16 @@
+var patientId;
+var physicianId;
 $(document).ready(function() {
 	loadRelation();
-	showAddingRelationTable();
-	addPrimaryRelation();
-	$("#patient_input").on('keyup', function() {
-		loadPatientAutocomplete();
-	});
-	$("#physician_input").on('keyup', function() {
-		loadPhysicianAutocomplete();
-	});
+//	showAddingRelationTable();
+//	addPrimaryRelation();
+
+//	$("#patient_input").on('keyup', function() {
+//		loadPatientAutocomplete();
+//	});
+//	$("#physician_input").on('keyup', function() {
+//		loadPhysicianAutocomplete();
+//	});
 });
 
 function loadRelation() {
@@ -25,8 +28,20 @@ function loadRelationData(relations) {
 	var dataSet = [];
 	for (var i = 0; i < relations.length; i++) {
 		var relation = [];
-		relation.push(relations[i].physician_name);
-		relation.push(relations[i].patient_name);
+		
+		physicianNames = relations[i].physician_name.split(" ");
+		relation.push(physicianNames[0]);
+		if( physicianNames.length == 1 )
+			relation.push("None");
+		else
+			relation.push(physicianNames[1]);
+		
+		patientNames = relations[i].patient_name.split(" ");
+		relation.push(patientNames[0]);
+		if( patientNames.length == 1 )
+			relation.push("None");
+		else
+			relation.push(patientNames[1]);
 
 		if (relations[i].relation_type == "PRIMARY_CARE") {
 			var type = "<button type = button"
@@ -38,12 +53,12 @@ function loadRelationData(relations) {
 			relation.push(type);
 		}
 
-		var deleteButton = "<a name=\"delete_relation\" id=\""
-				+ relations[i].relation_id
-				+ "\" class=\"btn btn-danger btn-xs\" href=\"delete_relation_PP.html?relation_id="
-				+ relations[i].relation_id + "\""
-				+ " ><i class=\"fa fa-trash-o fa-lg\"></i> Delete</a>";
-		relation.push(deleteButton);
+//		var deleteButton = "<a name=\"delete_relation\" id=\""
+//				+ relations[i].relation_id
+//				+ "\" class=\"btn btn-danger btn-xs\" href=\"delete_relation_PP.html?relation_id="
+//				+ relations[i].relation_id + "\""
+//				+ " ><i class=\"fa fa-trash-o fa-lg\"></i> Delete</a>";
+//		relation.push(deleteButton);
 		dataSet.push(relation);
 	}
 
@@ -51,18 +66,25 @@ function loadRelationData(relations) {
 		"responsive" : true,
 		"data" : dataSet,
 		"columns" : [ {
-			"title" : "Physician",
+			"title" : "Physician First Name",
+			"class" : "center"
+		},  {
+			"title" : "Physician Last Name",
 			"class" : "center"
 		}, {
-			"title" : "Patient",
+			"title" : "Patient First Name",
 			"class" : "center"
 		}, {
+			"title" : "Patient Last Name",
+			"class" : "center"
+		},{
 			"title" : "Care Privilege",
 			"class" : "center"
-		}, {
-			"title" : "Delete",
-			"class" : "center"
 		} ]
+//		}, {
+//			"title" : "Delete",
+//			"class" : "center"
+//		} ]
 	});
 }
 function showAddingRelationTable() {
@@ -140,20 +162,20 @@ function addPrimaryRelation() {
 }
 
 function loadPatientAutocomplete() {
+
 	var input = $("#patient_input").val();
 	$.ajax({
 		type : "GET",
-		url : "/EMR_Admin/patient/autocomplete",
+		url : "/EMR_Admin/patient/autocompleteWithFullName",
 		data : "input=" + input,
 		success : function(data) {
-			var suggestion = [];
-			for ( var i in data) {
-				suggestion
-						.push(data[i].patient_id + "_" + data[i].patient_name);
-			}
 
 			$("#patient_input").autocomplete({
-				source : suggestion
+				source : data,
+				select : function(event, ui) {
+					var item = ui.item;
+					showPatientWithFullName(item.lable);
+				}
 			});
 		}
 	});
@@ -177,4 +199,75 @@ function loadPhysicianAutocomplete() {
 			});
 		}
 	});
+}
+
+function showPatientWithFullName(patient_id) {
+	$
+			.ajax({
+				type : "GET",
+				url : "/EMR_Admin/patient/getPatientById",
+				data : "patient_id=" + patient_id,
+				success : function(data) {
+					bootbox
+							.dialog({
+								title : "Get the patient you want?",
+								message : '<div class="row">  '
+										+ '<div class="col-md-12"> '
+										+ '<form class="form-horizontal"> '
+										+
+
+										'<div class="form-group"> <div class="row"> ' 
+										+ '<label class="col-md-4 control-label" for="name">Name</label> '
+										+
+
+										'<div class="col-md-4"> '
+										+ '<input id="name" name="name" type="text" placeholder="'
+										+ data.patient_name
+										+ '"class="form-control input-md" disabled> '
+										+ '</div> </div>'
+
+										+ '<div class="row"> <label class="col-md-4 control-label" for="gender">Gender</label> '
+										+ '<div class="col-md-4"> '
+										+ '<input id="gender" name="gender" type="text" placeholder="'
+										+ data.patient_gender
+										+ '"class="form-control input-md" disabled> '
+										+ '</div> </div>' 
+
+										+ '<div class="row"> <label class="col-md-4 control-label" for="age">Age</label> '
+										+ '<div class="col-md-4"> '
+										+ '<input id="age" name="age" type="text" placeholder="'
+										+ data.patient_age
+										+ '"class="form-control input-md" disabled> '
+										+ '</div> </div>' 
+										
+										+ '<div class="row"> <label class="col-md-4 control-label" for="birthday">Birthday</label> '
+										+ '<div class="col-md-4"> '
+										+ '<input id="birthday" name="birthday" type="text" placeholder="'
+										+ data.patient_birthday
+										+ '"class="form-control input-md" disabled> '
+										+ '</div> </div>' 
+										
+										+ '<div class="row"> <label class="col-md-4 control-label" for="SSN">SSN</label> '
+										+ '<div class="col-md-4"> '
+										+ '<input id="SSN" name="SSN" type="text" placeholder="'
+										+ data.patient_ssn
+										+ '"class="form-control input-md" disabled> '
+										+ '</div> </div>' +
+										
+										'</div>' +
+
+										'</form> </div>  </div>',
+								buttons : {
+									success : {
+										label : "Save",
+										className : "btn-success",
+										callback : function() {
+											patientId = data.patient_id;
+										}
+									}
+								}
+							});
+
+				}
+			});
 }

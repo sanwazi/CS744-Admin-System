@@ -14,12 +14,11 @@
 <!-- Bootstrap Core CSS -->
 <link href="../bower_components/bootstrap/dist/css/bootstrap.min.css"
 	rel="stylesheet">
-<link
-	href="../bower_components/font-awesome/css/font-awesome.min.css"
+<link href="../bower_components/font-awesome/css/font-awesome.min.css"
 	rel="stylesheet" type="text/css">
 <link rel="stylesheet"
 	href="//code.jquery.com/ui/1.11.3/themes/smoothness/jquery-ui.css">
-	
+
 <!-- MetisMenu CSS -->
 <link href="../bower_components/metisMenu/dist/metisMenu.min.css"
 	rel="stylesheet">
@@ -265,11 +264,11 @@
 						<li><a href="#"><i class="fa fa-building-o"></i>
 								Department<span class="fa arrow"></span></a>
 							<ul id="department_ul" class="nav nav-second-level">
-							</ul>
-						</li>
+							</ul></li>
 						<li><a href="diagnostic.html"><i class="fa fa-edit fa-fw"></i>
 								Diagnostic Test</a></li>
-						<li><a href="drugs.html"><i class="fa fa-medkit"></i> Drugs</a></li>
+						<li><a href="drugs.html"><i class="fa fa-medkit"></i>
+								Drugs</a></li>
 
 						<li><a href="surgery.html"><i class="fa fa-files-o fa-fw"></i>
 								Surgery</a></li>
@@ -303,35 +302,33 @@
 									<th class="sorting_desc" tabindex="0" aria-controls="example"
 										rowspan="1" colspan="1"
 										aria-label="prescription_id: activate to sort column ascending"
-										style="width: 158px;" aria-sort="descending">Physician</th>
+										style="width: 158px;" aria-sort="descending">Physician
+										First Name</th>
+									<th class="sorting_desc" tabindex="0" aria-controls="example"
+										rowspan="1" colspan="1"
+										aria-label="prescription_id: activate to sort column ascending"
+										style="width: 158px;" aria-sort="descending">Physician
+										Last Name</th>
 									<th class="sorting" tabindex="0" aria-controls="example"
 										rowspan="1" colspan="1"
 										aria-label="patient_name: activate to sort column ascending"
-										style="width: 148px;">Patient</th>
+										style="width: 148px;">Patient First Name</th>
+									<th class="sorting" tabindex="0" aria-controls="example"
+										rowspan="1" colspan="1"
+										aria-label="patient_name: activate to sort column ascending"
+										style="width: 148px;">Patient Last Name</th>
 									<th class="sorting" tabindex="0" aria-controls="example"
 										rowspan="1" colspan="1"
 										aria-label="physician_name: activate to sort column ascending"
 										style="width: 168px;">Care Privilege</th>
-									<th class="sorting" tabindex="0" aria-controls="example"
-										rowspan="1" colspan="1"
-										aria-label="physician_name: activate to sort column ascending"
-										style="width: 168px;">Delete</th>
 								</tr>
 							</thead>
 
-							<tbody>
-								<tr role="row" class="odd">
-
-									<td class="sorting_1">john</td>
-									<td>milk</td>
-									<td>Primary</td>
-								</tr>
-							</tbody>
 						</table>
 					</div>
 				</div>
 			</div>
-			<div class="form-horizontal">
+			<!-- 			<div class="form-horizontal">
 				<fieldset>
 					<legend>Connect a patient to a physician</legend>
 					<div class="form-group has-error">
@@ -357,8 +354,24 @@
 											<label for="textArea" class="col-lg-2 control-label">
 												Patient </label>
 
-											<div class="col-lg-4">
-												<input class="span2" id="patient_input" type="text">
+											<div class="col-lg-6">
+												<div class="input-group">
+													<input class="form-control" id="patient_input" type="text">
+													<div class="input-group-btn">
+														<button type="button"
+															class="btn btn-default dropdown-toggle"
+															data-toggle="dropdown" aria-expanded="false" id="patientSearchType">
+															Search with <span class="caret"></span>
+														</button>
+														<ul class="dropdown-menu dropdown-menu-right" role="menu"  id = "patientSelector">
+															<li><a >Full name</a></li>
+															<li><a >First name</a></li>
+															<li><a >SSN</a></li>
+														</ul>
+													</div>
+													/btn-group
+												</div>
+												/input-group
 											</div>
 										</div>
 										<div class="row" style="margin-top: 15px">
@@ -382,7 +395,7 @@
 					</div>
 				</fieldset>
 				<h1 id="addingResult" style="display: none;"></h1>
-			</div>
+			</div> -->
 			<!-- /.row -->
 
 		</div>
@@ -415,6 +428,19 @@
 	<script src="//code.jquery.com/ui/1.11.3/jquery-ui.js"></script>
 	<script src="/EMR_Admin/views/js/ourjs/index.js"></script>
 
+	<!-- 	<script>
+		$(function() {
+
+			$("#patientSelector li a").click(function() {
+
+				 $("#patientSearchType").text($(this).text());
+			     $("#patientSearchType").val($(this).text());
+			});
+
+		});
+	</script> -->
+
+	<script src="../bower_components/alert/bootbox.min.js"></script>
 </body>
 
 </html>

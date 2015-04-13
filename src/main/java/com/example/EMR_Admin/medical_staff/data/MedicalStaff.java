@@ -30,6 +30,18 @@ public class MedicalStaff {
 	@Column(name = "physician_name")
 	private String physician_name;
 
+	@Column(name ="SSN")
+	private String ssn;
+
+	
+	public String getSsn() {
+		return ssn;
+	}
+
+	public void setSsn(String ssn) {
+		this.ssn = ssn;
+	}
+
 	public int getMs_id() {
 		return ms_id;
 	}

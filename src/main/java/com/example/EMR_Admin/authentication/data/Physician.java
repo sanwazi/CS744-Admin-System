@@ -35,7 +35,6 @@ public class Physician {
 
 
 	@JsonFormat(shape=JsonFormat.Shape.STRING, pattern="yyyy-MM-dd")
-
 	@Column(name = "physician_birthday")
 	//@JsonSerialize(using = CustomDateSerializer.class)
 	private Date physicianBirthday;
@@ -45,6 +44,17 @@ public class Physician {
 
 	@Column(name = "password")
 	private String password;
+	
+	@Column(name = "SSN")
+	private String ssn;
+
+	public String getSsn() {
+		return ssn;
+	}
+
+	public void setSsn(String ssn) {
+		this.ssn = ssn;
+	}
 
 	public int getPhysicianId() {
 		return physicianId;

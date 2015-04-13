@@ -32,6 +32,15 @@ public class Patient {
 	@Column(name = "patient_birthday")
 	private Date patient_birthday;
 	
+	@Column(name = "SSN")
+	private String ssn;
+	
+	public String getSsn() {
+		return ssn;
+	}
+	public void setSsn(String ssn) {
+		this.ssn = ssn;
+	}
 	/**
 	 * @return the patient_id
 	 */

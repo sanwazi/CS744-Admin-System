@@ -1,7 +1,7 @@
 $(document).ready(function() {
 	loadRelation();
-	showAddingRelationTable();
-	addMSPRelation();
+//	showAddingRelationTable();
+//	addMSPRelation();
 	// $("#patient_input").on('keyup', function() {
 	// loadPatientAutocomplete();
 	// });
@@ -25,22 +25,33 @@ function loadRelationData(relations) {
 	var dataSet = [];
 	for (var i = 0; i < relations.length; i++) {
 		var relation = [];
-		relation.push(relations[i].physician_name);
-		relation.push(relations[i].ms_name);
+		var pNames = relations[i].physician_name.split(" ");
+		relation.push(pNames[0]);
+		if(pNames.length == 1)
+			relation.push("None");
+		else
+			relation.push(pNames[1]);
+		
+		var msNames = relations[i].ms_name.split(" ");
+		relation.push(msNames[0]);
+		if(msNames.length == 1)
+			relation.push("None");
+		else
+			relation.push(msNames[1]);
 
-		var modifyButton = "<a name=\"relation_msp_edit\" id=\""
-				+ relations[i].ms_id
-				+ "\" class=\"btn btn-warning btn-xs\" href=\"edit_relation_msp.html?relation_msp_id="
-				+ relations[i].ms_id
-				+ "\"><i class=\"fa fa-pencil-square-o fa-lg\"></i> Edit</a>";
-		relation.push(modifyButton);
-
-		var deleteButton = "<a name=\"delete_relation\" id=\""
-				+ relations[i].ms_id
-				+ "\" class=\"btn btn-danger btn-xs\" href=\"delete_relation_msp.html?relation_msp_id="
-				+ relations[i].ms_id + "\""
-				+ " ><i class=\"fa fa-trash-o fa-lg\"></i> Delete</a>";
-		relation.push(deleteButton);
+//		var modifyButton = "<a name=\"relation_msp_edit\" id=\""
+//				+ relations[i].ms_id
+//				+ "\" class=\"btn btn-warning btn-xs\" href=\"edit_relation_msp.html?relation_msp_id="
+//				+ relations[i].ms_id
+//				+ "\"><i class=\"fa fa-pencil-square-o fa-lg\"></i> Edit</a>";
+//		relation.push(modifyButton);
+//
+//		var deleteButton = "<a name=\"delete_relation\" id=\""
+//				+ relations[i].ms_id
+//				+ "\" class=\"btn btn-danger btn-xs\" href=\"delete_relation_msp.html?relation_msp_id="
+//				+ relations[i].ms_id + "\""
+//				+ " ><i class=\"fa fa-trash-o fa-lg\"></i> Delete</a>";
+//		relation.push(deleteButton);
 		dataSet.push(relation);
 	}
 
@@ -48,18 +59,25 @@ function loadRelationData(relations) {
 		"responsive" : true,
 		"data" : dataSet,
 		"columns" : [ {
-			"title" : "Physician",
+			"title" : "Physician First Name",
 			"class" : "center"
 		}, {
-			"title" : "Medical Staff",
+			"title" : "Physician Last Name",
 			"class" : "center"
-		}, {
-			"title" : "Change",
+		},{
+			"title" : "Medical Staff First Name",
 			"class" : "center"
-		}, {
-			"title" : "Delete",
+		},{
+			"title" : "Medical Staff Last Name",
 			"class" : "center"
 		} ]
+//		}, {
+//			"title" : "Change",
+//			"class" : "center"
+//		}, {
+//			"title" : "Delete",
+//			"class" : "center"
+//		} ]
 	});
 }
 function showAddingRelationTable() {

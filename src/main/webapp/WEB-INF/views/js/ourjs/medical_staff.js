@@ -8,7 +8,7 @@ function loadMedicalStaff() {
 		url : "/EMR_Admin/medicalstaff/list",
 		success : function(data) {
 			loadMedicalStaffData(data);
-			
+
 		},
 		dataType : "json",
 	});
@@ -18,9 +18,17 @@ function loadMedicalStaffData(MedicalStaff) {
 	var dataSet = [];
 	for (var i = 0; i < MedicalStaff.length; i++) {
 		var MedicalStaffs = [];
-		MedicalStaffs.push(MedicalStaff[i].ms_name);
+		var names = MedicalStaff[i].ms_name.split(" ");
+		MedicalStaffs.push(names[0]);
+		if( names.length == 1 )
+			MedicalStaffs.push("None");
+		else
+			MedicalStaffs.push(names[1]);
 		MedicalStaffs.push(MedicalStaff[i].ms_account);
-		MedicalStaffs.push(MedicalStaff[i].physician_name);
+		if (MedicalStaff[i].ssn == "")
+			MedicalStaffs.push("None");
+		else
+			MedicalStaffs.push(MedicalStaff[i].ssn);
 		dataSet.push(MedicalStaffs);
 	}
 
@@ -28,14 +36,17 @@ function loadMedicalStaffData(MedicalStaff) {
 		"responsive" : true,
 		"data" : dataSet,
 		"columns" : [ {
-			"title" : "Name",
+			"title" : "First Name",
 			"class" : "center"
-		},  {
+		}, {
+			"title" : "Last Name",
+			"class" : "center"
+		}, {
 			"title" : "Account",
 			"class" : "center"
 		}, {
-			"title" : "Under Physician",
+			"title" : "SSN",
 			"class" : "center"
-		}]
+		} ]
 	});
 }

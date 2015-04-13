@@ -2,10 +2,7 @@
 //{"surgery_id":1,"surgery_name":"Hand Surgery","cost":0}
 
 $(document).ready(function() {
-	//loadPatient();
 	var surgery_id = getUrlParameter("surgery_id");
-	//drug_name = getUrlParameter("drug_name");
-	console.log(surgery_id);
 	getSurgeryBasicContent(surgery_id);
 	listeningDeleteButton();
 });
@@ -20,8 +17,7 @@ function getSurgeryBasicContent(surgery_id) {
 			//drug_id = data.drug_id;
 			var surgery_name = data.surgery_name;
 			var cost = data.cost;
-			console.log(surgery_id+" "+surgery_name+" "+cost);
-			fillTextboxes(surgery_id, surgery_name,cost);
+			fillTextboxes( surgery_name,cost);
 		},
 		dataType : "json",
 	});
@@ -64,8 +60,7 @@ function jump(){
 	location.href ="surgery.html";
 }
 
-function fillTextboxes(surgery_id, surgery_name,cost){
-	$("#surgery_id").val(surgery_id);
+function fillTextboxes( surgery_name,cost){
 	$("#surgery_name").val(surgery_name);
 	$("#surgery_cost").val(cost);
 }

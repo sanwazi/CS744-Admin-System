@@ -1,5 +1,6 @@
 package com.example.EMR_Admin.medical_staff.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,6 +28,10 @@ public class MedicalStaffController {
 	@Secured(value = { "ROLE_Admin" })
 	public @ResponseBody List<MedicalStaff> getMedicalStaffList() {
 		List<MedicalStaff> list = MedicalStaffService.medicalStaffList();
+//		List<MedicalStaff> res = new ArrayList<MedicalStaff>();
+//		for( MedicalStaff ms: list ){
+//			
+//		}
 		return list;
 	}
 	

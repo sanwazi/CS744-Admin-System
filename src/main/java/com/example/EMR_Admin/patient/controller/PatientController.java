@@ -36,6 +36,7 @@ public class PatientController {
 			map.put("patient_gender", patient.getPatient_gender());
 			map.put("patient_age", pService.computeAge(patient.getPatient_birthday()));
 			map.put("patient_birthday", pService.dateToString(patient.getPatient_birthday()));
+			map.put("patient_ssn", patient.getSsn());
 			result.add(map);
 		}
 		
@@ -53,11 +54,38 @@ public class PatientController {
 		return false;
 	}
 	
-	@RequestMapping(value = "/patient/autocomplete", method = RequestMethod.GET)
+	@RequestMapping(value = "/patient/autocompleteWithFullName", method = RequestMethod.GET)
 	@Secured(value = { "ROLE_ADMIN" })
-	public @ResponseBody List<Patient> searchWithInput(
+	public @ResponseBody List<HashMap<String,String>> searchWithInputFullNanme(
 			@RequestParam(value = "input", required = true) String input) {
-		List<Patient> list = pService.searchWithInput(input);
-		return list;
+		List<HashMap<String,String>> res = new ArrayList<HashMap<String,String>>();
+		List<Patient> list = pService.searchWithInputFullName(input);
+		for( Patient p: list ){
+			HashMap<String,String> map = new HashMap<String,String>();
+			map.put("lable", String.valueOf(p.getPatient_id()));
+			map.put("value", p.getPatient_name());
+			res.add(map);
+		}
+		return res;
+	}
+	
+	@RequestMapping(value = "/patient/getPatientById", method = RequestMethod.GET)
+	@Secured(value = { "ROLE_ADMIN" })
+	public @ResponseBody Map<String, String> getPatientById(
+			@RequestParam(value = "patient_id", required = true) int patientId) {
+		HashMap<String, String> map = new HashMap<String, String>();
+		Patient patient = pService.getPatientById(patientId);
+		
+		if (patient != null) {
+			map.put("patient_id", patientId+"");
+			map.put("patient_name", patient.getPatient_name());
+			map.put("patient_gender", patient.getPatient_gender());
+			map.put("patient_birthday", pService.dateToString(patient.getPatient_birthday()));
+			map.put("patient_age", pService.computeAge(patient.getPatient_birthday()));
+			map.put("patient_ssn", patient.getSsn());
+		} else {
+			map = null;
+		}
+		return map;
 	}
 }

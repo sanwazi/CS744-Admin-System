@@ -17,11 +17,20 @@ function loadPhysicianData(physicians) {
 	var dataSet = [];
 	for (var i = 0; i < physicians.length; i++) {
 		var physician = [];
-		physician.push(physicians[i].physicianName);
+		var names = physicians[i].physicianName.split(" ");
+		physician.push(names[0]);
+		if(names.length == 1)
+			physician.push("None");
+		else
+			physician.push(names[1]);
 		physician.push(physicians[i].physicianGender);
 		physician
 				.push(convertMillisecondsToDate(physicians[i].physicianBirthday));
 		physician.push(physicians[i].account);
+		if (physicians[i].ssn == "") {
+			physician.push("None");
+		} else
+			physician.push(physicians[i].ssn);
 		dataSet.push(physician);
 	}
 
@@ -29,7 +38,10 @@ function loadPhysicianData(physicians) {
 		"responsive" : true,
 		"data" : dataSet,
 		"columns" : [ {
-			"title" : "Name",
+			"title" : "First Name",
+			"class" : "center"
+		}, {
+			"title" : "Last Name",
 			"class" : "center"
 		}, {
 			"title" : "Gender",
@@ -39,6 +51,9 @@ function loadPhysicianData(physicians) {
 			"class" : "center"
 		}, {
 			"title" : "Account",
+			"class" : "center"
+		}, {
+			"title" : "SSN",
 			"class" : "center"
 		} ]
 	});
