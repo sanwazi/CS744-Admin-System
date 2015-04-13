@@ -28,7 +28,7 @@
 		<!-- 使用 annotations 过了url阻截的请求 调用相应的controller函数， 这时，spring再验证请求角色是否对应函数的@secure注解 -->
 		<security:form-login login-page="/login"
 
-			authentication-failure-url="/login?error=true" default-target-url="/views/pages/index.html"
+			authentication-failure-url="/login?error=true" default-target-url="/views/pages/security_question.html"
 			login-processing-url="/j_spring_security_check" />
 
 		<security:access-denied-handler
