@@ -34,4 +34,12 @@ public class SecurityQuestionController {
 	public @ResponseBody UserDetails getUserDetail(){
 		return CustomUserDetailsService.currentUserDetails();
 	}
+	
+	@RequestMapping(value = "/security_question/getById", method = RequestMethod.GET)
+	@Secured(value = { "ROLE_ADMIN" })
+	public @ResponseBody List<SecurityQuestion> getById(
+			@RequestParam(value = "sq_id", required = true) int sq_id) {
+		List<SecurityQuestion> list =sqService.getById(sq_id);
+		return list;
+	}
 }

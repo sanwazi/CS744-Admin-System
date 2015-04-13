@@ -33,6 +33,17 @@ public class SecurityQuestionAnswerAccountRelation {
 		this.answer = answer;
 	}
 
+	
+	public SecurityQuestionAnswerAccountRelation(int sq_relation_id, int sq_id,
+			String admin_account, String answer) {
+		super();
+		this.sq_relation_id = sq_relation_id;
+		this.sq_id = sq_id;
+		this.admin_account = admin_account;
+		this.answer = answer;
+	}
+	
+	public SecurityQuestionAnswerAccountRelation(){}
 
 	public int getSq_relation_id() {
 		return sq_relation_id;

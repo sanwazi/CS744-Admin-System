@@ -26,4 +26,14 @@ public class SecurityQuestionDao {
 		session.close();
 		return list;
 	}
+	
+	public List<SecurityQuestion> getById(int sq_id){
+		Session session = sessionFactory.openSession();
+		Query q = session.createQuery("from SecurityQuestion where sq_id='"+sq_id+"'");
+		Transaction transaction = session.beginTransaction();
+		List<SecurityQuestion> list = q.list();
+		transaction.commit();
+		session.close();
+		return list;
+	}
 }

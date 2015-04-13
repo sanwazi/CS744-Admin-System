@@ -48,7 +48,27 @@ public class SecurityQuestionAnswerAccountRelationController {
 		SecurityQuestionAnswerAccountRelation input1 = new SecurityQuestionAnswerAccountRelation(admin_account,sq_id1,answer_1);
 		SecurityQuestionAnswerAccountRelation input2 = new SecurityQuestionAnswerAccountRelation(admin_account,sq_id2,answer_2);
 		SecurityQuestionAnswerAccountRelation input3 = new SecurityQuestionAnswerAccountRelation(admin_account,sq_id3,answer_3);
-		return sq_a_aService.addNew(input1, input2, input3);
+		String result = sq_a_aService.addNew(input1, input2, input3);
+		System.out.println(result);
+		return result;
+	}
+	
+	@RequestMapping(value = "/sq_a_a/isFistTimeLogin", method = RequestMethod.GET)
+	@Secured(value = {"ROLE_ADMIN"})
+	public @ResponseBody String isFirstTimeLogin(
+			@RequestParam(value = "admin_account", required = true) String admin_account
+			){
+		if(sq_a_aService.getByAdminAccount(admin_account).isEmpty())	
+		return "yes";
+		else return "no";
+	}
+	
+	@RequestMapping(value = "/sq_a_a/getRandomQuestion", method = RequestMethod.GET)
+	@Secured(value = {"ROLE_ADMIN"})
+	public @ResponseBody SecurityQuestionAnswerAccountRelation getRandomQuestion(
+			@RequestParam(value = "admin_account", required = true) String admin_account
+			){
+		return sq_a_aService.getRandSQByAdminAccount(admin_account);
 	}
 	
 }

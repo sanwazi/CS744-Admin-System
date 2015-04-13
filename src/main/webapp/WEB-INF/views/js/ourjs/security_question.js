@@ -11,8 +11,6 @@ var q_a_pairs = [];
 $(document).ready(function() {
 	actions();
 	getUserDetail();
-	getAllQuestions();
-	submitCheck();
 });
 function getUserDetail() {
 	$.ajax({
@@ -21,6 +19,7 @@ function getUserDetail() {
 		success : function(data) {
 			currentUserName = data.username;
 			console.log(currentUserName);
+			isFistTimeLogin(currentUserName);
 		},
 		dataType : "json",
 	});
@@ -29,12 +28,18 @@ function getUserDetail() {
 function isFistTimeLogin(currentUserName){
 	$.ajax({
 		type : "GET",
-		url: "/EMR_Admin/security_question/getcorrespondingQuestions",
+		url: "/EMR_Admin/sq_a_a/isFistTimeLogin",
 		data: "admin_account=" + currentUserName,
 		success : function(data){
-			
+			if(data=="yes"){
+				console.log("fist time login");
+				getAllQuestions();
+				submitCheck();
+			}else{
+				jumpToCorrespondingSQpage();
+			}
 		},
-		dataType:"json",
+		dataType:"text",
 	});
 }
 
@@ -100,12 +105,21 @@ function submitNew(){
 			console.log(data);
 			if(data=="addingToDbSuccess"){
 				alert("S");
+				setTimeout(jumpToIndex,1000);
 			}else if (data == "addingToDbfalse"){
 				alert("F");
 			}
 		},
-		dataType:"json",
+		dataType:"text",
 	});
+}
+
+function jumpToIndex(){
+	location.href ="index.html";
+}
+
+function jumpToCorrespondingSQpage(){
+	location.href ="corresponding_sq.html";
 }
 //
 function actions(){

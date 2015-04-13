@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>EMR Admin System</title>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="">
+<meta name="author" content="">
+
+<!-- Bootstrap Core CSS -->
+<link
+	href="/EMR_Admin/views/bower_components/bootstrap/dist/css/bootstrap.min.css"
+	rel="stylesheet">
+
+<!-- MetisMenu CSS -->
+<link
+	href="/EMR_Admin/views/bower_components/metisMenu/dist/metisMenu.min.css"
+	rel="stylesheet">
+
+<!-- DataTables CSS -->
+<link
+	href="/EMR_Admin/views/bower_components/datatables-plugins/integration/bootstrap/3/dataTables.bootstrap.css"
+	rel="stylesheet">
+
+<!-- DataTables Responsive CSS -->
+<link
+	href="/EMR_Admin/views/bower_components/datatables-responsive/css/dataTables.responsive.css"
+	rel="stylesheet">
+
+<!-- Custom CSS -->
+<link href="/EMR_Admin/views/dist/css/sb-admin-2.css" rel="stylesheet">
+
+<!-- Custom Fonts -->
+<link
+	href="/EMR_Admin/views/bower_components/font-awesome/css/font-awesome.min.css"
+	rel="stylesheet" type="text/css">
+</head>
+<body>
+	<div class="container" id="myWizard">
+
+		<h3 id="notFirstTimeWelcome">Security Questions</h3>
+
+		<hr>
+
+		<div class="tab-content">
+			<div class="tab-pane fade in active">
+
+				<div class="well">
+
+					<label>Security Question</label> 
+					<input class="form-control input-lg" disabled id="question"> 
+					<label>Enter Response</label>
+					<input class="form-control input-lg" id="input">
+
+				</div>
+
+				<a class="btn btn-default btn-lg next" id="submit">Continue</a> <br>
+				<a class="btn btn-success" id="cancel" href="../../">Cancel</a>
+			</div>
+
+		</div>
+
+
+	</div>
+
+	<h1 id="user_name" style="display: none;"></h1>
+
+	<!-- jQuery -->
+	<script
+		src="/EMR_Admin/views/bower_components/jquery/dist/jquery.min.js"></script>
+
+	<!-- Bootstrap Core JavaScript -->
+	<script
+		src="/EMR_Admin/views/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+
+	<!-- Metis Menu Plugin JavaScript -->
+	<script
+		src="/EMR_Admin/views/bower_components/metisMenu/dist/metisMenu.min.js"></script>
+
+	<!-- DataTables JavaScript -->
+	<script
+		src="/EMR_Admin/views/bower_components/datatables/media/js/jquery.dataTables.min.js"></script>
+	<script
+		src="/EMR_Admin/views/bower_components/datatables-plugins/integration/bootstrap/3/dataTables.bootstrap.min.js"></script>
+	<!-- Custom Theme JavaScript -->
+	<script src="/EMR_Admin/views/dist/js/sb-admin-2.js"></script>
+
+	<script src="/EMR_Admin/views/js/ourjs/corresponding_sq.js"></script>
+</body>
+
+</html>

@@ -16,4 +16,8 @@ public class SecurityQuestionService {
 	public List<SecurityQuestion> getAll(){
 		return sqDao.getAll();
 	}
+
+	public List<SecurityQuestion> getById(int sq_id){
+		return sqDao.getById(sq_id);
+	}
 }
