@@ -52,6 +52,7 @@
 				<value>com.example.EMR_Admin.diagnostic_test.data</value>
 				<value>com.example.EMR_Admin.surgery.data</value>
 				<value>com.example.EMR_Admin.medical_staff.data</value>
+				<value>com.example.EMR_Admin.treatment.data</value>
 			</array>
 		</property>
 		<property name="hibernateProperties">
