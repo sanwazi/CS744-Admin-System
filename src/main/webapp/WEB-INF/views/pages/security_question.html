@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>EMR Admin System</title>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="">
+<meta name="author" content="">
+
+<!-- Bootstrap Core CSS -->
+<link
+	href="/EMR_Admin/views/bower_components/bootstrap/dist/css/bootstrap.min.css"
+	rel="stylesheet">
+
+<!-- MetisMenu CSS -->
+<link
+	href="/EMR_Admin/views/bower_components/metisMenu/dist/metisMenu.min.css"
+	rel="stylesheet">
+
+<!-- DataTables CSS -->
+<link
+	href="/EMR_Admin/views/bower_components/datatables-plugins/integration/bootstrap/3/dataTables.bootstrap.css"
+	rel="stylesheet">
+
+<!-- DataTables Responsive CSS -->
+<link
+	href="/EMR_Admin/views/bower_components/datatables-responsive/css/dataTables.responsive.css"
+	rel="stylesheet">
+
+<!-- Custom CSS -->
+<link href="/EMR_Admin/views/dist/css/sb-admin-2.css" rel="stylesheet">
+
+<!-- Custom Fonts -->
+<link
+	href="/EMR_Admin/views/bower_components/font-awesome/css/font-awesome.min.css"
+	rel="stylesheet" type="text/css">
+</head>
+<body>
+	<div class="container" id="myWizard">
+
+		<h3 id="notFirstTimeWelcome"  style="display:none;">Security Questions</h3>
+		<h3 id="firstTimeWelcome" style="display:none;">This is the first time to login system, please set up your three security questions</h3>
+
+		<hr>
+
+		<div class="progress">
+			<div class="progress-bar progress-bar-success" role="progressbar"
+				aria-valuenow="1" aria-valuemin="1" aria-valuemax="3"
+				style="width: 33%;">Step 1 of 3</div>
+		</div>
+
+		<div class="navbar">
+			<div class="navbar-inner">
+				<ul class="nav nav-pills">
+					<li class="active"><a href="#step1" data-toggle="tab"
+						data-step="1">Step 1</a></li>
+					<li><a href="#step2" data-toggle="tab" data-step="2">Step
+							2</a></li>
+					<li><a href="#step3" data-toggle="tab" data-step="3">Step
+							3</a></li>
+<!-- 					<li><a href="#step4" data-toggle="tab" data-step="4">Step -->
+<!-- 							4</a></li> -->
+<!-- 					<li><a href="#step5" data-toggle="tab" data-step="5">Step -->
+<!-- 							5</a></li> -->
+				</ul>
+			</div>
+		</div>
+		<div class="tab-content">
+			<div class="tab-pane fade in active" id="step1">
+
+				<div class="well">
+
+					<label>Security Question 1</label> 
+					<select id = "step1_selects"
+						class="form-control input-lg">
+<!-- 						<option value="What was the name of your first pet?">What -->
+<!-- 							was the name of your first pet?</option> -->
+<!-- 						<option value="Where did you first attend school?">Where -->
+<!-- 							did you first attend school?</option> -->
+<!-- 						<option value="What is your mother's maiden name?">What -->
+<!-- 							is your mother's maiden name?</option> -->
+<!-- 						<option value="What is your favorite car model?">What is -->
+<!-- 							your favorite car model?</option> -->
+					</select> <br> 
+					<label>Enter Response</label> 
+					<input
+						class="form-control input-lg" id = "input_step1">
+
+				</div>
+				
+				<a class="btn btn-default btn-lg next" href="#">Continue</a>
+			</div>
+			<div class="tab-pane fade" id="step2">
+				<div class="well">
+
+					<label>Security Question 2</label> 
+					<select id = "step2_selects"
+						class="form-control  input-lg">
+<!-- 						<option value="What was the name of your first pet?">What -->
+<!-- 							was the name of your first pet?</option> -->
+<!-- 						<option value="Where did you first attend school?" selected="">Where -->
+<!-- 							did you first attend school?</option> -->
+<!-- 						<option value="What is your mother's maiden name?">What -->
+<!-- 							is your mother's maiden name?</option> -->
+<!-- 						<option value="What is your favorite car model?">What is -->
+<!-- 							your favorite car model?</option> -->
+					</select> <br> <label>Enter Response</label> 
+					<input
+						class="form-control  input-lg" id="input_step2">
+
+				</div>
+				<a class="btn btn-default back" href="#">Back</a>
+				<a class="btn btn-default next" href="#">Continue</a>
+			</div>
+			<div class="tab-pane fade" id="step3">
+				<div class="well">
+					<label>Security Question 3</label> 
+					<select id = "step3_selects"
+						class="form-control  input-lg">
+						
+					</select>
+					<br> <label>Enter Response</label> 
+					<input
+						class="form-control  input-lg" id = "input_step3">
+				</div>
+<!-- 				<a class="btn btn-default next" href="#">Continue</a> -->
+				<a class="btn btn-default back" href="#">Back</a>
+				<a class="btn btn-success" href="security_question.html">Start over</a>
+				<button class="btn btn-success" id="submit">Submit</button>
+			</div>
+<!-- 			<div class="tab-pane fade" id="step4"> -->
+<!-- 				<div class="well"> -->
+<!-- 					<h2>Step 4</h2> -->
+<!-- 					Add another almost done step here.. -->
+<!-- 				</div> -->
+<!-- 				<a class="btn btn-default next" href="#">Continue</a> -->
+<!-- 			</div> -->
+<!-- 			<div class="tab-pane fade" id="step5"> -->
+<!-- 				<div class="well"> -->
+<!-- 					<h2>Step 5</h2> -->
+<!-- 					You're Done! -->
+<!-- 				</div> -->
+<!-- 				<a class="btn btn-success first" href="#">Start over</a> -->
+<!-- 			</div> -->
+		<br>
+		<a class="btn btn-success" id="cancel" href="../../">Cancel</a>
+		</div>
+
+<!-- 		<hr> -->
+
+<!-- 		<a href="http://www.bootply.com/wj9gWh8ulj">Edit on Bootply</a> -->
+
+<!-- 		<hr> -->
+	
+	</div>
+
+
+
+	<h1 id="user_name" style="display:none;"></h1>
+	
+	<!-- jQuery -->
+	<script
+		src="/EMR_Admin/views/bower_components/jquery/dist/jquery.min.js"></script>
+
+	<!-- Bootstrap Core JavaScript -->
+	<script
+		src="/EMR_Admin/views/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+
+	<!-- Metis Menu Plugin JavaScript -->
+	<script
+		src="/EMR_Admin/views/bower_components/metisMenu/dist/metisMenu.min.js"></script>
+
+	<!-- DataTables JavaScript -->
+	<script
+		src="/EMR_Admin/views/bower_components/datatables/media/js/jquery.dataTables.min.js"></script>
+	<script
+		src="/EMR_Admin/views/bower_components/datatables-plugins/integration/bootstrap/3/dataTables.bootstrap.min.js"></script>
+	<!-- Custom Theme JavaScript -->
+	<script src="/EMR_Admin/views/dist/js/sb-admin-2.js"></script>
+
+	<script src="/EMR_Admin/views/js/ourjs/security_question.js"></script>
+</body>
+
+</html>
