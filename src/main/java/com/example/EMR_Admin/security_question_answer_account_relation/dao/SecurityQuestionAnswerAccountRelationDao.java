@@ -36,4 +36,21 @@ public class SecurityQuestionAnswerAccountRelationDao {
 		session.close();
 		return list;
 	}
+	
+	public String addNew(SecurityQuestionAnswerAccountRelation input1, SecurityQuestionAnswerAccountRelation input2, SecurityQuestionAnswerAccountRelation input3){
+		try {
+			Session session = sessionFactory.openSession();
+			session.beginTransaction();
+			session.save(input1);
+			session.save(input2);
+			session.save(input3);
+			session.getTransaction().commit();
+			session.close();
+		} catch (HibernateException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return "addingToDbfalse";
+		}
+		return "addingToDbSuccess";
+	}
 }

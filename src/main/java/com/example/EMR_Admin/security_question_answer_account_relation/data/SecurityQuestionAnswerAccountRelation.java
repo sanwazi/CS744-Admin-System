@@ -24,6 +24,15 @@ public class SecurityQuestionAnswerAccountRelation {
 	
 	@Column(name = "answer")
 	private String answer;
+	
+	public SecurityQuestionAnswerAccountRelation(String admin_account, int sq_id,
+			String answer) {
+		super();
+		this.sq_id = sq_id;
+		this.admin_account = admin_account;
+		this.answer = answer;
+	}
+
 
 	public int getSq_relation_id() {
 		return sq_relation_id;

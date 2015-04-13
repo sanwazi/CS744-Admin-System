@@ -34,4 +34,21 @@ public class SecurityQuestionAnswerAccountRelationController {
 		return list;
 	}
 	
+	@RequestMapping(value = "/sq_a_a/addNew", method = RequestMethod.GET)
+	@Secured(value = { "ROLE_ADMIN" })
+	public @ResponseBody String addNew(
+			@RequestParam(value = "admin_account", required = true) String admin_account,
+			@RequestParam(value = "sq_id1") int sq_id1,
+			@RequestParam(value = "sq_id2") int sq_id2,
+			@RequestParam(value = "sq_id3") int sq_id3,
+			@RequestParam(value = "answer_1") String answer_1,
+			@RequestParam(value = "answer_2") String answer_2,
+			@RequestParam(value = "answer_3") String answer_3
+			) {
+		SecurityQuestionAnswerAccountRelation input1 = new SecurityQuestionAnswerAccountRelation(admin_account,sq_id1,answer_1);
+		SecurityQuestionAnswerAccountRelation input2 = new SecurityQuestionAnswerAccountRelation(admin_account,sq_id2,answer_2);
+		SecurityQuestionAnswerAccountRelation input3 = new SecurityQuestionAnswerAccountRelation(admin_account,sq_id3,answer_3);
+		return sq_a_aService.addNew(input1, input2, input3);
+	}
+	
 }

@@ -39,7 +39,8 @@
 <body>
 	<div class="container" id="myWizard">
 
-		<h3>Security Questions</h3>
+		<h3 id="notFirstTimeWelcome"  style="display:none;">Security Questions</h3>
+		<h3 id="firstTimeWelcome" style="display:none;">This is the first time to login system, please set up your three security questions</h3>
 
 		<hr>
 
@@ -84,10 +85,10 @@
 					</select> <br> 
 					<label>Enter Response</label> 
 					<input
-						class="form-control input-lg" id = "input_1">
+						class="form-control input-lg" id = "input_step1">
 
 				</div>
-
+				
 				<a class="btn btn-default btn-lg next" href="#">Continue</a>
 			</div>
 			<div class="tab-pane fade" id="step2">
@@ -106,9 +107,10 @@
 <!-- 							your favorite car model?</option> -->
 					</select> <br> <label>Enter Response</label> 
 					<input
-						class="form-control  input-lg" id="input_2">
+						class="form-control  input-lg" id="input_step2">
 
 				</div>
+				<a class="btn btn-default back" href="#">Back</a>
 				<a class="btn btn-default next" href="#">Continue</a>
 			</div>
 			<div class="tab-pane fade" id="step3">
@@ -120,10 +122,12 @@
 					</select>
 					<br> <label>Enter Response</label> 
 					<input
-						class="form-control  input-lg" id = "input_3">
+						class="form-control  input-lg" id = "input_step3">
 				</div>
 <!-- 				<a class="btn btn-default next" href="#">Continue</a> -->
-				<a class="btn btn-success first" href="#">Start over</a>
+				<a class="btn btn-default back" href="#">Back</a>
+				<a class="btn btn-success" href="security_question.html">Start over</a>
+				<button class="btn btn-success" id="submit">Submit</button>
 			</div>
 <!-- 			<div class="tab-pane fade" id="step4"> -->
 <!-- 				<div class="well"> -->
@@ -139,6 +143,8 @@
 <!-- 				</div> -->
 <!-- 				<a class="btn btn-success first" href="#">Start over</a> -->
 <!-- 			</div> -->
+		<br>
+		<a class="btn btn-success" id="cancel" href="../../">Cancel</a>
 		</div>
 
 <!-- 		<hr> -->
@@ -146,13 +152,13 @@
 <!-- 		<a href="http://www.bootply.com/wj9gWh8ulj">Edit on Bootply</a> -->
 
 <!-- 		<hr> -->
-
+	
 	</div>
 
 
 
-	<h1 id="user_name"></h1>
-
+	<h1 id="user_name" style="display:none;"></h1>
+	
 	<!-- jQuery -->
 	<script
 		src="/EMR_Admin/views/bower_components/jquery/dist/jquery.min.js"></script>

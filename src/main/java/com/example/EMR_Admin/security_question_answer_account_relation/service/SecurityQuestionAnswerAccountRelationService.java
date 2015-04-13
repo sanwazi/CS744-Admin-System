@@ -20,4 +20,8 @@ public class SecurityQuestionAnswerAccountRelationService {
 	public List<SecurityQuestionAnswerAccountRelation> getByAdminAccount(String admin_account){
 		return sq_a_aDao.getByAdminAccount(admin_account);
 	}
+	
+	public String addNew(SecurityQuestionAnswerAccountRelation input1, SecurityQuestionAnswerAccountRelation input2, SecurityQuestionAnswerAccountRelation input3){
+		return sq_a_aDao.addNew(input1, input2, input3);
+	}
 }
