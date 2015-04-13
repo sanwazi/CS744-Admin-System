@@ -1,4 +1,4 @@
-//[{"drug_id":1,"drug_name":"druggg"},{"drug_id":2,"drug_name":"druggggs"},{"drug_id":3,"drug_name":"drugs"},{"drug_id":4,"drug_name":"Abacavir Sulfate (Ziagen)"},{"drug_id":5,"drug_name":"Abilify (Aripiprazole)"},{"drug_id":6,"drug_name":"Abiraterone Acetate Tablets (Zytiga)"},{"drug_id":7,"drug_name":"Actigall (Ursodiol, USP Capsules)"},{"drug_id":8,"drug_name":"Aflibercept (Eylea)"},{"drug_id":9,"drug_name":"Baclofen (Kemstro)"},{"drug_id":10,"drug_name":"Bacteriostatic Water (Bacteriostatic Water for Injection)"},{"drug_id":11,"drug_name":"Basiliximab (Simulect)"}]
+//[{"drug_id":1,"drug_name_commercial":"druggg"},{"drug_id":2,"drug_name_commercial":"druggggs"},{"drug_id":3,"drug_name_commercial":"drugs"},{"drug_id":4,"drug_name_commercial":"Abacavir Sulfate (Ziagen)"},{"drug_id":5,"drug_name_commercial":"Abilify (Aripiprazole)"},{"drug_id":6,"drug_name_commercial":"Abiraterone Acetate Tablets (Zytiga)"},{"drug_id":7,"drug_name_commercial":"Actigall (Ursodiol, USP Capsules)"},{"drug_id":8,"drug_name_commercial":"Aflibercept (Eylea)"},{"drug_id":9,"drug_name_commercial":"Baclofen (Kemstro)"},{"drug_id":10,"drug_name_commercial":"Bacteriostatic Water (Bacteriostatic Water for Injection)"},{"drug_id":11,"drug_name_commercial":"Basiliximab (Simulect)"}]
 $(document).ready(function() {
 
 	loadAllDrug();
@@ -29,7 +29,7 @@ function loadDrug(drugList) {
 	for ( var i in drugList) {
 		var drugItems = [];
 		drugItems.push(drugList[i].drug_id);
-		drugItems.push(drugList[i].drug_name);
+		drugItems.push(drugList[i].drug_name_commercial);
 		var editButton = generateEditButton(drugList[i].drug_id);
 		var deleteButton = generateDeleteButton(drugList[i].drug_id);
 		drugItems.push(editButton);
@@ -47,7 +47,7 @@ function loadDrug(drugList) {
 			"title" : "Drug ID",
 			"class" : "center"
 		}, {
-			"title" : "Drug Name",
+			"title" : "Drug Commercial Name",
 			"class" : "center"
 		},{
 			"title" : "Change",
@@ -73,12 +73,12 @@ function addDrug() {
 	$('#addDrug').on(
 			'click',
 			function() {
-				var drugName = $('#drugName').val();
+				var drug_name_commercial = $('#drug_name_commercial').val();
 				//var amount = $('#amount').val();
 				$.ajax({
 					type : "GET",
 					url : "/EMR_Admin/drug/addDrug",
-					data : 'drugName=' + drugName,
+					data : 'drug_name_commercial=' + drug_name_commercial,
 					success : function(data) {
 						//TODO
 						if(data=="s"){
@@ -160,7 +160,7 @@ function generateDeleteButton(drugId) {
 //function giveButtonLink(){
 //	$('a[name=edit]').each(function(){
 //		var drug_id = $(this).attr("id");
-//		var drug_name = $(this).attr("drug_name");
+//		var drug_name_commercial = $(this).attr("drug_name_commercial");
 //		var $button = $(this);
 //		$button.attr("href", "edit_drug.html?drug_id="+drug_id);	
 //	})

@@ -22,7 +22,7 @@ public class DrugDao {
 	public List<Drug> searchWithInput(String input) {
 		// TODO Auto-generated method stub
 		Session session = sessionFactory.openSession();
-		Query q = session.createQuery("from Drug where drug_name like '"
+		Query q = session.createQuery("from Drug where drug_name_commercial like '"
 				+ input +"%'");
 		Transaction transaction = session.beginTransaction();
 		List<Drug> list = q.list();
@@ -41,9 +41,9 @@ public class DrugDao {
 		return list;
 	}
 	
-	public List<Drug> getDrugByName(String drugName){
+	public List<Drug> getDrugByCommercialName(String drug_name_commercial){
 		Session session = sessionFactory.openSession();
-		Query q = session.createQuery("from Drug where drug_name = '"+drugName+"'");
+		Query q = session.createQuery("from Drug where drug_name_commercial = '"+drug_name_commercial+"'");
 		Transaction transaction = session.beginTransaction();
 		List<Drug> list = q.list();
 		transaction.commit();
@@ -62,7 +62,7 @@ public class DrugDao {
 	}
 	
 	public boolean addDrug(Drug drug){
-		if(getDrugByName(drug.getDrug_name()).isEmpty()){
+		if(getDrugByCommercialName(drug.getDrug_name_commercial()).isEmpty()){
 			try {
 				Session session = sessionFactory.openSession();
 				session.beginTransaction();
@@ -80,7 +80,7 @@ public class DrugDao {
 	}
 	
 	public boolean updateDrug(Drug drug){
-		if (getDrugByName(drug.getDrug_name()).isEmpty()) {
+		if (getDrugByCommercialName(drug.getDrug_name_commercial()).isEmpty()) {
 			try {
 				Session session = sessionFactory.openSession();
 				session.beginTransaction();

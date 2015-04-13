@@ -1,10 +1,10 @@
 
-//{"drug_id":1,"drug_name":"druggg"}
+//{"drug_id":1,"drug_name_commercial":"druggg"}
 
 $(document).ready(function() {
 	//loadPatient();
 	var drug_id = getUrlParameter("drug_id");
-	//drug_name = getUrlParameter("drug_name");
+	//drug_name_commercial = getUrlParameter("drug_name_commercial");
 	console.log(drug_id);
 	getDrugBasicContent(drug_id);
 	listeningUpdateButton();
@@ -18,10 +18,10 @@ function getDrugBasicContent(drug_id) {
 		data : "drug_id=" + drug_id,
 		success : function(data) {
 			//drug_id = data.drug_id;
-			var drug_name = data.drug_name;
+			var drug_name_commercial = data.drug_name_commercial;
 			
-			console.log(drug_id+" "+drug_name);
-			fillTextboxes(drug_id, drug_name);
+			console.log(drug_id+" "+drug_name_commercial);
+			fillTextboxes(drug_id, drug_name_commercial);
 		},
 		dataType : "json",
 	});
@@ -32,12 +32,12 @@ function listeningUpdateButton(){
 			'click',
 			function(){
 				var drug_id = $("#drug_id").val();
-				var drug_name = $("#drug_name").val();
+				var drug_name_commercial = $("#drug_name_commercial").val();
 				console.log("update_drug button has been clicked");
 				$.ajax({
 					type: "GET",
 					url : "/EMR_Admin/drug/updateDrug",
-					data: "drug_id=" + drug_id + "&drug_name="+drug_name,
+					data: "drug_id=" + drug_id + "&drug_name_commercial="+drug_name_commercial,
 					success : function(data){
 						
 						if(data=="s"){
@@ -64,9 +64,9 @@ function jump(){
 	location.href ="drugs.html";
 }
 
-function fillTextboxes(drug_id, drug_name){
+function fillTextboxes(drug_id, drug_name_commercial){
 	$("#drug_id").val(drug_id);
-	$("#drug_name").val(drug_name);
+	$("#drug_name_commercial").val(drug_name_commercial);
 }
 
 

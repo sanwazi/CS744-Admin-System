@@ -41,10 +41,10 @@ public class DrugController {
 	@RequestMapping(value = "/drug/addDrug", method = RequestMethod.GET)
 	@Secured(value = { "ROLE_ADMIN" })
 	public @ResponseBody String addDrug(
-			@RequestParam(value = "drugName", required = true) String drug_name
+			@RequestParam(value = "drug_name_commercial", required = true) String drug_name_commercial
 			) {
 		Drug drug = new Drug();
-		drug.setDrug_name(drug_name);
+		drug.setDrug_name_commercial(drug_name_commercial);
 		boolean result = drugService.addDrug(drug);
 		if(result){
 			return "s";
@@ -63,10 +63,10 @@ public class DrugController {
 	@Secured(value = {"ROLE_ADMIN"})
 	public @ResponseBody String updateDrug(
 			@RequestParam(value = "drug_id", required=true) int drug_id,
-			@RequestParam(value = "drug_name") String drug_name){
+			@RequestParam(value = "drug_name_commercial") String drug_name_commercial){
 		Drug drug = new Drug();
 		drug.setDrug_id(drug_id);
-		drug.setDrug_name(drug_name);
+		drug.setDrug_name_commercial(drug_name_commercial);
 		boolean result = drugService.updateDrug(drug);
 		if(result) return "s";
 		else return "d";
@@ -81,6 +81,13 @@ public class DrugController {
 		boolean result = drugService.deleteDrug(drug);
 		if(result) return "s";
 		else return "d";
+	}
+	
+	@RequestMapping(value="/drug/addAllDrugFromPharmacyToDb", method = RequestMethod.GET)
+	@Secured(value = {"ROLE_ADMIN"})
+	public @ResponseBody void addAllDrugFromPharmacyToDb(
+			@RequestParam(value = "drug_name_commercial", required = true) String drug_name_commercial){
+		
 	}
 	
 }
