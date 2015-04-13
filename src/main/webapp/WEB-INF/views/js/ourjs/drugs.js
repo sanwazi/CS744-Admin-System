@@ -28,7 +28,6 @@ function loadDrug(drugList) {
 	var dataSet = [];
 	for ( var i in drugList) {
 		var drugItems = [];
-		drugItems.push(drugList[i].drug_id);
 		drugItems.push(drugList[i].drug_name_commercial);
 		var editButton = generateEditButton(drugList[i].drug_id);
 		var deleteButton = generateDeleteButton(drugList[i].drug_id);
@@ -44,9 +43,6 @@ function loadDrug(drugList) {
 		responsive : true,
 		data : dataSet,
 		columns : [ {
-			"title" : "Drug ID",
-			"class" : "center"
-		}, {
 			"title" : "Drug Commercial Name",
 			"class" : "center"
 		},{
