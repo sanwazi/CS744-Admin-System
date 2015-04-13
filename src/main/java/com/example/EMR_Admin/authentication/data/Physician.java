@@ -48,6 +48,17 @@ public class Physician {
 	@Column(name = "SSN")
 	private String ssn;
 
+	@Column(name = "specialty")
+	private String specialty;
+	
+	public String getSpecialty() {
+		return specialty;
+	}
+
+	public void setSpecialty(String specialty) {
+		this.specialty = specialty;
+	}
+
 	public String getSsn() {
 		return ssn;
 	}

@@ -26,7 +26,6 @@ function loadPatientData(patients) {
 			patient.push(names[1]);
 		patient.push(patients[i].patient_gender);
 		patient.push(patients[i].patient_age);
-		patient.push(convertMillisecondsToDate(patients[i].patient_birthday));
 		if (patients[i].patient_ssn == "")
 			patient.push("None");
 		else
@@ -48,9 +47,6 @@ function loadPatientData(patients) {
 			"class" : "center"
 		}, {
 			"title" : "Age",
-			"class" : "center"
-		}, {
-			"title" : "Birthday",
 			"class" : "center"
 		}, {
 			"title" : "SSN",

@@ -24,8 +24,10 @@ function loadPhysicianData(physicians) {
 		else
 			physician.push(names[1]);
 		physician.push(physicians[i].physicianGender);
-		physician
-				.push(convertMillisecondsToDate(physicians[i].physicianBirthday));
+		if( physicians[i].specialty == "" )
+			physician.push("None");
+		else 
+			physician.push(physicians[i].specialty)
 		physician.push(physicians[i].account);
 		if (physicians[i].ssn == "") {
 			physician.push("None");
@@ -47,7 +49,7 @@ function loadPhysicianData(physicians) {
 			"title" : "Gender",
 			"class" : "center"
 		}, {
-			"title" : "Birthday",
+			"title" : "Specialty",
 			"class" : "center"
 		}, {
 			"title" : "Account",
