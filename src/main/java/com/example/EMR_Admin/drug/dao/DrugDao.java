@@ -22,7 +22,7 @@ public class DrugDao {
 	public List<Drug> searchWithInput(String input) {
 		// TODO Auto-generated method stub
 		Session session = sessionFactory.openSession();
-		Query q = session.createQuery("from Drug where drug_name_commercial like '"
+		Query q = session.createQuery("from Drug where drug_name like '"
 				+ input +"%'");
 		Transaction transaction = session.beginTransaction();
 		List<Drug> list = q.list();
@@ -41,9 +41,9 @@ public class DrugDao {
 		return list;
 	}
 	
-	public List<Drug> getDrugByCommercialName(String drug_name_commercial){
+	public List<Drug> getDrugByName(String drug_name){
 		Session session = sessionFactory.openSession();
-		Query q = session.createQuery("from Drug where drug_name_commercial = '"+drug_name_commercial+"'");
+		Query q = session.createQuery("from Drug where drug_name = '"+drug_name+"'");
 		Transaction transaction = session.beginTransaction();
 		List<Drug> list = q.list();
 		transaction.commit();
@@ -62,7 +62,7 @@ public class DrugDao {
 	}
 	
 	public boolean addDrug(Drug drug){
-		if(getDrugByCommercialName(drug.getDrug_name_commercial()).isEmpty()){
+		if(getDrugByName(drug.getDrug_name()).isEmpty()){
 			try {
 				Session session = sessionFactory.openSession();
 				session.beginTransaction();
@@ -80,7 +80,7 @@ public class DrugDao {
 	}
 	
 	public boolean updateDrug(Drug drug){
-		if (getDrugByCommercialName(drug.getDrug_name_commercial()).isEmpty()) {
+		if (getDrugByName(drug.getDrug_name()).isEmpty()) {
 			try {
 				Session session = sessionFactory.openSession();
 				session.beginTransaction();
@@ -113,5 +113,27 @@ public class DrugDao {
 			return true;
 		}
 		return false;
+	}
+	
+	public boolean addListDrug(List<Drug> input){
+		for(Drug d : input){
+			System.out.println("Dao first in"+d.getDrug_id()+"  "+d.getDrug_name());
+		}
+		try {
+			Session session = sessionFactory.openSession();
+			session.beginTransaction();
+			for(Drug d : input){
+				System.out.println("Dao before save"+d.getDrug_id()+"  "+d.getDrug_name());
+				session.merge(d);
+				System.out.println("Dao after save"+d.getDrug_id()+"  "+d.getDrug_name());
+			}
+			session.getTransaction().commit();
+			session.close();
+		} catch (HibernateException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return false;
+		}
+		return true;
 	}
 }

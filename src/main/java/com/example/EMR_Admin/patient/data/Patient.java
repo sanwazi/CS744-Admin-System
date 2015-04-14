@@ -32,6 +32,7 @@ public class Patient {
 	@Column(name = "patient_birthday")
 	private Date patient_birthday;
 	
+	
 	/**
 	 * @return the patient_id
 	 */
