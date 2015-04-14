@@ -204,11 +204,12 @@ function addDrug(){
 			console.log("here3");
 		  if(invocation) {
 			  console.log("here1");
-		    invocation.open('GET', url, true);
-		    invocation.withCredentials = true;
+		    invocation.open('GET', url, false);
+		    //invocation.withCredentials = true;
 		    invocation.onreadystatechange = 'Access-Control-Allow-Origin';
 		    invocation.send(); 
 		    console.log("here2");
+		    addPharmacyDrugToDb(invocation.responseText);
 		  }
 		
 		
