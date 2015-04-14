@@ -311,112 +311,101 @@
 
 								</table>
 							</div>
+							<div class="form-horizontal">
 
-<!-- 							<div class="form-horizontal"> -->
-<!-- 								<fieldset> -->
-<!-- 									<legend>Add new surgery</legend> -->
-<!-- 									<div class="form-group has-error"> -->
+								<fieldset>
+									<legend>Add new surgery</legend>
+									<div class="form-group has-error">
 
-<!-- 										<div class="col-lg-9"> -->
-<!-- 											<div class="panel panel-default"> -->
-<!-- 												<div class="panel-heading"> -->
-<!-- 													<div class="row"> -->
-<!-- 														<div class="col-lg-10">Add new surgery</div> -->
+										<div class="col-lg-9">
+											<div class="panel panel-default">
+												<div class="panel-heading">
+													<div class="row">
+														<div class="col-lg-10">Add new surgery</div>
 
-<!-- 														<div class="col-lg-2"> -->
-<!-- 															<button type="button" class="btn btn-primary btn-xs" -->
-<!-- 																id="btn-showAddingSurgeryTable"> -->
-<!-- 																<i class="fa fa-pencil-square-o"></i>Add -->
-<!-- 															</button> -->
-<!-- 														</div> -->
-<!-- 													</div> -->
-<!-- 												</div> -->
-<!-- 												<div class="panel-body" id='panelcontent' -->
-<!-- 													style="display: none;"> -->
-<!-- 													<table class="table table-bordered"> -->
-<!-- 														<thead> -->
-<!-- 															<th>Surgery Name</th> -->
-<!-- 															<th>Surgery Cost(US Dollars)</th> -->
-<!-- 														</thead> -->
-<!-- 														<tbody id='surgeryTableContent'> -->
+														<div class="col-lg-2">
+															<button type="button" class="btn btn-primary btn-xs"
+																id="btn-showAddingSurgeryTable">
+																<i class="fa fa-pencil-square-o"></i>Add
+															</button>
+														</div>
+													</div>
+												</div>
+												<div class="panel-body" id='panelcontent'
+													style="display: none;">
+													<div class="form-group has-warning">
+														<div class="row" style="margin-top: 10px">
+															<label for="textArea" class="col-lg-4 control-label">Surgery
+																Name </label>
+															<div class="col-lg-4">
+																<input type="text" id='surgeryName' class="form-control"
+																	placeholder="surgery name...">
+															</div>
+														</div>
 
-<!-- 														</tbody> -->
-<!-- 													</table> -->
-<!-- 													<div class="form-group has-warning"> -->
-<!-- 														<label for="textArea" class="col-lg-2 control-label">Surgery -->
-<!-- 															Name </label> -->
-<!-- 														<div class="col-lg-4"> -->
-<!-- 															<input type="text" id='surgeryName' class="form-control" -->
-<!-- 																placeholder="surgery name..."> -->
-<!-- 														</div> -->
-<!-- 														<label for="textArea" class="col-lg-2 control-label">Surgery -->
-<!-- 															Cost(US Dollars) </label> -->
-<!-- 														<div class="col-lg-4"> -->
-<!-- 															<input type="text" id='cost' class="form-control" -->
-<!-- 																placeholder="surgery cost..."> -->
-<!-- 														</div> -->
-<!-- 														<button class="btn btn-primary" id='addSurgery' type="button"> -->
-<!-- 															<i class="fa fa-pencil-square-o"></i>Add Surgery -->
-<!-- 														</button> -->
+														<div class="row" style="margin-top: 15px">
+															<label for="textArea" class="col-lg-4 control-label">Surgery
+																Cost(US Dollars) </label>
+															<div class="col-lg-4">
+																<input type="text" id='cost' class="form-control"
+																	placeholder="surgery cost...">
+															</div>
+														</div>
 
-<!-- 													</div> -->
-<!-- 												</div> -->
-<!-- 											</div> -->
-<!-- 										</div> -->
-<!-- 									</div> -->
-<!-- 								</fieldset> -->
-<!-- 								<h1 id="addingResult" style="display: none;"></h1> -->
-<!-- 							</div> -->
-							<!-- /.table-responsive
-                            <div class="well">
-                                <h4>DataTables Usage Information</h4>
-                                <p>DataTables is a very flexible, advanced tables plugin for jQuery. In SB Admin, we are using a specialized version of DataTables built for Bootstrap 3. We have also customized the table headings to use Font Awesome icons in place of images. For complete documentation on DataTables, visit their website at <a target="_blank" href="https://datatables.net/">https://datatables.net/</a>.</p>
-                                <a class="btn btn-default btn-lg btn-block" target="_blank" href="https://datatables.net/">View DataTables Documentation</a>
-                            </div>
-                             -->
+														<div class="row pull-right" style="margin-right: 20px">
+															<button class="btn btn-primary" id='addSurgery'
+																type="button">
+																<i class="fa fa-pencil-square-o"></i>Submit
+															</button>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</fieldset>
+								<h1 id="addingResult" style="display: none;"></h1>
+							</div>
 						</div>
-						<!-- /.panel-body -->
+						<!-- /.panel -->
 					</div>
-					<!-- /.panel -->
+					<!-- /.col-lg-12 -->
 				</div>
-				<!-- /.col-lg-12 -->
+				<!-- /.row -->
 			</div>
-			<!-- /.row -->
+			<!-- /#page-wrapper -->
+
 		</div>
-		<!-- /#page-wrapper -->
+		<!-- /#wrapper -->
 
-	</div>
-	<!-- /#wrapper -->
+		<!-- jQuery -->
+		<script src="../bower_components/jquery/dist/jquery.min.js"></script>
 
-	<!-- jQuery -->
-	<script src="../bower_components/jquery/dist/jquery.min.js"></script>
+		<!-- Bootstrap Core JavaScript -->
+		<script src="../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 
-	<!-- Bootstrap Core JavaScript -->
-	<script src="../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+		<!-- Metis Menu Plugin JavaScript -->
+		<script src="../bower_components/metisMenu/dist/metisMenu.min.js"></script>
 
-	<!-- Metis Menu Plugin JavaScript -->
-	<script src="../bower_components/metisMenu/dist/metisMenu.min.js"></script>
+		<!-- DataTables JavaScript -->
+		<script
+			src="../bower_components/datatables/media/js/jquery.dataTables.min.js"></script>
+		<script
+			src="../bower_components/datatables-plugins/integration/bootstrap/3/dataTables.bootstrap.min.js"></script>
 
-	<!-- DataTables JavaScript -->
-	<script
-		src="../bower_components/datatables/media/js/jquery.dataTables.min.js"></script>
-	<script
-		src="../bower_components/datatables-plugins/integration/bootstrap/3/dataTables.bootstrap.min.js"></script>
+		<!-- Custom Theme JavaScript -->
+		<script src="../dist/js/sb-admin-2.js"></script>
+		<script src="../js/ourjs/surgery.js"></script>
+		<script src="../js/ourjs/index.js"></script>
 
-	<!-- Custom Theme JavaScript -->
-	<script src="../dist/js/sb-admin-2.js"></script>
-	<script src="../js/ourjs/surgery.js"></script>
-	<script src="../js/ourjs/index.js"></script>
-
-	<!-- Page-Level Demo Scripts - Tables - Use for reference -->
-	<!--     <script> 
-    $(document).ready(function() {
-         $('#dataTables-example').DataTable({
-                responsive: true
-         });
-    });
-     </script> -->
-
+		<!-- Page-Level Demo Scripts - Tables - Use for reference -->
+		<!-- <script>
+			$(document).ready(function() {
+				$('#dataTables-example').DataTable({
+					responsive : true
+				});
+			});
+		</script> -->
 </body>
 
 </html>

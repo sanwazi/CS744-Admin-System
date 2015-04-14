@@ -27,7 +27,7 @@ function listeningUpdateButton(){
 	$("#update_surgery").on(
 			'click',
 			function(){
-				var surgery_id = $("#surgery_id").val();
+				var surgery_id = getUrlParameter("surgery_id");
 				var surgery_name = $("#surgery_name").val();
 				var cost = $("#surgery_cost").val();
 				console.log("surgery_update button has been clicked");

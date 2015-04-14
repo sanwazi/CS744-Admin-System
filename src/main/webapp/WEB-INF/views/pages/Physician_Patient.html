@@ -323,6 +323,10 @@
 										rowspan="1" colspan="1"
 										aria-label="physician_name: activate to sort column ascending"
 										style="width: 168px;">Care Privilege</th>
+<!-- 									<th class="sorting" tabindex="0" aria-controls="example"
+										rowspan="1" colspan="1"
+										aria-label="physician_name: activate to sort column ascending"
+										style="width: 168px;">Delete</th> -->
 								</tr>
 							</thead>
 
@@ -330,7 +334,7 @@
 					</div>
 				</div>
 			</div>
-			<!-- 			<div class="form-horizontal">
+			<!-- <div class="form-horizontal">
 				<fieldset>
 					<legend>Connect a patient to a physician</legend>
 					<div class="form-group has-error">
@@ -362,26 +366,46 @@
 													<div class="input-group-btn">
 														<button type="button"
 															class="btn btn-default dropdown-toggle"
-															data-toggle="dropdown" aria-expanded="false" id="patientSearchType">
+															data-toggle="dropdown" aria-expanded="false"
+															id="patientSearchType">
 															Search with <span class="caret"></span>
 														</button>
-														<ul class="dropdown-menu dropdown-menu-right" role="menu"  id = "patientSelector">
-															<li><a >Full name</a></li>
-															<li><a >First name</a></li>
-															<li><a >SSN</a></li>
+														<ul class="dropdown-menu dropdown-menu-right" role="menu"
+															id="patientSelector">
+															<li><a>Full name</a></li>
+															<li><a>First name</a></li>
+															<li><a>SSN</a></li>
 														</ul>
 													</div>
-													/btn-group
+
 												</div>
-												/input-group
+
 											</div>
 										</div>
 										<div class="row" style="margin-top: 15px">
 											<label for="textArea" class="col-lg-2 control-label">
 												Physician </label>
 
-											<div class="col-lg-4">
-												<input class="span2" id="physician_input" type="text">
+											<div class="col-lg-6">
+												<div class="input-group">
+													<input class="form-control" id="physician_input" type="text">
+													<div class="input-group-btn">
+														<button type="button"
+															class="btn btn-default dropdown-toggle"
+															data-toggle="dropdown" aria-expanded="false"
+															id="physicianSearchType">
+															Search with <span class="caret"></span>
+														</button>
+														<ul class="dropdown-menu dropdown-menu-right" role="menu"
+															id="physicianSelector">
+															<li><a>Full name</a></li>
+															<li><a>First name</a></li>
+															<li><a>SSN</a></li>
+														</ul>
+													</div>
+
+												</div>
+
 											</div>
 										</div>
 										<div class="row pull-right" style="margin-right: 20px">
@@ -430,7 +454,7 @@
 	<script src="//code.jquery.com/ui/1.11.3/jquery-ui.js"></script>
 	<script src="/EMR_Admin/views/js/ourjs/index.js"></script>
 
-	<!-- 	<script>
+ 	<script>
 		$(function() {
 
 			$("#patientSelector li a").click(function() {
@@ -438,9 +462,15 @@
 				 $("#patientSearchType").text($(this).text());
 			     $("#patientSearchType").val($(this).text());
 			});
+			
+			$("#physicianSelector li a").click(function() {
+
+				 $("#physicianSearchType").text($(this).text());
+			     $("#physicianSearchType").val($(this).text());
+			});
 
 		});
-	</script> -->
+	</script> 
 
 	<script src="../bower_components/alert/bootbox.min.js"></script>
 </body>

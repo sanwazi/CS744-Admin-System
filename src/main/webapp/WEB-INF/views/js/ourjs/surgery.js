@@ -23,10 +23,10 @@ function loadSurgery(surgeryList) {
 		//surgeryItems.push(surgeryList[i].surgery_id);
 		surgeryItems.push(surgeryList[i].surgery_name);
 		surgeryItems.push(surgeryList[i].cost);
-		//var editButton = generateEditButton(surgeryList[i].surgery_id);
-		//var deleteButton = generateDeleteButton(surgeryList[i].surgery_id);
-		//surgeryItems.push(editButton);
-		//surgeryItems.push(deleteButton);
+		var editButton = generateEditButton(surgeryList[i].surgery_id);
+		var deleteButton = generateDeleteButton(surgeryList[i].surgery_id);
+		surgeryItems.push(editButton);
+		surgeryItems.push(deleteButton);
 		dataSet.push(surgeryItems);
 	}
 	// console.log(dataSet);
@@ -38,6 +38,12 @@ function loadSurgery(surgeryList) {
 			"class" : "center"
 		}, {
 			"title" : "Cost (US Dollars)",
+			"class" : "center"
+		}, {
+			"title" : "Change",
+			"class" : "center"
+		}, {
+			"title" : "Edit",
 			"class" : "center"
 		}]
 	});

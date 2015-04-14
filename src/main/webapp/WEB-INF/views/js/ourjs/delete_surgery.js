@@ -27,9 +27,7 @@ function listeningDeleteButton(){
 	$("#delete_surgery").on(
 			'click',
 			function(){
-				var surgery_id = $("#surgery_id").val();
-				//var drug_name = $("#drug_name").val();
-				console.log("surgery_id button has been clicked");
+				var surgery_id = getUrlParameter("surgery_id");
 				$.ajax({
 					type: "GET",
 					url : "/EMR_Admin/surgery/deleteSurgery",
