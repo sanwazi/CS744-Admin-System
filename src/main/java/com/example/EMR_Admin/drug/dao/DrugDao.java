@@ -7,6 +7,7 @@ import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
+import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -136,4 +137,8 @@ public class DrugDao {
 		}
 		return true;
 	}
+	public void test(){
+		JSONObject json = new JSONObject("");
+	}
+	
 }

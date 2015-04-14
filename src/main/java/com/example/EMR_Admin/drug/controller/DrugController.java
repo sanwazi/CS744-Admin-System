@@ -100,4 +100,14 @@ public class DrugController {
 //		else return "d";
 	}
 	
+	@RequestMapping(value = "/drug/testtest", method = RequestMethod.GET)
+	@Secured(value = {"ROLE_ADMIN"})
+	public @ResponseBody String deleteDrug(
+			){
+		
+		
+		String url = "http://138.49.101.83/Pharmacy/interface/drugList/all";
+		return "d";
+	}
+	
 }
