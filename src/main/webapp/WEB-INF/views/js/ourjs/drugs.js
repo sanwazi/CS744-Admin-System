@@ -15,20 +15,19 @@
 //      "drugUsage":null,
 //      "drugStatus":"Enable"
 //   }]
-var testjson = "[{\"id\":1,\"drugId\":\"097a9215-ee07-451f-8ef1-dd66704b1c01\"," +
-		"\"drugType\":\"Prescription drug\",\"drugNameMedical\":\"Hydromorphone\"," +
-		"\"drugNameCommercial\":\"Exalgo\",\"drugPrice\":10.0,\"drugLv\":\"1\"," +
-		"\"drugUnit\":\"MG/ML\",\"drugDose\":\"50\",\"drugReaction\":null," +
-		"\"drugUsage\":null,\"drugStatus\":\"Enable\"}," +
-		"{\"id\":2,\"drugId\":\"097a9215-ee07-451f-8ef1-dd66704b1c02\"," +
-			"\"drugType\":\"Prescription drug\",\"drugNameMedical\":\"Hydromorphone2\"," +
-			"\"drugNameCommercial\":\"Exalgo2\",\"drugPrice\":10.0,\"drugLv\":\"1\"," +
-			"\"drugUnit\":\"MG/ML\",\"drugDose\":\"50\",\"drugReaction\":null," +
-			"\"drugUsage\":null,\"drugStatus\":\"Enable\"}]";
+//var testjson = "[{\"id\":1,\"drugId\":\"097a9215-ee07-451f-8ef1-dd66704b1c01\"," +
+//		"\"drugType\":\"Prescription drug\",\"drugNameMedical\":\"Hydromorphone\"," +
+//		"\"drugNameCommercial\":\"Exalgo\",\"drugPrice\":10.0,\"drugLv\":\"1\"," +
+//		"\"drugUnit\":\"MG/ML\",\"drugDose\":\"50\",\"drugReaction\":null," +
+//		"\"drugUsage\":null,\"drugStatus\":\"Enable\"}," +
+//		"{\"id\":2,\"drugId\":\"097a9215-ee07-451f-8ef1-dd66704b1c02\"," +
+//			"\"drugType\":\"Prescription drug\",\"drugNameMedical\":\"Hydromorphone2\"," +
+//			"\"drugNameCommercial\":\"Exalgo2\",\"drugPrice\":10.0,\"drugLv\":\"1\"," +
+//			"\"drugUnit\":\"MG/ML\",\"drugDose\":\"50\",\"drugReaction\":null," +
+//			"\"drugUsage\":null,\"drugStatus\":\"Enable\"}]";
 $(document).ready(function() {
-	console.log(testjson);
+	//console.log(testjson);
 	loadAllDrug();
-	addPharmacyDrugToDb(testjson);
 
 //	loadAllDrug();
 //	showAddingDrugTable();
@@ -44,7 +43,7 @@ function loadAllDrug() {
 
 		success : function(data) {
 				loadDrug(data);
-				addPharmacyDrugToDb(testjson);
+				addDrug();
 			//giveButtonLink();
 		},
 		dataType : "json",
@@ -53,13 +52,26 @@ function loadAllDrug() {
 //Display drugs
 function loadDrug(drugList) {
 	console.log(drugList.length);
+	var drugNameCommercial;
+	var drugNameMedical;
 	var dataSet = [];
 	for ( var i in drugList) {
 		var drugItems = [];
+		if(drugList[i].drug_name.indexOf(' ')>-1){
+			drugNameCommercial = drugList[i].drug_name.split('_')[0];
+			drugNameMedical = drugList[i].drug_name.split('_')[1];
+		}
+		else{
+			drugNameMedical = drugList[i].drug_name;
+			drugNameCommercial = "Exalgo";
+		}
+		drugItems.push(drugNameCommercial);
+		drugItems.push(drugNameMedical);
+		drugItems.push(drugList[i].pharmacy_drug_id);
 		//drugItems.push(drugList[i].drug_id);
 		//drugItems.push(drugList[i].drug_unique_id);
-		drugItems.push(drugList[i].drug_name.split('_')[0]);
-		drugItems.push(drugList[i].drug_name.split('_')[1]);
+//		drugItems.push(drugList[i].drug_name.split('_')[0]);
+//		drugItems.push(drugList[i].drug_name.split('_')[1]);
 		//drugItems.push(drugList[i].drug_unit);
 		//drugItems.push(drugList[i].drug_dose);
 		//drugItems.push(drugList[i].drug_reaction);
@@ -83,6 +95,9 @@ function loadDrug(drugList) {
 			"class" : "center"
 		},{
 			"title" : "Drug Medical Name",
+			"class" : "center"
+		},{
+			"title" : "Drug Unique ID",
 			"class" : "center"
 		}]
 	});
@@ -156,29 +171,68 @@ function showAddingDrugTable(){
 //			});
 //}
 function addDrug(){
-	$('#get_drug_from_pharmacy').click(function(){
-		$.ajax({
-		     url:"http://138.49.101.83/Pharmacy/interface/drugList/all",
-		     dataType: 'jsonp', // Notice! JSONP <-- P (lowercase)
-		     success:function(json){
-		    	 addPharmacyDrugToDb(json);
-		         // do stuff with json (in this case an array)
-		         alert("Success");
-		     },
-		     error:function(){
-		         alert("Error");
-		     }      
-		});
-		location.reload();
-	});
+	$('#get_drug_from_pharmacy').click(function(){               
+	        var url = "http://138.49.101.83/Pharmacy/interface/drugList/all";
+	         
+	        var success = function(data){
+	            var html = [];
+	            /* parse JSON */
+	            data = $.parseJSON(data);
+	            
+	            console.log(data);
+	            /* loop through array */
+//	            $.each(data, function(index, d){            
+//	                html.push("Manufacturer : ", d.Manufacturer, ", ",
+//	                          "Sold : ", d.Sold, ", ", 
+//	                          "Month : ", d.Month, "<br>");
+//	            });
+//	 
+//	            $("#div391").html(html.join('')).css("background-color", "orange");
+	        };
+	         
+	        $.ajax({
+	          type: 'GET',    
+	          url: url,
+	          data:{todo:"jsonp"},
+	          dataType: "jsonp",
+	          crossDomain: true,          
+	          cache:false, 
+	          success: success,
+	          error:function(jqXHR, textStatus, errorThrown){
+	            alert(errorThrown);
+	          }
+	        });
+	    });
+//		$.getJSON("http://138.49.101.83/Pharmacy/interface/drugList/all",  
+//	            function(data){  
+//	                alert(data);
+//	    }); 
+////		$.ajax({
+////			type: 'GET',
+////            async: false,
+////            jsonpCallback: 'myJSON',
+////            contentType: "application/json",
+////            dataType: 'jsonp',
+////		     url:"http://138.49.101.83/Pharmacy/interface/drugList/all",// Notice! JSONP <-- P (lowercase)
+////		     success:function(json){
+////		    	 console.log(json);
+////		    	 addPharmacyDrugToDb(json);
+////		         // do stuff with json (in this case an array)
+////		         alert("Success");
+////		     },
+////		     error:function(){
+////		         alert("Error");
+////		     }      
+////		});
+//		location.reload();
 }
 
 function addPharmacyDrugToDb(testjson){
-	$('#get_drug_from_pharmacy').click(function(){
+	
 		var drugsFromPharmacy = $.parseJSON(testjson);
 		var dataSet = [];
 		for(var i in drugsFromPharmacy){
-			var drug = {drug_id:drugsFromPharmacy[i].id,drug_name:drugsFromPharmacy[i].drugNameCommercial+"_"+drugsFromPharmacy[i].drugNameMedical};
+			var drug = {pharmacy_drug_id:drugsFromPharmacy[i].drugId,drug_name:drugsFromPharmacy[i].drugNameCommercial+"_"+drugsFromPharmacy[i].drugNameMedical};
 			dataSet.push(drug);
 		}
 		var dataSetJsonResult = JSON.stringify(dataSet);
@@ -193,7 +247,7 @@ function addPharmacyDrugToDb(testjson){
 				console.log(data);
 				location.reload();
 //				//TODO
-//				if(data=="s"){
+//				if(data=="s"){e
 ////					$('#addingResult').html("Success!");
 ////					$('#addingResult').show();
 //					alert("Success!");
@@ -209,7 +263,6 @@ function addPharmacyDrugToDb(testjson){
 			},
 			dataType : "text",
 		});
-	});
 	
 }
 

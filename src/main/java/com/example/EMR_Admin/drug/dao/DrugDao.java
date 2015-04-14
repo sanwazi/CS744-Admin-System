@@ -117,15 +117,15 @@ public class DrugDao {
 	
 	public boolean addListDrug(List<Drug> input){
 		for(Drug d : input){
-			System.out.println("Dao first in"+d.getDrug_id()+"  "+d.getDrug_name());
+			System.out.println("Dao first in"+d.getDrug_id()+"  "+d.getDrug_name()+"  "+d.getPharmacy_drug_id());
 		}
 		try {
 			Session session = sessionFactory.openSession();
 			session.beginTransaction();
 			for(Drug d : input){
-				System.out.println("Dao before save"+d.getDrug_id()+"  "+d.getDrug_name());
+				System.out.println("Dao before save"+d.getDrug_id()+"  "+d.getDrug_name()+"  "+d.getPharmacy_drug_id());
 				session.merge(d);
-				System.out.println("Dao after save"+d.getDrug_id()+"  "+d.getDrug_name());
+				System.out.println("Dao after save"+d.getDrug_id()+"  "+d.getDrug_name()+"  "+d.getPharmacy_drug_id());
 			}
 			session.getTransaction().commit();
 			session.close();
