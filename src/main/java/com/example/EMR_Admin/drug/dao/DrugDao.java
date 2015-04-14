@@ -125,7 +125,7 @@ public class DrugDao {
 			session.beginTransaction();
 			for(Drug d : input){
 				System.out.println("Dao before save"+d.getDrug_id()+"  "+d.getDrug_name()+"  "+d.getPharmacy_drug_id());
-				session.merge(d);
+				session.saveOrUpdate(d);
 				System.out.println("Dao after save"+d.getDrug_id()+"  "+d.getDrug_name()+"  "+d.getPharmacy_drug_id());
 			}
 			session.getTransaction().commit();

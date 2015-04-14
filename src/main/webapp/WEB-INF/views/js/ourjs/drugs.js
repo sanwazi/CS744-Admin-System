@@ -230,7 +230,7 @@ function addPharmacyDrugToDb(testjson){
 		var drugsFromPharmacy = $.parseJSON(testjson);
 		var dataSet = [];
 		for(var i in drugsFromPharmacy){
-			var drug = {pharmacy_drug_id:drugsFromPharmacy[i].drugId,drug_name:drugsFromPharmacy[i].drugNameCommercial+"_"+drugsFromPharmacy[i].drugNameMedical};
+			var drug = {drug_id:drugsFromPharmacy[i].id,pharmacy_drug_id:drugsFromPharmacy[i].drugId,drug_name:drugsFromPharmacy[i].drugNameCommercial+"_"+drugsFromPharmacy[i].drugNameMedical};
 			dataSet.push(drug);
 		}
 		var dataSetJsonResult = JSON.stringify(dataSet);
