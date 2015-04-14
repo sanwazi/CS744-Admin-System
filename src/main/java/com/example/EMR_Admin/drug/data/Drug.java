@@ -17,7 +17,7 @@ public class Drug {
 
 	@Id
 	@Column(name = "drug_id")
-//	@GeneratedValue
+	@GeneratedValue
 	private int drug_id;
 	
 	@Column(name="drug_name")
