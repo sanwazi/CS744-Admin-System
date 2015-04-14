@@ -23,10 +23,17 @@ public class Drug {
 	@Column(name="drug_name")
 	private String drug_name;
 	
+	@Column(name="pharmacy_drug_id")
+	private String pharmacy_drug_id;
+	
 	public Drug(){
 		
 	}
 
+	public Drug(String drug_name, String pharmacy_drug_id){
+		this.drug_name = drug_name;
+		this.pharmacy_drug_id = pharmacy_drug_id;
+	}
 	
 	/**
 	 * @param drug_id
@@ -42,6 +49,14 @@ public class Drug {
 
 	
 	
+	public String getPharmacy_drug_id() {
+		return pharmacy_drug_id;
+	}
+
+	public void setPharmacy_drug_id(String pharmacy_drug_id) {
+		this.pharmacy_drug_id = pharmacy_drug_id;
+	}
+
 	public String getDrug_name() {
 		return drug_name;
 	}

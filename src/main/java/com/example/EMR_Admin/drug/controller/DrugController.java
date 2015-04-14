@@ -89,11 +89,11 @@ public class DrugController {
 	public @ResponseBody String addAllDrugFromPharmacyToDb(
 			@RequestBody List<Drug> jsonList){
 		for(Drug d : jsonList){
-			System.out.println("Controller just get"+d.getDrug_id()+"  "+d.getDrug_name());
+			System.out.println("Controller just get"+d.getDrug_id()+"  "+d.getDrug_name()+"  "+d.getPharmacy_drug_id());
 		}
 		boolean result = drugService.addDrugList(jsonList);
 		for(Drug d : jsonList){
-			System.out.println("Controller after save"+d.getDrug_id()+"  "+d.getDrug_name());
+			System.out.println("Controller after save"+d.getDrug_id()+"  "+d.getDrug_name()+"  "+d.getPharmacy_drug_id());
 		}
 		return jsonList.toString();
 //		if(result) return "s";
