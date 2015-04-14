@@ -38,4 +38,8 @@ public class DrugService {
 		int drug_id = drug.getDrug_id();
 		return drugDao.deleteDrugById(drug_id);
 	}
+	
+	public boolean addDrugList(List<Drug> input){
+		return drugDao.addListDrug(input);
+	}
 }

@@ -7,6 +7,7 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -41,10 +42,10 @@ public class DrugController {
 	@RequestMapping(value = "/drug/addDrug", method = RequestMethod.GET)
 	@Secured(value = { "ROLE_ADMIN" })
 	public @ResponseBody String addDrug(
-			@RequestParam(value = "drug_name_commercial", required = true) String drug_name_commercial
+			@RequestParam(value = "drug_name", required = true) String drug_name
 			) {
 		Drug drug = new Drug();
-		drug.setDrug_name_commercial(drug_name_commercial);
+		drug.setDrug_name(drug_name);
 		boolean result = drugService.addDrug(drug);
 		if(result){
 			return "s";
@@ -63,10 +64,10 @@ public class DrugController {
 	@Secured(value = {"ROLE_ADMIN"})
 	public @ResponseBody String updateDrug(
 			@RequestParam(value = "drug_id", required=true) int drug_id,
-			@RequestParam(value = "drug_name_commercial") String drug_name_commercial){
+			@RequestParam(value = "drug_name") String drug_name){
 		Drug drug = new Drug();
 		drug.setDrug_id(drug_id);
-		drug.setDrug_name_commercial(drug_name_commercial);
+		drug.setDrug_name(drug_name);
 		boolean result = drugService.updateDrug(drug);
 		if(result) return "s";
 		else return "d";
@@ -83,11 +84,20 @@ public class DrugController {
 		else return "d";
 	}
 	
-	@RequestMapping(value="/drug/addAllDrugFromPharmacyToDb", method = RequestMethod.GET)
+	@RequestMapping(value="/drug/addAllDrugFromPharmacyToDb", method = RequestMethod.POST)
 	@Secured(value = {"ROLE_ADMIN"})
-	public @ResponseBody void addAllDrugFromPharmacyToDb(
-			@RequestParam(value = "drug_name_commercial", required = true) String drug_name_commercial){
-		
+	public @ResponseBody String addAllDrugFromPharmacyToDb(
+			@RequestBody List<Drug> jsonList){
+		for(Drug d : jsonList){
+			System.out.println("Controller just get"+d.getDrug_id()+"  "+d.getDrug_name());
+		}
+		boolean result = drugService.addDrugList(jsonList);
+		for(Drug d : jsonList){
+			System.out.println("Controller after save"+d.getDrug_id()+"  "+d.getDrug_name());
+		}
+		return jsonList.toString();
+//		if(result) return "s";
+//		else return "d";
 	}
 	
 }

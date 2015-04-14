@@ -1,4 +1,5 @@
 //[{"physicianId":1,"physicianName":"milk","physicianGender":"male","physicianBirthday":675838800000,"account":"milk","password":"milk"}]
+//[{"physicianId":1,"physicianName":"milk xue","physicianGender":"male","physicianBirthday":675838800000,"account":"milk xue","password":"milk","specialty":"Anesthesiologist","ssn":""},{"physicianId":31,"physicianName":"zane","physicianGender":"male","physicianBirthday":657698400000,"account":"zane","password":"123","specialty":"","ssn":""},{"physicianId":11,"physicianName":"lee","physicianGender":"male","physicianBirthday":752392800000,"account":"lee","password":"123","specialty":"Neurosociology","ssn":""},{"physicianId":19,"physicianName":"goodman","physicianGender":"male","physicianBirthday":720856800000,"account":"goodman","password":"123","specialty":"Preventive healthcare","ssn":""},{"physicianId":20,"physicianName":"hebe","physicianGender":"female","physicianBirthday":752392800000,"account":"hebe","password":"123","specialty":"Ophthalmology","ssn":""}]
 
 Date.prototype.customFormat = function(formatString){
     var YYYY,YY,MMMM,MMM,MM,M,DDDD,DDD,DD,D,hhh,hh,h,mm,m,ss,s,ampm,AMPM,dMod,th;
@@ -70,11 +71,24 @@ function loadPhysician(departmentName) {
 }
 function loadDepartmentPhysicians(physicianList) {
 	var dataSet = [];
+	var physicianFirstName;
+	var physicianLastName;
 	for ( var i in physicianList) {
 		var physicianItems = [];
-		physicianItems.push(physicianList[i].physicianName);
+		if(physicianList[i].physicianName.indexOf(' ')>-1){
+			physicianFirstName = physicianList[i].physicianName.split(' ')[0];
+			physicianLastName = physicianList[i].physicianName.split(' ')[1];
+		}
+		else{
+			physicianFirstName = physicianList[i].physicianName;
+			physicianLastName = "Bach";
+		}
+		console.log(physicianFirstName,physicianLastName);
+		physicianItems.push(physicianFirstName);
+		physicianItems.push(physicianLastName);
 		physicianItems.push(physicianList[i].physicianGender);
-		physicianItems.push(convertMillisecondsToDate(physicianList[i].physicianBirthday));
+		physicianItems.push(physicianList[i].specialty);
+//		physicianItems.push(convertMillisecondsToDate(physicianList[i].physicianBirthday));
 //		physicianItems.push(physicianList[i].account);
 //		physicianItems.push(physicianList[i].password);
 //		if (primary[i].access_right == '11') {
@@ -84,9 +98,9 @@ function loadDepartmentPhysicians(physicianList) {
 //		}
 		// patientItem.push(primary[i].access_right);
 		//var editButton = generateEditButton(physicianList[i].physicianId);
-		var deleteButton = generateDeleteButton(physicianList[i].physicianId);
+		//var deleteButton = generateDeleteButton(physicianList[i].physicianId);
 		//physicianItems.push(editButton);
-		physicianItems.push(deleteButton);
+		//physicianItems.push(deleteButton);
 		//physicianItems.push(deleteButton);
 		dataSet.push(physicianItems);
 	}
@@ -95,13 +109,16 @@ function loadDepartmentPhysicians(physicianList) {
 		responsive : true,
 		data : dataSet,
 		columns : [ {
-			"title" : "Physician Name"
+			"title" : "Physician First Name",
+				"class" : "center"
 		}, {
-			"title" : "Physician Gender"
+			"title" : "Physician Last Name",
+			"class" : "center"
 		}, {
-			"title" : "Physician Birthday"
-		},{
-			"title" : "Delete",
+			"title" : "Physician Gender",
+			"class" : "center"
+		}, {
+			"title" : "Physician Specialty",
 			"class" : "center"
 		}]
 	});

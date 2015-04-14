@@ -46,25 +46,27 @@ public class Physician {
 	private String password;
 	
 	@Column(name = "SSN")
-	private String ssn;
-
+	private String SSN;
+	
 	@Column(name = "specialty")
 	private String specialty;
 	
+	
+
+	public String getSSN() {
+		return SSN;
+	}
+
+	public void setSSN(String sSN) {
+		SSN = sSN;
+	}
+
 	public String getSpecialty() {
 		return specialty;
 	}
 
 	public void setSpecialty(String specialty) {
 		this.specialty = specialty;
-	}
-
-	public String getSsn() {
-		return ssn;
-	}
-
-	public void setSsn(String ssn) {
-		this.ssn = ssn;
 	}
 
 	public int getPhysicianId() {
