@@ -7,7 +7,6 @@ import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
-import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -24,15 +23,15 @@ public class DrugDao {
 		// TODO Auto-generated method stub
 		Session session = sessionFactory.openSession();
 		Query q = session.createQuery("from Drug where drug_name like '"
-				+ input + "%'");
+				+ input +"%'");
 		Transaction transaction = session.beginTransaction();
 		List<Drug> list = q.list();
 		transaction.commit();
 		session.close();
 		return list;
 	}
-
-	public List<Drug> getAll() {
+	
+	public List<Drug> getAll(){
 		Session session = sessionFactory.openSession();
 		Query q = session.createQuery("from Drug");
 		Transaction transaction = session.beginTransaction();
@@ -41,90 +40,92 @@ public class DrugDao {
 		session.close();
 		return list;
 	}
-
-	public List<Drug> getDrugByName(String drug_name_medical) {
+	
+	public List<Drug> getDrugByName(String drug_name){
 		Session session = sessionFactory.openSession();
-		Query q = session.createQuery("from Drug where drug_name_medical = '"
-				+ drug_name_medical + "'");
+		Query q = session.createQuery("from Drug where drug_name = '"+drug_name+"'");
 		Transaction transaction = session.beginTransaction();
 		List<Drug> list = q.list();
 		transaction.commit();
 		session.close();
 		return list;
 	}
-
-	public List<Drug> getDrugById(int drug_id) {
+	
+	public List<Drug> getDrugById(int drug_id){
 		Session session = sessionFactory.openSession();
-		Query q = session.createQuery("from Drug where drug_id = '" + drug_id
-				+ "'");
+		Query q = session.createQuery("from Drug where drug_id = '"+drug_id+"'");
 		Transaction transaction = session.beginTransaction();
 		List<Drug> list = q.list();
 		transaction.commit();
 		session.close();
 		return list;
 	}
-
-	public boolean addDrug(Drug drug) {
-
-		try {
-			Session session = sessionFactory.openSession();
-			session.beginTransaction();
-			session.save(drug);
-			session.getTransaction().commit();
-			session.close();
-		} catch (HibernateException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-			return false;
+	
+	public boolean addDrug(Drug drug){
+		if(getDrugByName(drug.getDrug_name()).isEmpty()){
+			try {
+				Session session = sessionFactory.openSession();
+				session.beginTransaction();
+				session.save(drug);
+				session.getTransaction().commit();
+				session.close();
+			} catch (HibernateException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+				return false;
+			}
+			return true;
 		}
-		return true;
-
+		return false;
 	}
-
-	public boolean updateDrug(Drug drug) {
-
-		try {
-			Session session = sessionFactory.openSession();
-			session.beginTransaction();
-			session.update(drug);
-			session.getTransaction().commit();
-			session.close();
-		} catch (HibernateException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-			return false;
+	
+	public boolean updateDrug(Drug drug){
+		if (getDrugByName(drug.getDrug_name()).isEmpty()) {
+			try {
+				Session session = sessionFactory.openSession();
+				session.beginTransaction();
+				session.update(drug);
+				session.getTransaction().commit();
+				session.close();
+			} catch (HibernateException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+				return false;
+			}
+			return true;
 		}
-		return true;
-
+		return false;
 	}
-
-	public boolean deleteDrugById(int drug_id) {
-
-		try {
-			Session session = sessionFactory.openSession();
-			Query q = session.createQuery("delete Drug where drug_id = '"
-					+ drug_id + "'");
-			q.executeUpdate();
-			session.beginTransaction();
-			session.close();
-		} catch (HibernateException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-			return false;
+	
+	public boolean deleteDrugById(int drug_id){
+		if(!getDrugById(drug_id).isEmpty()){
+			try {
+				Session session = sessionFactory.openSession();
+				Query q = session.createQuery("delete Drug where drug_id = '"+drug_id+"'");
+				q.executeUpdate();
+				session.beginTransaction();
+				session.close();
+			} catch (HibernateException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+				return false;
+			}
+			return true;
 		}
-		return true;
-
+		return false;
 	}
-
-	public boolean addListDrug(List<Drug> input) {
-
+	
+	public boolean addListDrug(List<Drug> input){
+		for(Drug d : input){
+			System.out.println("Dao first in"+d.getDrug_id()+"  "+d.getDrug_name()+"  "+d.getPharmacy_drug_id());
+		}
 		try {
 			Session session = sessionFactory.openSession();
 			session.beginTransaction();
-			for (Drug d : input) {
-
-				session.saveOrUpdate(d);
-
+			for(Drug d : input){
+				System.out.println("Dao before save"+d.getDrug_id()+"  "+d.getDrug_name()+"  "+d.getPharmacy_drug_id());
+				session.merge(d);
+				System.out.println("Dao after save"+d.getDrug_id()+"  "+d.getDrug_name()+"  "+d.getPharmacy_drug_id());
 			}
 			session.getTransaction().commit();
 			session.close();
@@ -135,5 +136,4 @@ public class DrugDao {
 		}
 		return true;
 	}
-
 }

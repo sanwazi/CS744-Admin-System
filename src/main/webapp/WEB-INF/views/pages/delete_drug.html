@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -234,7 +233,7 @@
 						<li><a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a>
 						</li>
 						<li class="divider"></li>
-						<li><a href="login.html"><i class="fa fa-sign-out fa-fw"></i>
+						<li><a href="../../"><i class="fa fa-sign-out fa-fw"></i>
 								Logout</a></li>
 					</ul> <!-- /.dropdown-user --></li>
 				<!-- /.dropdown -->
@@ -260,27 +259,26 @@
 						<li><a href="#"><i class="fa fa-sitemap fa-fw"></i>
 								Relationship<span class="fa arrow"></span></a>
 							<ul class="nav nav-second-level">
-								<li><a href="Physician_Patient.html">Physician and Patient</a></li>
-								<li><a href="Medical_Staff_Patient.html">Medical staff and Patient</a></li>
-								<li><a href="Physician_Medical_Staff.html">Physician and Medical staff </a></li>
+								<li><a href="Physician_Patient.html">Physician and
+										Patient</a></li>
+								<li><a href="Physician_Medical_Staff.html">Physician
+										and Medical staff </a></li>
 							</ul></li>
 
-						<li><a href="departmentDetail.html"><i class="fa fa-building-o"></i>
-								Department</a>
-<!-- 							<ul id="department_ul" class="nav nav-second-level"> -->
-								<!-- 
-								<li><a href="#">Physician and Patient</a></li>
-								<li><a href="#">Medical staff and Physican</a></li>
-								<li><a href="#">Physician and Medical staff </a></li>
-								 -->
-<!-- 							</ul> -->
-						</li>
+						<li><a href="#"><i class="fa fa-building-o"></i>
+								Department<span class="fa arrow"></span></a>
+							<ul id="department_ul" class="nav nav-second-level">
+
+							</ul></li>
 						<li><a href="diagnostic.html"><i class="fa fa-edit fa-fw"></i>
 								Diagnostic Test</a></li>
-						<li><a href="drugs.html"><i class="fa fa-medkit"></i> Drugs</a></li>
+						<li><a href="drugs.html"><i class="fa fa-medkit"></i>
+								Drugs</a></li>
 
 						<li><a href="surgery.html"><i class="fa fa-files-o fa-fw"></i>
 								Surgery</a></li>
+						<li><a href="treatment.html"><i class="fa fa-stethoscope"></i>
+								Treatment</a></li>
 					</ul>
 				</div>
 				<!-- /.sidebar-collapse -->
@@ -289,16 +287,18 @@
 		</nav>
 
 		<div id="page-wrapper">
-		<fieldset>
-			<legend>Are you sure you want to delete this drug?</legend>
-			<div class="form-horizontal">
-				<fieldset>
-					<legend>Editing Drug</legend>
-					<div class="form-group has-success">
-						<label for="inputEmail" class="col-lg-3 control-label">Drug ID</label>
-						<div class="col-lg-9">
-							<input type="text" class="form-control" id="drug_id"
-								placeholder="" disabled>
+			<fieldset>
+				<legend>Are you sure you want to delete this drug?</legend>
+				<div class="form-horizontal">
+					<fieldset>
+						<legend>Editing Drug</legend>
+						<div class="form-group has-success">
+							<label for="inputEmail" class="col-lg-3 control-label">Drug
+								ID</label>
+							<div class="col-lg-9">
+								<input type="text" class="form-control" id="drug_id"
+									placeholder="" disabled>
+							</div>
 						</div>
 					</div>
 					<div class="form-group has-success">
@@ -307,25 +307,23 @@
 							<input type="text" class="form-control" id="drug_name_commercial"
 								placeholder="" disabled>
 						</div>
-					</div>
-				</fieldset>
-			</div>
-			<div class="row">
-				<div class="col-lg-6"></div>
-				<div class="col-lg-4">
-					<p>
-						<button type="button" class="btn btn-info"
-							id='delete_drug'>
-							<i class="fa fa-pencil-square-o"></i>Yes
-						</button>
-						<a type="button" class="btn btn-danger" href="drugs.html"> <i
-							class="fa fa-pencil-square-o"></i> Cancel
-						</a>
-					</p>
+					</fieldset>
 				</div>
-			</div>
-		</fieldset>
-		<h1 id="deletingResult" style="display:none;"></h1>
+				<div class="row">
+					<div class="col-lg-6"></div>
+					<div class="col-lg-4">
+						<p>
+							<button type="button" class="btn btn-info" id='delete_drug'>
+								<i class="fa fa-pencil-square-o"></i>Yes
+							</button>
+							<a type="button" class="btn btn-danger" href="drugs.html"> <i
+								class="fa fa-pencil-square-o"></i> Cancel
+							</a>
+						</p>
+					</div>
+				</div>
+			</fieldset>
+			<h1 id="deletingResult" style="display: none;"></h1>
 		</div>
 		<!-- /#page-wrapper -->
 

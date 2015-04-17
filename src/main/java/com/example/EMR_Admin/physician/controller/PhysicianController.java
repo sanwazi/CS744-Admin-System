@@ -37,6 +37,4 @@ public class PhysicianController {
 		List<Physician> list = pService.getPhysicianList();
 		return list;
 	}
-
 }
-

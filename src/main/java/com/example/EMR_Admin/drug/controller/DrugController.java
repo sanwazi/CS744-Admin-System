@@ -42,10 +42,10 @@ public class DrugController {
 	@RequestMapping(value = "/drug/addDrug", method = RequestMethod.GET)
 	@Secured(value = { "ROLE_ADMIN" })
 	public @ResponseBody String addDrug(
-			@RequestParam(value = "drug_name_commercial", required = true) String drug_name_commercial
+			@RequestParam(value = "drug_name", required = true) String drug_name
 			) {
 		Drug drug = new Drug();
-		drug.setDrug_name_commercial(drug_name_commercial);
+		drug.setDrug_name(drug_name);
 		boolean result = drugService.addDrug(drug);
 		if(result){
 			return "s";
@@ -64,10 +64,10 @@ public class DrugController {
 	@Secured(value = {"ROLE_ADMIN"})
 	public @ResponseBody String updateDrug(
 			@RequestParam(value = "drug_id", required=true) int drug_id,
-			@RequestParam(value = "drug_name_commercial") String drug_name_commercial){
+			@RequestParam(value = "drug_name") String drug_name){
 		Drug drug = new Drug();
 		drug.setDrug_id(drug_id);
-		drug.setDrug_name_commercial(drug_name_commercial);
+		drug.setDrug_name(drug_name);
 		boolean result = drugService.updateDrug(drug);
 		if(result) return "s";
 		else return "d";
@@ -88,23 +88,16 @@ public class DrugController {
 	@Secured(value = {"ROLE_ADMIN"})
 	public @ResponseBody String addAllDrugFromPharmacyToDb(
 			@RequestBody List<Drug> jsonList){
-
+		for(Drug d : jsonList){
+			System.out.println("Controller just get"+d.getDrug_id()+"  "+d.getDrug_name()+"  "+d.getPharmacy_drug_id());
+		}
 		boolean result = drugService.addDrugList(jsonList);
-
+		for(Drug d : jsonList){
+			System.out.println("Controller after save"+d.getDrug_id()+"  "+d.getDrug_name()+"  "+d.getPharmacy_drug_id());
+		}
 		return jsonList.toString();
 //		if(result) return "s";
 //		else return "d";
 	}
-	
-//	@RequestMapping(value = "/drug/testtest", method = RequestMethod.GET)
-//	@Secured(value = {"ROLE_ADMIN"})
-//	public @ResponseBody String deleteDrug(
-	
-//			){
-//		
-//		
-//		String url = "http://138.49.101.83/Pharmacy/interface/drugList/all";
-//		return "d";
-//	}
 	
 }

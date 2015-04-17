@@ -19,17 +19,14 @@
 <link href="../bower_components/metisMenu/dist/metisMenu.min.css"
 	rel="stylesheet">
 
-<link href="bootstrap-3.0.0/css/bootstrap.css" rel="stylesheet">
-<link rel="stylesheet" href="../css/jquery.treegrid.css">
-
 <!-- DataTables CSS -->
 <link
-	href="../bower_components/datatables-plugins/integration/bootstrap/3/dataTables.bootstrap.css"
+	href="/EMR_Admin/views/bower_components/datatables-plugins/integration/bootstrap/3/dataTables.bootstrap.css"
 	rel="stylesheet">
 
 <!-- DataTables Responsive CSS -->
 <link
-	href="../bower_components/datatables-responsive/css/dataTables.responsive.css"
+	href="/EMR_Admin/views/bower_components/datatables-responsive/css/dataTables.responsive.css"
 	rel="stylesheet">
 
 <!-- Custom CSS -->
@@ -236,7 +233,7 @@
 						<li><a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a>
 						</li>
 						<li class="divider"></li>
-						<li><a href="login.html"><i class="fa fa-sign-out fa-fw"></i>
+						<li><a href="../../"><i class="fa fa-sign-out fa-fw"></i>
 								Logout</a></li>
 					</ul> <!-- /.dropdown-user --></li>
 				<!-- /.dropdown -->
@@ -261,27 +258,25 @@
 						<li><a href="#"><i class="fa fa-sitemap fa-fw"></i>
 								Relationship<span class="fa arrow"></span></a>
 							<ul class="nav nav-second-level">
-								<li><a href="Physician_Patient.html">Physician and Patient</a></li>
-								<li><a href="Medical_Staff_Patient.html">Medical staff and Patient</a></li>
-								<li><a href="Physician_Medical_Staff.html">Physician and Medical staff </a></li>
+								<li><a href="Physician_Patient.html">Physician and
+										Patient</a></li>
+								<li><a href="Physician_Medical_Staff.html">Physician
+										and Medical staff </a></li>
 							</ul></li>
 
-						<li><a href="departmentDetail.html"><i class="fa fa-building-o"></i>
-								Department</a>
-<!-- 							<ul id="department_ul" class="nav nav-second-level"> -->
-								<!-- 
-								<li><a href="#">Physician and Patient</a></li>
-								<li><a href="#">Medical staff and Physican</a></li>
-								<li><a href="#">Physician and Medical staff </a></li>
-								 -->
-<!-- 							</ul> -->
-						</li>
+						<li><a href="#"><i class="fa fa-building-o"></i>
+								Department<span class="fa arrow"></span></a>
+							<ul id="department_ul" class="nav nav-second-level">
+							</ul></li>
 						<li><a href="diagnostic.html"><i class="fa fa-edit fa-fw"></i>
 								Diagnostic Test</a></li>
-						<li><a href="drugs.html"><i class="fa fa-medkit"></i> Drugs</a></li>
+						<li><a href="drugs.html"><i class="fa fa-medkit"></i>
+								Drugs</a></li>
 
 						<li><a href="surgery.html"><i class="fa fa-files-o fa-fw"></i>
 								Surgery</a></li>
+						<li><a href="treatment.html"><i class="fa fa-stethoscope"></i>
+								Treatment</a></li>
 					</ul>
 				</div>
 				<!-- /.sidebar-collapse -->
@@ -312,7 +307,11 @@
 									<th class="sorting_desc" tabindex="0" aria-controls="example"
 										rowspan="1" colspan="1"
 										aria-label="prescription_id: activate to sort column ascending"
-										style="width: 158px;" aria-sort="descending">Name</th>
+										style="width: 158px;" aria-sort="descending">First Name</th>
+									<th class="sorting_desc" tabindex="0" aria-controls="example"
+										rowspan="1" colspan="1"
+										aria-label="prescription_id: activate to sort column ascending"
+										style="width: 158px;" aria-sort="descending">Last Name</th>
 									<th class="sorting" tabindex="0" aria-controls="example"
 										rowspan="1" colspan="1"
 										aria-label="patient_name: activate to sort column ascending"
@@ -320,7 +319,7 @@
 									<th class="sorting" tabindex="0" aria-controls="example"
 										rowspan="1" colspan="1"
 										aria-label="physician_name: activate to sort column ascending"
-										style="width: 168px;">Birthday</th>
+										style="width: 168px;">Specialty</th>
 									<th class="sorting" tabindex="0" aria-controls="example"
 										rowspan="1" colspan="1"
 										aria-label="physician_name: activate to sort column ascending"
@@ -328,7 +327,7 @@
 									<th class="sorting" tabindex="0" aria-controls="example"
 										rowspan="1" colspan="1"
 										aria-label="physician_name: activate to sort column ascending"
-										style="width: 168px;">Password</th>
+										style="width: 168px;">SSN</th>
 
 								</tr>
 							</thead>
@@ -337,10 +336,11 @@
 								<tr role="row" class="odd">
 
 									<td class="sorting_1">john</td>
+									<td>deo</td>
 									<td>male</td>
 									<td>08/01/1991</td>
 									<td>ads</td>
-									<td>123</td>
+
 								</tr>
 							</tbody>
 						</table>
@@ -375,14 +375,6 @@
 
 	<script src="../js/ourjs/physician.js"></script>
 
-	<script type="text/javascript" src="../js/jquery.treegrid.js"></script>
-	<script type="text/javascript"
-		src="../js/jquery.treegrid.bootstrap3.js"></script>
-	<script type="text/javascript">
-		$(document).ready(function() {
-			$('.tree').treegrid();
-		});
-	</script>
-
 </body>
+
 </html>
