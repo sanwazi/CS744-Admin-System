@@ -211,6 +211,48 @@ function registerSurgeryInput() {
 	registerPhysicianAddButton();
 }
 
+//department name autocomplate
+
+function departmentNameInput() {
+	$("#input_search_department_name").on(
+			"keyup",
+			function() {
+				console.log("here user input department_name");
+				var input = $('#input_search_department_name').val();
+				$.ajax({
+					type : "GET",
+					url : "/EMR_Admin/department/autocomplete",
+					data : 'input=' + input,
+					success : function(data) {
+						var department_names = [];
+						for(var i in data){
+							department_names.push(data[i].department_name);
+						}
+//						var suggestion = [];
+//						var sourceName = [];
+//						for ( var i in data) {
+//							suggestion.push(data[i].physicianId + "_"
+//									+ data[i].physicianName);
+//						}
+						$("#input_search_department_name").autocomplete({
+							source : suggestion
+						});
+					},
+					dataType : "json",
+				});
+			});
+	searchButtonListener();
+}
+
+//Search button listener
+function searchButtonListener(){
+	$('#btn_search_department_name').on(
+			'click',
+			function(){
+				var input = $()
+			});
+}
+
 //add physician_department_relation
 function registerPhysicianAddButton() {
 	$('#addPhysician').on(
