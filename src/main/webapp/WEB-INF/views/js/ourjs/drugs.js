@@ -52,31 +52,31 @@ function loadAllDrug() {
 // Display drugs
 function loadDrug(drugList) {
 	console.log(drugList.length);
-	var drugNameCommercial;
-	var drugNameMedical;
+//	var drugNameCommercial;
+//	var drugNameMedical;
 	var dataSet = [];
 	for ( var i in drugList) {
 		var drugItems = [];
-		if(drugList[i].drug_name.indexOf(' ')>-1){
-			drugNameCommercial = drugList[i].drug_name.split('_')[0];
-			drugNameMedical = drugList[i].drug_name.split('_')[1];
-		}
-		else{
-			drugNameMedical = drugList[i].drug_name;
-			drugNameCommercial = "Exalgo";
-		}
-		drugItems.push(drugNameCommercial);
-		drugItems.push(drugNameMedical);
-		drugItems.push(drugList[i].pharmacy_drug_id);
+//		if(drugList[i].drug_name.indexOf(' ')>-1){
+//			drugNameCommercial = drugList[i].drug_name.split('_')[0];
+//			drugNameMedical = drugList[i].drug_name.split('_')[1];
+//		}
+//		else{
+//			drugNameMedical = drugList[i].drug_name;
+//			drugNameCommercial = "Exalgo";
+//		}
+		drugItems.push(drugList[i].drug_name_medical);
+		drugItems.push(drugList[i].drug_name_commercial);
 		// drugItems.push(drugList[i].drug_id);
 		// drugItems.push(drugList[i].drug_unique_id);
 // drugItems.push(drugList[i].drug_name.split('_')[0]);
 // drugItems.push(drugList[i].drug_name.split('_')[1]);
-		// drugItems.push(drugList[i].drug_unit);
-		// drugItems.push(drugList[i].drug_dose);
-		// drugItems.push(drugList[i].drug_reaction);
-		// drugItems.push(drugList[i].drug_usage);
-		// drugItems.push(drugList[i].drug_status);
+		 drugItems.push(drugList[i].drug_unit);
+		 drugItems.push(drugList[i].drug_dose);
+		 drugItems.push(drugList[i].drug_reaction);
+		 drugItems.push(drugList[i].drug_usage);
+		 var markedStatus = drawMarkForStatus(drugList[i].drug_status);
+		 drugItems.push(markedStatus);
 		// var editButton = generateEditButton(drugList[i].drug_id);
 		// var deleteButton = generateDeleteButton(drugList[i].drug_id);
 		// drugItems.push(editButton);
@@ -91,19 +91,44 @@ function loadDrug(drugList) {
 		responsive : true,
 		data : dataSet,
 		columns : [{
-			"title" : "Drug Commercial Name",
-			"class" : "center"
-		},{
 			"title" : "Drug Medical Name",
 			"class" : "center"
 		},{
-			"title" : "Drug Unique ID",
+			"title" : "Drug Commercial Name",
+			"class" : "center"
+		},{
+			"title" : "Drug Unit",
+			"class" : "center"
+		},{
+			"title" : "Drug Dose",
+			"class" : "center"
+		},{
+			"title" : "Drug Reaction",
+			"class" : "center"
+		},{
+			"title" : "Drug Usage",
+			"class" : "center"
+		},{
+			"title" : "Drug Status",
 			"class" : "center"
 		}]
 	});
 	
 }
-
+function drawMarkForStatus(drug_status){
+	if(drug_status == "Enable"){
+		var enableMark = "<a id=\""
+			+ drug_status
+			+ "\" class=\"btn btn-success btn-xs\" >"+drug_status+"</a>";
+		return enableMark
+	}else{
+		var disableMark = "<a id=\""
+			+ drug_status
+			+ "\" class=\"btn btn-danger btn-xs\" >"+drug_status+"</a>";
+		return disableMark
+	}
+	
+}
 // get drug from pharmacy
 // function getDrugFromPharmacy(){
 // $('#get_drug_from_pharmacy').click(function(){
@@ -174,28 +199,7 @@ function addDrug(){
 	var url1= "http://138.49.101.83/Pharmacy/interface/drugList/all";
 	var url2 = "";
 	$('#get_drug_from_pharmacy').click(function(){
-//		$.ajax({
-//			type: 'GET',
-//            //async: false,
-//            //jsonpCallback: 'myJSON',
-//            contentType: "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8",
-//            dataType: 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
-//			crossDomain: true,
-//		    url:url1,// Notice!
-//																		// JSONP
-//																		// <-- P
-//																		// (lowercase)
-//		    success:function(json){
-//		    	console.log("here1");
-//		    	 console.log(json);
-//		    	 //addPharmacyDrugToDb(json);
-//		         // do stuff with json (in this case an array)
-//		         alert("Success");
-//		     },
-//		     error:function(){
-//		         alert("Error");
-//		     }      
-//		});
+
 		console.log("here3");
 		var invocation = new XMLHttpRequest();
 		var url = 'http://138.49.101.83/Pharmacy/interface/drugList/all';
@@ -230,7 +234,18 @@ function addPharmacyDrugToDb(testjson){
 		var drugsFromPharmacy = $.parseJSON(testjson);
 		var dataSet = [];
 		for(var i in drugsFromPharmacy){
-			var drug = {drug_id:drugsFromPharmacy[i].id,pharmacy_drug_id:drugsFromPharmacy[i].drugId,drug_name:drugsFromPharmacy[i].drugNameCommercial+"_"+drugsFromPharmacy[i].drugNameMedical};
+			var drug = {
+							drug_id:drugsFromPharmacy[i].id,
+							drug_unique_id:drugsFromPharmacy[i].drugId,
+							drug_lv:drugsFromPharmacy[i].drugLv,
+							drug_name_medical:drugsFromPharmacy[i].drugNameMedical,
+							drug_name_commercial:drugsFromPharmacy[i].drugNameCommercial,
+							drug_unit:drugsFromPharmacy[i].drugUnit,
+							drug_dose:drugsFromPharmacy[i].drugDose,
+							drug_reaction:drugsFromPharmacy[i].drugReaction,
+							drug_usage:drugsFromPharmacy[i].drugUsage,
+							drug_status:drugsFromPharmacy[i].drugStatus,
+						};
 			dataSet.push(drug);
 		}
 		var dataSetJsonResult = JSON.stringify(dataSet);
@@ -369,3 +384,25 @@ function generateDeleteButton(drugId) {
 // function(data){
 // alert(data);
 // });
+//$.ajax({
+//type: 'GET',
+////async: false,
+////jsonpCallback: 'myJSON',
+//contentType: "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8",
+//dataType: 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
+//crossDomain: true,
+//url:url1,// Notice!
+//															// JSONP
+//															// <-- P
+//															// (lowercase)
+//success:function(json){
+//	console.log("here1");
+//	 console.log(json);
+//	 //addPharmacyDrugToDb(json);
+//     // do stuff with json (in this case an array)
+//     alert("Success");
+// },
+// error:function(){
+//     alert("Error");
+// }      
+//});
