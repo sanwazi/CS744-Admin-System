@@ -25,18 +25,28 @@ function listeningDeleteButton(){
 	$("#delete_diagnostic").on(
 			'click',
 			function(){
-				var diagnostic_id = $("#diagnostic_id").val();
+				var diagnostic_id = getUrlParameter("diagnostic_id");
 				$.ajax({
 					type: "GET",
 					url : "/EMR_Admin/diagnostic/deleteDiagnostic",
 					data: "diagnostic_id=" + diagnostic_id,
 					success : function(data){
-						
+						var req = {
+								table:"diagnostic",
+								action:"delete",
+								object:{
+									id:getUrlParameter("diagnostic_id"),
+									name:$("#diagnostic_name").val(),
+									cost:$("#diagnostic_cost").val()
+								}
+						}
+						console.log(req);
 						if(data=="s"){
+							
 							$('#deletingResult').html("Success!");
 							$('#deletingResult').show();
 							//loadAllDrug();
-							setTimeout(jump,1000);
+//							setTimeout(jump,1000);
 							
 						}
 						else if(data=="d"){
