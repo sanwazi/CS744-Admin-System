@@ -1,10 +1,10 @@
 
 //var urllink = "/EMR_Admin/views/pages/departmentDetails.html";
-var urllink = "/EMR_Admin/views/pages/departmentDetail.html?department_name=";
-var ul = document.getElementById("department_ul");
+//var urllink = "/EMR_Admin/views/pages/departmentDetail.html?department_name=";
+//var ul = document.getElementById("department_ul");
 
 $(document).ready(function() {
-	loadDepartment();
+	//loadDepartment();
 });
 
 function loadDepartment(){
