@@ -71,57 +71,21 @@
 					<ul class="dropdown-menu dropdown-alerts">
 						<li><a href="#">
 								<div>
-									<i class="fa fa-comment fa-fw"></i> New Comment <span
-										class="pull-right text-muted small">4 minutes ago</span>
+									<i class="fa fa-ambulance"></i> <i class="text"
+										id="disable_drug"></i> disable drug
 								</div>
 						</a></li>
 						<li class="divider"></li>
 						<li><a href="#">
 								<div>
-									<i class="fa fa-twitter fa-fw"></i> 3 New Followers <span
-										class="pull-right text-muted small">12 minutes ago</span>
+									<i class="fa fa-wheelchair"></i> <i class="text"
+										id="patient_without_emr"></i>patients without emr
 								</div>
-						</a></li>
-						<li class="divider"></li>
-						<li><a href="#">
-								<div>
-									<i class="fa fa-envelope fa-fw"></i> Message Sent <span
-										class="pull-right text-muted small">4 minutes ago</span>
-								</div>
-						</a></li>
-						<li class="divider"></li>
-						<li><a href="#">
-								<div>
-									<i class="fa fa-tasks fa-fw"></i> New Task <span
-										class="pull-right text-muted small">4 minutes ago</span>
-								</div>
-						</a></li>
-						<li class="divider"></li>
-						<li><a href="#">
-								<div>
-									<i class="fa fa-upload fa-fw"></i> Server Rebooted <span
-										class="pull-right text-muted small">4 minutes ago</span>
-								</div>
-						</a></li>
-						<li class="divider"></li>
-						<li><a class="text-center" href="#"> <strong>See
-									All Alerts</strong> <i class="fa fa-angle-right"></i>
 						</a></li>
 					</ul> <!-- /.dropdown-alerts --></li>
 				<!-- /.dropdown -->
-				<li class="dropdown"><a class="dropdown-toggle"
-					data-toggle="dropdown" href="#"> <i class="fa fa-user fa-fw"></i>
-						<i class="fa fa-caret-down"></i>
-				</a>
-					<ul class="dropdown-menu dropdown-user">
-						<li><a href="#"><i class="fa fa-user fa-fw"></i> User
-								Profile</a></li>
-						<li><a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a>
-						</li>
-						<li class="divider"></li>
-						<li><a href="../../"><i class="fa fa-sign-out fa-fw"></i>
-								Logout</a></li>
-					</ul> <!-- /.dropdown-user --></li>
+				<li><a href="../../"><i class="fa fa-sign-out fa-fw"></i>
+						Logout</a></li>
 				<!-- /.dropdown -->
 			</ul>
 			<!-- /.navbar-top-links -->
@@ -136,19 +100,25 @@
 						<li><a href="#"><i class="fa fa-users"></i> People<span
 								class="fa arrow"></span></a>
 							<ul class="nav nav-second-level">
-								<li><a href="admin.html">Admin</a></li>
-								<li><a href="physician.html">Physician</a></li>
-								<li><a href="patient.html">Patient</a></li>
-								<li><a href="medical_staff.html">Medical staff</a></li>
+								<li><a href="admin.html"><i class="fa fa-user-secret"></i>
+										Admin</a></li>
+								<li><a href="physician.html"><i class="fa fa-user-md"></i>
+										Physician</a></li>
+								<li><a href="patient.html"><i class="fa fa-user"></i>
+										Patient</a></li>
+								<li><a href="medical_staff.html"><i
+										class="fa fa-user-plus"></i> Medical staff</a></li>
 							</ul> <!-- /.nav-second-level --></li>
 
 						<li><a href="#"><i class="fa fa-sitemap fa-fw"></i>
 								Relationship<span class="fa arrow"></span></a>
 							<ul class="nav nav-second-level">
-								<li><a href="Physician_Patient.html">Physician and
-										Patient</a></li>
+								<li><a href="Physician_Patient.html"><i
+										class="fa fa-user-md"></i>+<i class="fa fa-user"></i> Physician
+										and Patient</a></li>
 
-								<li><a href="Physician_Medical_Staff.html">Physician
+								<li><a href="Physician_Medical_Staff.html"><i
+										class="fa fa-user-md"></i>+<i class="fa fa-user-plus"></i> Physician
 										and Medical staff </a></li>
 							</ul></li>
 
@@ -402,7 +372,7 @@
 			<!-- /.row -->
 			<div class="row">
 				<div class="col-lg-8">
-					<div class="panel panel-default">
+					<!-- <div class="panel panel-default">
 						<div class="panel-heading">
 							<i class="fa fa-bar-chart-o fa-fw"></i> Area Chart Example
 							<div class="pull-right">
@@ -422,14 +392,14 @@
 								</div>
 							</div>
 						</div>
-						<!-- /.panel-heading -->
+						/.panel-heading
 						<div class="panel-body">
 							<div id="morris-area-chart"></div>
 						</div>
-						<!-- /.panel-body -->
-					</div>
+						/.panel-body
+					</div> -->
 					<!-- /.panel -->
-					<div class="panel panel-default">
+					<!-- <div class="panel panel-default">
 						<div class="panel-heading">
 							<i class="fa fa-bar-chart-o fa-fw"></i> Bar Chart Example
 							<div class="pull-right">
@@ -449,7 +419,7 @@
 								</div>
 							</div>
 						</div>
-						<!-- /.panel-heading -->
+						/.panel-heading
 						<div class="panel-body">
 							<div class="row">
 								<div class="col-lg-4">
@@ -515,27 +485,27 @@
 											</tbody>
 										</table>
 									</div>
-									<!-- /.table-responsive -->
+									/.table-responsive
 								</div>
-								<!-- /.col-lg-4 (nested) -->
+								/.col-lg-4 (nested)
 								<div class="col-lg-8">
 									<div id="morris-bar-chart"></div>
 								</div>
-								<!-- /.col-lg-8 (nested) -->
+								/.col-lg-8 (nested)
 							</div>
-							<!-- /.row -->
+							/.row
 						</div>
-						<!-- /.panel-body -->
-					</div>
+						/.panel-body
+					</div> -->
 
 					<!-- admin activity .panel -->
-					<div class="panel panel-default">
+					<!-- <div class="panel panel-default">
 						<div class="panel-heading">
 							<i class="fa fa-clock-o fa-fw"></i> Administrators Activity
 							Timeline
 						</div>
 
-						<!-- /.panel-heading -->
+						/.panel-heading
 						<div class="panel-body" id ="admin_activity_timeline">
 							 <ul class="timeline">
 								<li>
@@ -672,19 +642,19 @@
 								</li>
 							</ul> 
 						</div>
-						<!-- /.panel-body -->
-					</div>
+						/.panel-body
+					</div> -->
 					<!-- admin activity .panel -->
 
 
 				</div>
 				<!-- /.col-lg-8 -->
-				<div class="col-lg-4">
+				<!-- <div class="col-lg-4">
 					<div class="panel panel-default">
 						<div class="panel-heading">
 							<i class="fa fa-bell fa-fw"></i> Notifications Panel
 						</div>
-						<!-- /.panel-heading -->
+						/.panel-heading
 						<div class="panel-body">
 							<div class="list-group">
 								<a href="#" class="list-group-item"> <i
@@ -720,12 +690,12 @@
 									class="pull-right text-muted small"><em>Yesterday</em> </span>
 								</a>
 							</div>
-							<!-- /.list-group -->
+							/.list-group
 							<a href="#" class="btn btn-default btn-block">View All Alerts</a>
 						</div>
-						<!-- /.panel-body -->
+						/.panel-body
 					</div>
-					<!-- /.panel -->
+					/.panel
 					<div class="panel panel-default">
 						<div class="panel-heading">
 							<i class="fa fa-bar-chart-o fa-fw"></i> Donut Chart Example
@@ -734,10 +704,10 @@
 							<div id="morris-donut-chart"></div>
 							<a href="#" class="btn btn-default btn-block">View Details</a>
 						</div>
-						<!-- /.panel-body -->
+						/.panel-body
 					</div>
-					<!-- /.panel .chat-panel -->
-				</div>
+					/.panel .chat-panel
+				</div> -->
 				<!-- /.col-lg-4 -->
 			</div>
 			<!-- /.row -->
@@ -753,7 +723,7 @@
 
 	<!-- timeline js -->
 	<script src="/EMR_Admin/views/bower_components/jquery/dist/timeline.js"></script>
-	
+
 
 	<!-- Bootstrap Core JavaScript -->
 	<script
@@ -764,9 +734,9 @@
 		src="/EMR_Admin/views/bower_components/metisMenu/dist/metisMenu.min.js"></script>
 
 	<!-- Morris Charts JavaScript -->
-	<script src="/EMR_Admin/views/bower_components/raphael/raphael-min.js"></script>
+	<!-- 	<script src="/EMR_Admin/views/bower_components/raphael/raphael-min.js"></script>
 	<script src="/EMR_Admin/views/bower_components/morrisjs/morris.min.js"></script>
-	<script src="/EMR_Admin/views/js/morris-data.js"></script>
+	<script src="/EMR_Admin/views/js/morris-data.js"></script> -->
 
 	<!-- Custom Theme JavaScript -->
 	<script src="/EMR_Admin/views/dist/js/sb-admin-2.js"></script>
