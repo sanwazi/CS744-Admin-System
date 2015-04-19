@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -31,9 +32,12 @@
 <!-- Custom CSS -->
 <link href="../dist/css/sb-admin-2.css" rel="stylesheet">
 
+
 <!-- Custom Fonts -->
 <link href="../bower_components/font-awesome/css/font-awesome.min.css"
 	rel="stylesheet" type="text/css">
+<link rel="stylesheet"
+	href="//code.jquery.com/ui/1.11.3/themes/smoothness/jquery-ui.css">
 
 <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
 <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -239,6 +243,7 @@
 			</ul>
 			<!-- /.navbar-top-links -->
 
+			<!-- navbar-static-side -->
 			<div class="navbar-default sidebar" role="navigation">
 				<div class="sidebar-nav navbar-collapse">
 					<ul class="nav" id="side-menu">
@@ -259,6 +264,7 @@
 							<ul class="nav nav-second-level">
 								<li><a href="Physician_Patient.html">Physician and
 										Patient</a></li>
+
 								<li><a href="Physician_Medical_Staff.html">Physician
 										and Medical staff </a></li>
 							</ul></li>
@@ -284,50 +290,108 @@
 
 		<div id="page-wrapper">
 			<div class="row">
+			<br>
+				<div class="form-group">
+				<br>
+					<div class="col-lg-12">
+					<br>
+						<label for="textArea" class="col-lg-3 control-label">Search By Department Name</label>
+	 						<div class="col-lg-4">
+								<input type="text" id='input_search_department_name' class="form-control"
+																	placeholder="Please input department name..."> 
+	 						</div> 
+							<button class="btn btn-primary" id='btn_search_department_name' type="button"> 
+	 							<i class="fa fa-pencil-square-o"></i>Search
+							</button>
+					</div>
+
+				</div>
+			</div>
+
+			<!-- /.row -->
+			<!-- Table We Will Use -->
+			<div class="row">
 				<div class="col-lg-12">
-					<h1 class="page-header">Medical staff</h1>
+					<div class="col-lg-12">
+						<h1 class="page-header" id="table_title"></h1>
+					</div>
+					<div class="panel panel-default">
+						<!--                         <div class="panel-heading" id = "table_tittle"> -->
+						<!--                             <h2>DataTables Advanced Tables</h2> -->
+						<!--                         </div> -->
+
+						<!-- /.panel-heading -->
+						<div class="panel-body" id="dataTable-panel">
+							<div class="dataTable_wrapper">
+								<table class="table table-striped table-bordered table-hover"
+									id="dataTables-example" >
+
+								</table>
+							</div>
+<!-- 							<div class="form-horizontal"> -->
+<!-- 								<fieldset> -->
+<!-- 									<legend>Add non-registered physician to this department</legend> -->
+<!-- 									<div class="form-group has-error"> -->
+
+<!-- 										<div class="col-lg-9"> -->
+<!-- 											<div class="panel panel-default"> -->
+<!-- 												<div class="panel-heading"> -->
+<!-- 													<div class="row"> -->
+<!-- 														<div class="col-lg-10">Add non-registered physician</div> -->
+
+<!-- 														<div class="col-lg-2"> -->
+<!-- 															<button type="button" class="btn btn-primary btn-xs" -->
+<!-- 																id="btn-showAddingPhysicianTable"> -->
+<!-- 																<i class="fa fa-pencil-square-o"></i>Add -->
+<!-- 															</button> -->
+
+<!-- 														</div> -->
+<!-- 													</div> -->
+<!-- 												</div> -->
+<!-- 												<div class="panel-body" id='panelcontent' -->
+<!-- 													style="display: none;"> -->
+<!-- 													<table class="table table-bordered"> -->
+<!-- 														<thead> -->
+<!-- 															<th>Physician Name</th> -->
+<!-- 														</thead> -->
+<!-- 														<tbody id='physicianNameTable'> -->
+
+<!-- 														</tbody> -->
+<!-- 													</table> -->
+<!-- 													<div class="form-group has-warning"> -->
+<!-- 														<label for="textArea" class="col-lg-2 control-label"> -->
+<!-- 														Non-registered physician name -->
+<!-- 														</label> -->
+<!-- 														<div class="col-lg-4"> -->
+<!-- 															<input type="text" id='physician_name' class="form-control" -->
+<!-- 																placeholder="physician name..."> -->
+<!-- 														</div> -->
+<!-- 														<button class="btn btn-primary" id='addPhysician' type="button"> -->
+<!-- 															<i class="fa fa-pencil-square-o"></i>Add Physician -->
+<!-- 														</button> -->
+
+<!-- 													</div> -->
+<!-- 												</div> -->
+<!-- 											</div> -->
+<!-- 										</div> -->
+<!-- 									</div> -->
+<!-- 								</fieldset> -->
+<!-- 								<h1 id="addingResult" style="display: none;"></h1> -->
+<!-- 							</div> -->
+
+							<!-- /.table-responsive
+                            <div class="well">
+                                <h4>DataTables Usage Information</h4>
+                                <p>DataTables is a very flexible, advanced tables plugin for jQuery. In SB Admin, we are using a specialized version of DataTables built for Bootstrap 3. We have also customized the table headings to use Font Awesome icons in place of images. For complete documentation on DataTables, visit their website at <a target="_blank" href="https://datatables.net/">https://datatables.net/</a>.</p>
+                                <a class="btn btn-default btn-lg btn-block" target="_blank" href="https://datatables.net/">View DataTables Documentation</a>
+                            </div>
+                             -->
+						</div>
+						<!-- /.panel-body -->
+					</div>
+					<!-- /.panel -->
 				</div>
 				<!-- /.col-lg-12 -->
-			</div>
-			<!-- /.row -->
-
-			<div id="example_wrapper"
-				class="dataTables_wrapper form-inline dt-bootstrap">
-				<div class="row">
-					<div class="col-sm-12">
-						<table
-							class="table table-striped table-bordered table-hover dataTable"
-							id="dataTables-medical-staff" role="grid"
-							aria-describedby="example_info">
-							<thead>
-								<tr role="row">
-
-
-									<th class="sorting" tabindex="0" aria-controls="example"
-										rowspan="1" colspan="1"
-										aria-label="patient_name: activate to sort column ascending"
-										style="width: 148px;">First Name</th>
-									<th class="sorting" tabindex="0" aria-controls="example"
-										rowspan="1" colspan="1"
-										aria-label="patient_name: activate to sort column ascending"
-										style="width: 148px;">Last Name</th>
-									<th class="sorting" tabindex="0" aria-controls="example"
-										rowspan="1" colspan="1"
-										aria-label="patient_name: activate to sort column ascending"
-										style="width: 148px;">Account</th>
-									<th class="sorting" tabindex="0" aria-controls="example"
-										rowspan="1" colspan="1"
-										aria-label="patient_name: activate to sort column ascending"
-										style="width: 148px;">SSN</th>
-								</tr>
-							</thead>
-
-							<tbody>
-							</tbody>
-						</table>
-					</div>
-				</div>
-
 			</div>
 			<!-- /.row -->
 		</div>
@@ -353,8 +417,20 @@
 
 	<!-- Custom Theme JavaScript -->
 	<script src="../dist/js/sb-admin-2.js"></script>
-	<script src="/EMR_Admin/views/js/ourjs/index.js"></script>
-	<script src="/EMR_Admin/views/js/ourjs/medical_staff.js"></script>
+	<script src="../js/ourjs/departmentDetails_2.js"></script>
+	<script src="../js/ourjs/index.js"></script>
+	<script src="//code.jquery.com/ui/1.11.3/jquery-ui.js"></script>
+
+
 	<!-- Page-Level Demo Scripts - Tables - Use for reference -->
+	<!--     <script> 
+    $(document).ready(function() {
+         $('#dataTables-example').DataTable({
+                responsive: true
+         });
+    });
+     </script> -->
+
 </body>
+
 </html>

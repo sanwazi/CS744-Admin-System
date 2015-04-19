@@ -40,6 +40,16 @@ public class DepartmentDao {
 		return list;
 	}
 	
+	public List<Department> getDepartmentByName(String department_name){
+		Session session = sessionFactory.openSession();
+		Query q = session.createQuery("from Department where department_name='"+department_name+"'");
+		Transaction transaction = session.beginTransaction();
+		List<Department> list = q.list();
+		transaction.commit();
+		session.close();
+		return list;
+	}
+	
 	//add
 	public boolean addDepartment(){
 		return true;

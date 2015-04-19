@@ -27,4 +27,8 @@ public class DepartmentService {
 	public int getIdByDepartmentName(String dName){
 		return DDao.getIdByDepartmentName(dName);
 	}
+	
+	public List<Department> getDepartmentByName(String department_name){
+		return DDao.serachWithInput(department_name);
+	}
 }

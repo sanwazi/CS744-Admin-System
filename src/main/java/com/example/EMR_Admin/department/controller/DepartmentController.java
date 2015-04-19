@@ -38,7 +38,7 @@ public class DepartmentController {
 	@RequestMapping(value = "/getDepartmentDetails", method = RequestMethod.GET)
 	@Secured(value = { "ROLE_ADMIN" })
 	public @ResponseBody List<Department> getDepartmentDetails(String department_name) {
-		List<Department> departments = dService.getAll();
+		List<Department> departments = dService.getDepartmentByName(department_name);
 		return departments;
 	}
 }

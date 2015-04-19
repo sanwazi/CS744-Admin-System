@@ -1,12 +1,13 @@
-//var urllink = "/EMR_Admin/views/pages/departmentDetails.html";
-var urllink = "/EMR_Admin/views/pages/departmentDetail.html?department_name=";
-var ul = document.getElementById("department_ul");
+
+
+//var urllink = "/EMR_Admin/views/pages/departmentDetail.html?department_name=";
+//var ul = document.getElementById("department_ul");
 var nodes = [];
 var res = [];
 $(document).ready(function() {
-	loadDepartment();
+	//loadDepartment();
 	loadStatistics();
-	//loadTimeLine();
+
 });
 
 function getLog(){
@@ -69,6 +70,7 @@ function loadDepartment(){
 		url: "/EMR_Admin/getDepartment",
 		success : function(data){
 			var len = Object.keys(data).length;
+			console.log(len);
 			
 			for(var i in data){
 				addli(data[i].department_name)
