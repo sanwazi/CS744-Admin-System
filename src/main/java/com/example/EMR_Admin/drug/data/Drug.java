@@ -47,8 +47,42 @@ public class Drug {
 	@Column(name="drug_status")
 	private String drug_status;
 	
+	@Column(name = "drug_type")
+	private String drug_type;
+	
+	@Column(name = "drug_price")
+	private String drug_price;
+	
 	public Drug(){
 		
+	}
+	
+	/**
+	 * @return the drug_type
+	 */
+	public String getDrug_type() {
+		return drug_type;
+	}
+
+	/**
+	 * @param drug_type the drug_type to set
+	 */
+	public void setDrug_type(String drug_type) {
+		this.drug_type = drug_type;
+	}
+
+	/**
+	 * @return the drug_price
+	 */
+	public String getDrug_price() {
+		return drug_price;
+	}
+
+	/**
+	 * @param drug_price the drug_price to set
+	 */
+	public void setDrug_price(String drug_price) {
+		this.drug_price = drug_price;
 	}
 
 	public int getDrug_id() {

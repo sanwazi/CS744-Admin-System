@@ -96,6 +96,23 @@ public class DrugController {
 //		else return "d";
 	}
 	
+	@RequestMapping(value = "/drug/getDrugListFromPharmacy", method = RequestMethod.GET)
+	@Secured(value = {"ROLE_ADMIN"})
+	public @ResponseBody String getDrugListFromPharmacy(){
+		List<Drug> drugList = drugService.getDrugFromPharmacy();
+		boolean result = drugList.isEmpty();
+		if(!result){
+			if(drugService.addDrugList(drugList)){
+				return "s";
+			}
+			else{
+				return "addDrugsToDbF";
+			}
+		}else{
+			return "drugsFromPharmacyEmpty";
+		}
+	}
+	
 //	@RequestMapping(value = "/drug/testtest", method = RequestMethod.GET)
 //	@Secured(value = {"ROLE_ADMIN"})
 //	public @ResponseBody String deleteDrug(
