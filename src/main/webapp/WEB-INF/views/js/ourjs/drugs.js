@@ -84,9 +84,19 @@ function loadDrug(drugList) {
 
 		console.log(drugItems.length);
 		dataSet.push(drugItems);
+		for(var i in dataSet){
+			for(var j in dataSet[i]){
+				if(!$.isEmptyObject(dataSet[i][j]) && dataSet[i][j].indexOf('<')==-1 && dataSet[i][j].length >=30){
+					console.log(dataSet[i][j].substring(0,8));
+					//dataSet[i][j]= dataSet[i][j].replace(dataSet[i][j].substring(30, dataSet[i][j].length-1),"...");
+					dataSet[i][j] = "<div class=\"iffyTip wd100\">"+dataSet[i][j]+"</div>";
+				}
+			}
+		}
 		
 	}
 	console.log(dataSet.length);
+	
 
 	$('#dataTables-example').DataTable({
 		responsive : true,
@@ -105,7 +115,7 @@ function loadDrug(drugList) {
 			"class" : "center"
 		},{
 			"title" : "Drug Reaction",
-			"class" : "center"
+			"class" : "center wd100"
 		},{
 			"title" : "Drug Usage",
 			"class" : "center"
@@ -114,6 +124,17 @@ function loadDrug(drugList) {
 			"class" : "center"
 		}]
 	});
+	
+	 $('#dataTables-example').on('mouseenter', ".iffyTip", function () {
+	     var $this = $(this);
+	     if (this.offsetWidth < this.scrollWidth && !$this.attr('title')) {
+	         $this.tooltip({
+	             title: $this.text(),
+	             placement: "bottom"
+	         });
+	         $this.tooltip('show');
+	     }
+	 });
 	
 }
 function drawMarkForStatus(drug_status){
