@@ -54,7 +54,7 @@
 	<div id="wrapper">
 
 		<!-- Navigation -->
-				<nav class="navbar navbar-default navbar-static-top" role="navigation"
+		<nav class="navbar navbar-default navbar-static-top" role="navigation"
 			style="margin-bottom: 0">
 			<div class="navbar-header">
 				<button type="button" class="navbar-toggle" data-toggle="collapse"
@@ -119,12 +119,12 @@
 								Relationship<span class="fa arrow"></span></a>
 							<ul class="nav nav-second-level">
 								<li><a href="Physician_Patient.html"><i
-										class="fa fa-user-md"></i>+<i class="fa fa-user"></i> Physician
-										and Patient</a></li>
+										class="fa fa-user-md"></i>+<i class="fa fa-user"></i>
+										Physician and Patient</a></li>
 
 								<li><a href="Physician_Medical_Staff.html"><i
-										class="fa fa-user-md"></i>+<i class="fa fa-user-plus"></i> Physician
-										and Medical staff </a></li>
+										class="fa fa-user-md"></i>+<i class="fa fa-user-plus"></i>
+										Physician and Medical staff </a></li>
 							</ul></li>
 
 
@@ -165,11 +165,6 @@
 							id="dataTables-admin" role="grid" aria-describedby="example_info">
 							<thead>
 								<tr role="row">
-
-									<th class="sorting_desc" tabindex="0" aria-controls="example"
-										rowspan="1" colspan="1"
-										aria-label="prescription_id: activate to sort column ascending"
-										style="width: 158px;" aria-sort="descending">Admin_id</th>
 									<th class="sorting" tabindex="0" aria-controls="example"
 										rowspan="1" colspan="1"
 										aria-label="patient_name: activate to sort column ascending"
@@ -177,7 +172,7 @@
 									<th class="sorting" tabindex="0" aria-controls="example"
 										rowspan="1" colspan="1"
 										aria-label="physician_name: activate to sort column ascending"
-										style="width: 168px;">Password</th>
+										style="width: 168px;">Delete</th>
 								</tr>
 							</thead>
 
@@ -186,7 +181,6 @@
 
 									<td class="sorting_1">1</td>
 									<td>Admin</td>
-									<td>123XXXX</td>
 								</tr>
 							</tbody>
 						</table>
@@ -194,6 +188,65 @@
 				</div>
 			</div>
 			<!-- /.row -->
+			<div class="form-horizontal">
+				<fieldset>
+					<legend>Add a new administrator</legend>
+					<div class="form-group has-error">
+						<div class="col-lg-9">
+							<div class="panel panel-default">
+								<div class="panel-heading">
+									<div class="row">
+										<div class="col-lg-10">New Administrator</div>
+										<div class="col-lg-2 pull-right">
+											<button type="button" class="btn btn-primary btn-xs"
+												id="btn-showAddingAdminTable">
+												<i class="fa fa-pencil-square-o"></i>Add
+											</button>
+										</div>
+									</div>
+								</div>
+								<div class="panel-body" id='panelcontent' style="display: none;">
+									<div class="form-group has-warning">
+										<div class="row" style="margin-top: 10px">
+											<label for="textArea" class="col-lg-4 control-label">
+												Account </label>
+
+											<div class="col-lg-4">
+												<input type="text" id='adminAccount' class="form-control"
+													placeholder="account...">
+											</div>
+										</div>
+										<div class="row" style="margin-top: 15px">
+											<label for="textArea" class="col-lg-4 control-label">
+												Password </label>
+
+											<div class="col-lg-4">
+												<input type="password" id='password1' class="form-control"
+													placeholder="password...">
+											</div>
+										</div>
+										<div class="row" style="margin-top: 15px">
+											<label for="textArea" class="col-lg-4 control-label">
+												Password Confirm</label>
+
+											<div class="col-lg-4">
+												<input type="password" id='password2' class="form-control"
+													placeholder="password again...">
+											</div>
+										</div>
+										<div class="row pull-right" style="margin-right: 20px">
+											<button class="btn btn-primary" id='addAdmin' type="button">
+												<i class="fa fa-pencil-square-o"></i>Submit
+											</button>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</fieldset>
+				<h1 id="addingResult" style="display: none;"></h1>
+			</div>
 		</div>
 		<!-- /#page-wrapper -->
 
