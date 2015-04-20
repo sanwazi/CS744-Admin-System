@@ -43,7 +43,7 @@ function loadAllDrug() {
 
 		success : function(data) {
 				loadDrug(data);
-				addDrug();
+				getDrugListFromPharmacyFromBackEndAndDisplay();
 			// giveButtonLink();
 		},
 		dataType : "json",
@@ -230,6 +230,29 @@ function addDrug(){
 		//location.reload();
 	});
 }
+
+function getDrugListFromPharmacyFromBackEndAndDisplay(){
+	$('#get_drug_from_pharmacy').click(function(){
+		$.ajax({
+			type:"GET",
+			url:"/EMR_Admin/drug/getDrugListFromPharmacy",
+			dataType: "text",
+			success:function(data){
+				if(data=="s"){
+					location.reload();
+				}else if (data == "addDrugsToDbF"){
+					alert("Adding pharmacy drug list to database failed!");
+				}
+				else if(data == "drugsFromPharmacyEmpty"){
+					alert("Drugs from pharmacy is empty!");
+				}
+			}
+		});
+	});
+}
+
+
+
 function addPharmacyDrugToDb(testjson){
 	
 		var drugsFromPharmacy = $.parseJSON(testjson);
