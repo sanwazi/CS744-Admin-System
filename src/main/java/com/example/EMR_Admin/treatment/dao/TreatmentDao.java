@@ -38,6 +38,11 @@ public class TreatmentDao {
 	
 	public boolean addTreatment( Treatment t ){
 
+		List<Treatment> list = findAll();
+		for( Treatment treat: list ){
+			if( treat.getTreatment_name().equals( t.getTreatment_name()))
+				return false;
+		}
 		try {
 			Session session = sessionFactory.openSession();
 			session.beginTransaction();

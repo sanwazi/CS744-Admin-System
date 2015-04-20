@@ -1,55 +1,72 @@
-
-
-//var urllink = "/EMR_Admin/views/pages/departmentDetail.html?department_name=";
-//var ul = document.getElementById("department_ul");
-var nodes = [];
-var res = [];
 $(document).ready(function() {
-	//loadDepartment();
 	loadStatistics();
-
+	loadAdminActivity();
 });
 
-function getLog(){
-	
+function loadAdminActivity() {
 	$.ajax({
-		type:"GET",
-		url: "/EMR_Admin/log",
-		success : function(data){
-			for( var i = 0; i < data.length; i++ ){
-				var node = [];
-				node.push("nodeId", i);
-				node.push("title", data[i].admin_name);
-				node.push("date", data[i].date);
-				node.push("description", data[i].action + data[i].table);
-				node.push("percent", i );
-				nodes.push(node);
-				console.log(nodes);
-			}
+		type : "GET",
+		url : "/EMR_Admin/log",
+		success : function(data) {
+			loadLogData(data);
 		},
-		dataType: "json",
+		dataType : "json",
 	});
-	console.log("nodes:" +nodes);
-
-	res.push("nodes",nodes);
-	console.log(res);
-	return res;
 }
 
-function loadTimeLine(){
-	$.UDNZTimeline({
-	    "data_url": "/EMR_Admin/log",
-	    "container": {
-	        "id": "admin_activity_timeline"
-	    }
-	}).Draw();
+function loadLogData(logs) {
+	var dataSet = [];
+	for (var i = 0; i < logs.length; i++) {
+		var log = [];
+		log.push(logs[i].admin_name);
+		var button = actionButton(logs[i].action);
+		log.push(button);
+		log.push(logs[i].table);
+		log.push(convertMillisecondsToDate(logs[i].date));
+		dataSet.push(log);
+	}
+
+	$('#dataTables-log').DataTable({
+		"responsive" : true,
+		"data" : dataSet,
+		"columns" : [ {
+			"title" : "Administrator",
+			"class" : "center"
+		}, {
+			"title" : "Action",
+			"class" : "center"
+		}, {
+			"title" : "Table",
+			"class" : "center"
+		}, {
+			"title" : "Date",
+			"class" : "center"
+		} ]
+	});
 }
 
-function loadStatistics(){
+function actionButton(type) {
+	if (type == "ADD") {
+		return "<a   class=\"btn btn-primary btn-xs\" ><i class=\"fa fa-plus fa-lg\"></i> Add</a>";
+	} else if (type == "DELETE") {
+		return "<a   class=\"btn btn-warning btn-xs\" ><i class=\"fa fa-trash-o fa-lg\"></i> Delete</a>";
+	} else {
+		return "<a class=\"btn btn-danger btn-xs\" ><i class=\"fa fa-pencil fa-lg\"></i> Update</a>";
+	}
+	// } else if (type == "UPDATE") {
+	// return "<a class=\"btn btn-danger btn-xs\" ><i class=\"fa fa-pencil
+	// fa-lg\"></i> Update</a>";
+	// } else {
+	// return "<a class=\"btn btn-warning btn-xs\" ><i class=\"fa
+	// fa-cloud-downloadl
+	// fa-lg\"></i> Get data from pharmacy</a>";
+}
+
+function loadStatistics() {
 	$.ajax({
-		type:"GET",
-		url: "/EMR_Admin/loadStatistics",
-		success : function(data){
+		type : "GET",
+		url : "/EMR_Admin/loadStatistics",
+		success : function(data) {
 			$('#adminNum').text(data[0]);
 			$('#physicianNum').text(data[1]);
 			$('#patientNum').text(data[2]);
@@ -60,39 +77,42 @@ function loadStatistics(){
 			$('#treatmentNum').text(data[7]);
 			$('#diagnosticNum').text(data[8]);
 		},
-		dataType: "json",
+		dataType : "json",
 	});
 }
-
-function loadDepartment(){
-	$.ajax({
-		type:"GET",
-		url: "/EMR_Admin/getDepartment",
-		success : function(data){
-			var len = Object.keys(data).length;
-			console.log(len);
-			
-			for(var i in data){
-				addli(data[i].department_name)
-			}
-		},
-		dataType: "json",
-	});
+function convertMillisecondsToDate(input) {
+	var date = new Date(input);
+	return date.customFormat("#YYYY#-#MM#-#DD#");
 }
+Date.prototype.customFormat = function(formatString) {
+	var YYYY, YY, MMMM, MMM, MM, M, DDDD, DDD, DD, D, hhh, hh, h, mm, m, ss, s, ampm, AMPM, dMod, th;
+	var dateObject = this;
+	YY = ((YYYY = dateObject.getFullYear()) + "").slice(-2);
+	MM = (M = dateObject.getMonth() + 1) < 10 ? ('0' + M) : M;
+	MMM = (MMMM = [ "January", "February", "March", "April", "May", "June",
+			"July", "August", "September", "October", "November", "December" ][M - 1])
+			.substring(0, 3);
+	DD = (D = dateObject.getDate()) < 10 ? ('0' + D) : D;
+	DDD = (DDDD = [ "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday",
+			"Friday", "Saturday" ][dateObject.getDay()]).substring(0, 3);
+	th = (D >= 10 && D <= 20) ? 'th' : ((dMod = D % 10) == 1) ? 'st'
+			: (dMod == 2) ? 'nd' : (dMod == 3) ? 'rd' : 'th';
+	formatString = formatString.replace("#YYYY#", YYYY).replace("#YY#", YY)
+			.replace("#MMMM#", MMMM).replace("#MMM#", MMM).replace("#MM#", MM)
+			.replace("#M#", M).replace("#DDDD#", DDDD).replace("#DDD#", DDD)
+			.replace("#DD#", DD).replace("#D#", D).replace("#th#", th);
 
-
-function addli(text/*要加入的文字*/){
-
-    var li= document.createElement("li");
-   //var t=document.createTextNode(text);
-//    console.log(text);
-    var departmentName = text.replace('_',' ');
-  //li.innerHTML="<a href=\"#\">"+text+"</a>";
-    li.innerHTML="<a href=\""+urllink+text+"\">"+departmentName+"</a>";
-   // li.attr('href','/EMR_Admin/views/pages/departmentDetails.html?department_name='+departmentName);
-    //li.innerHTML="<a href=\""+urllink+departmentName+"\">"+text+"</a>";
-  //li.appendChild(t);
-    ul.appendChild(li);
-    
+	h = (hhh = dateObject.getHours());
+	if (h == 0)
+		h = 24;
+	if (h > 12)
+		h -= 12;
+	hh = h < 10 ? ('0' + h) : h;
+	AMPM = (ampm = hhh < 12 ? 'am' : 'pm').toUpperCase();
+	mm = (m = dateObject.getMinutes()) < 10 ? ('0' + m) : m;
+	ss = (s = dateObject.getSeconds()) < 10 ? ('0' + s) : s;
+	return formatString.replace("#hhh#", hhh).replace("#hh#", hh).replace(
+			"#h#", h).replace("#mm#", mm).replace("#m#", m).replace("#ss#", ss)
+			.replace("#s#", s).replace("#ampm#", ampm).replace("#AMPM#", AMPM);
 }
 

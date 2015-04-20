@@ -1,7 +1,10 @@
 package com.example.EMR_Admin.emr.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
 import com.example.EMR_Admin.emr.dao.EmrDao;
 import com.example.EMR_Admin.emr.data.Emr;
 
@@ -24,5 +27,9 @@ public class EmrService {
 
 	public boolean updateEmr(Emr emr) {
 		return eDao.updateEmr(emr);
+	}
+	
+	public List<Emr> getAll(){
+		return eDao.getAll();
 	}
 }

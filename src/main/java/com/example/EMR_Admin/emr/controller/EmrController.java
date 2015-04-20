@@ -39,20 +39,20 @@ public class EmrController {
 		}
 		return map;
 	}
-	
+
 	@RequestMapping(value = "/emr/viewEmr", method = RequestMethod.GET)
 	@Secured(value = { "ROLE_PHYSICIAN" })
 	public @ResponseBody Emr viewEmr(
-			@RequestParam(value = "patientId", required=true) int patientId){
+			@RequestParam(value = "patientId", required = true) int patientId) {
 		Emr emr = eService.getEmrByPatientId(patientId);
 		return emr;
 
 	}
-	
+
 	@RequestMapping(value = "/emr/create", method = RequestMethod.GET)
-	@Secured(value = {"ROLE_PHYSICIAN"})
+	@Secured(value = { "ROLE_PHYSICIAN" })
 	public @ResponseBody String creatEmr(
-			@RequestParam(value = "patientId", required=true) int patientId,
+			@RequestParam(value = "patientId", required = true) int patientId,
 			@RequestParam(value = "race") String race,
 			@RequestParam(value = "occupation") String occupation,
 			@RequestParam(value = "address") String address,
@@ -61,20 +61,21 @@ public class EmrController {
 			@RequestParam(value = "blood_group") String blood_group,
 			@RequestParam(value = "vaccinations") String vaccinations,
 			@RequestParam(value = "diabetes") String diabetes,
-			@RequestParam(value = "allergies") String allergies){
+			@RequestParam(value = "allergies") String allergies) {
 		Patient patient = pService.getPatientById(patientId);
-		Emr emr = new Emr(patientId, patient.getPatient_name(), patient.getPatient_birthday(),
-										race, occupation, address, height, weight, blood_group, vaccinations,
-										diabetes, allergies);
-		if(eService.createNewEmr(emr))
-		return "success";
-		else return "failure";
+		Emr emr = new Emr(patientId, patient.getPatient_name(),
+				patient.getPatient_birthday(), race, occupation, address,
+				height, weight, blood_group, vaccinations, diabetes, allergies);
+		if (eService.createNewEmr(emr))
+			return "success";
+		else
+			return "failure";
 	}
-	
+
 	@RequestMapping(value = "/emr/update", method = RequestMethod.GET)
-	@Secured(value = {"ROLE_PHYSICIAN"})
+	@Secured(value = { "ROLE_PHYSICIAN" })
 	public @ResponseBody String UpdateEmr(
-			@RequestParam(value = "patientId", required=true) int patientId,
+			@RequestParam(value = "patientId", required = true) int patientId,
 			@RequestParam(value = "race") String race,
 			@RequestParam(value = "occupation") String occupation,
 			@RequestParam(value = "address") String address,
@@ -83,32 +84,43 @@ public class EmrController {
 			@RequestParam(value = "blood_group") String blood_group,
 			@RequestParam(value = "vaccinations") String vaccinations,
 			@RequestParam(value = "diabetes") String diabetes,
-			@RequestParam(value = "allergies") String allergies){
+			@RequestParam(value = "allergies") String allergies) {
 		Patient patient = pService.getPatientById(patientId);
-		Emr emr = new Emr(patientId, patient.getPatient_name(), patient.getPatient_birthday(),
-										race, occupation, address, height, weight, blood_group, vaccinations,
-										diabetes, allergies);
-		if(eService.updateEmr(emr))
-		return "success";
-		else return "failure";
+		Emr emr = new Emr(patientId, patient.getPatient_name(),
+				patient.getPatient_birthday(), race, occupation, address,
+				height, weight, blood_group, vaccinations, diabetes, allergies);
+		if (eService.updateEmr(emr))
+			return "success";
+		else
+			return "failure";
 	}
-	
+
 	@RequestMapping(value = "/emr/getPatient", method = RequestMethod.GET)
 	@Secured(value = { "ROLE_PHYSICIAN" })
 	public @ResponseBody Map<String, String> getPatientById(
 			@RequestParam(value = "patientId", required = true) int patientId) {
 		HashMap<String, String> map = new HashMap<String, String>();
 		Patient patient = pService.getPatientById(patientId);
-		
+
 		if (patient != null) {
-			map.put("patientId", patientId+"");
+			map.put("patientId", patientId + "");
 			map.put("patient_name", patient.getPatient_name());
 			map.put("patient_gender", patient.getPatient_gender());
-			map.put("patient_birthday", pService.dateToString(patient.getPatient_birthday()));
-			map.put("patient_age", pService.computeAge(patient.getPatient_birthday()));
+			map.put("patient_birthday",
+					pService.dateToString(patient.getPatient_birthday()));
+			map.put("patient_age",
+					pService.computeAge(patient.getPatient_birthday()));
 		} else {
 			map = null;
 		}
 		return map;
+	}
+
+	@RequestMapping(value = "/alertPatient", method = RequestMethod.GET)
+	@Secured(value = { "ROLE_Admin" })
+	public @ResponseBody int alertPatient() {
+		List<Emr> emrs = eService.getAll();
+		List<Patient> patients = pService.patientList();
+		return patients.size() - emrs.size();
 	}
 }

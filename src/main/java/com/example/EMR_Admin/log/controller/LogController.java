@@ -24,13 +24,8 @@ public class LogController {
 
 	@RequestMapping(value = "/log", method = RequestMethod.GET)
 	@Secured(value = { "ROLE_ADMIN" })
-	public @ResponseBody Map<String,List<Log>> getLogs() {
-		List<Log> list = logService.getAll();
-		List<Map<String,List<Log>>> res = new ArrayList<Map<String,List<Log>>>();
-		Map<String,List<Log>> map = new HashMap<String,List<Log>>();
-		map.put("nodes", list);
-		return map;
-		
+	public @ResponseBody List<Log> getLogs() {
+		return logService.getAll();	
 	}
 
 

@@ -16,18 +16,18 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 public class Log {
 
 	@Id
-	@Column(name = "nodeId")
+	@Column(name = "log_id")
 	@GeneratedValue
-	private int nodeId;
+	private int log_id;
 	
-	@Column(name = "title")
-	private String title;
+	@Column(name = "admin_name")
+	private String admin_name;
 
-	@Column(name = "percent")
-	private int percent;
+	@Column(name = "table")
+	private String table;
 	
-	@Column(name = "description")
-	private String description;
+	@Column(name = "action")
+	private String action;
 
 	@JsonFormat(shape=JsonFormat.Shape.STRING, pattern="yyyy-MM-dd")
 	@Column(name = "date")
@@ -35,36 +35,38 @@ public class Log {
 	
 	
 
-	public int getNodeId() {
-		return nodeId;
+	
+
+	public int getLog_id() {
+		return log_id;
 	}
 
-	public void setNodeId(int nodeId) {
-		this.nodeId = nodeId;
+	public void setLog_id(int log_id) {
+		this.log_id = log_id;
 	}
 
-	public String getTitle() {
-		return title;
+	public String getAdmin_name() {
+		return admin_name;
 	}
 
-	public void setTitle(String title) {
-		this.title = title;
+	public void setAdmin_name(String admin_name) {
+		this.admin_name = admin_name;
 	}
 
-	public int getPercent() {
-		return percent;
+	public String getTable() {
+		return table;
 	}
 
-	public void setPercent(int percent) {
-		this.percent = percent;
+	public void setTable(String table) {
+		this.table = table;
 	}
 
-	public String getDescription() {
-		return description;
+	public String getAction() {
+		return action;
 	}
 
-	public void setDescription(String description) {
-		this.description = description;
+	public void setAction(String action) {
+		this.action = action;
 	}
 
 	public Date getDate() {

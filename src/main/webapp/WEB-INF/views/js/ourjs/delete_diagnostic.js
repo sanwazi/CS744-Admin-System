@@ -1,12 +1,9 @@
-
-
 $(document).ready(function() {
 
 	var diagnostic_id = getUrlParameter("diagnostic_id");
 	getdiagnosticBasicContent(diagnostic_id);
 	listeningDeleteButton();
 });
-
 
 function getdiagnosticBasicContent(diagnostic_id) {
 	$.ajax({
@@ -21,6 +18,7 @@ function getdiagnosticBasicContent(diagnostic_id) {
 		dataType : "json",
 	});
 }
+
 function listeningDeleteButton(){
 	$("#delete_diagnostic").on(
 			'click',
@@ -45,8 +43,7 @@ function listeningDeleteButton(){
 							
 							$('#deletingResult').html("Success!");
 							$('#deletingResult').show();
-							//loadAllDrug();
-//							setTimeout(jump,1000);
+							//setTimeout(jump,1000);
 							
 						}
 						else if(data=="d"){
@@ -59,7 +56,6 @@ function listeningDeleteButton(){
 			}
 	);
 }
-
 
 
 function jump(){
