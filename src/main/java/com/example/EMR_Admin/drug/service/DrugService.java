@@ -57,11 +57,11 @@ public class DrugService {
 	public List<Drug> getDrugFromPharmacy(){
 		List<Drug> drugList = new ArrayList<Drug>();
 		try {
-			URL yahoo = new URL("http://138.49.101.83/Pharmacy/interface/drugList/all");
-			URLConnection yc = yahoo.openConnection();
+			URL pharmacyDrugList = new URL("http://138.49.101.83/Pharmacy/interface/drugList/all");
+			URLConnection phDL = pharmacyDrugList.openConnection();
 			BufferedReader in = new BufferedReader(
 			                        new InputStreamReader(
-			                        yc.getInputStream()));
+			                        		phDL.getInputStream()));
 			if (in.ready()) {
 				try {
 					JSONArray json = (JSONArray) new JSONParser().parse(in
