@@ -29,7 +29,6 @@ public class Log {
 	@Column(name = "action")
 	private String action;
 
-	@JsonFormat(shape=JsonFormat.Shape.STRING, pattern="yyyy-MM-dd")
 	@Column(name = "date")
 	private Date date;
 	

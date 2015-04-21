@@ -50,18 +50,12 @@ function actionButton(type) {
 		return "<a   class=\"btn btn-primary btn-xs\" ><i class=\"fa fa-plus fa-lg\"></i> Add</a>";
 	} else if (type == "DELETE") {
 		return "<a   class=\"btn btn-warning btn-xs\" ><i class=\"fa fa-trash-o fa-lg\"></i> Delete</a>";
-	} else {
+	} else if (type == "UPDATE") {
 		return "<a class=\"btn btn-danger btn-xs\" ><i class=\"fa fa-pencil fa-lg\"></i> Update</a>";
+	} else {
+		return "<a class=\"btn btn-success btn-xs\" ><i class=\"fa fa-cloud-download fa-lg\"></i> Get data from pharmacy</a>";
 	}
-	// } else if (type == "UPDATE") {
-	// return "<a class=\"btn btn-danger btn-xs\" ><i class=\"fa fa-pencil
-	// fa-lg\"></i> Update</a>";
-	// } else {
-	// return "<a class=\"btn btn-warning btn-xs\" ><i class=\"fa
-	// fa-cloud-downloadl
-	// fa-lg\"></i> Get data from pharmacy</a>";
 }
-
 function loadStatistics() {
 	$.ajax({
 		type : "GET",
@@ -82,7 +76,7 @@ function loadStatistics() {
 }
 function convertMillisecondsToDate(input) {
 	var date = new Date(input);
-	return date.customFormat("#YYYY#-#MM#-#DD#");
+	return date.customFormat("#MM#-#DD#-#YYYY#   #hhh#:#mm#:#ss#");
 }
 Date.prototype.customFormat = function(formatString) {
 	var YYYY, YY, MMMM, MMM, MM, M, DDDD, DDD, DD, D, hhh, hh, h, mm, m, ss, s, ampm, AMPM, dMod, th;
@@ -115,4 +109,3 @@ Date.prototype.customFormat = function(formatString) {
 			"#h#", h).replace("#mm#", mm).replace("#m#", m).replace("#ss#", ss)
 			.replace("#s#", s).replace("#ampm#", ampm).replace("#AMPM#", AMPM);
 }
-
