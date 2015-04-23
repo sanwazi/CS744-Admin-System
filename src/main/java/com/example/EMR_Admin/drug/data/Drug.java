@@ -23,8 +23,8 @@ public class Drug {
 	@Column(name="drug_unique_id")
 	private String drug_unique_id;
 	
-	@Column(name="drug_lv")
-	private String drug_lv;
+	@Column(name = "drug_type")
+	private String drug_type;
 	
 	@Column(name="drug_name_medical")
 	private String drug_name_medical;
@@ -32,31 +32,94 @@ public class Drug {
 	@Column(name="drug_name_commercial")
 	private String drug_name_commercial;
 	
+	@Column(name = "drug_price")
+	private String drug_price;
+	
+	@Column(name="drug_lv")
+	private String drug_lv;
+	
 	@Column(name="drug_unit")
 	private String drug_unit;
 	
 	@Column(name="drug_dose")
 	private String drug_dose;
 	
-	@Column(name="drug_reaction")
-	private String drug_reaction;
+	@Column(name = "drug_description")
+	private String drug_description;
+	
+	@Column(name = "drug_common_uses")
+	private String drug_common_uses;
 	
 	@Column(name="drug_usage")
 	private String drug_usage;
 	
+	@Column(name="drug_cautions")
+	private String drug_cautions;
+	
+	@Column(name="drug_side_effects")
+	private String drug_side_effects;
+	
 	@Column(name="drug_status")
 	private String drug_status;
 	
-	@Column(name = "drug_type")
-	private String drug_type;
+
 	
-	@Column(name = "drug_price")
-	private String drug_price;
+
 	
 	public Drug(){
 		
 	}
 	
+	
+	
+	public String getDrug_description() {
+		return drug_description;
+	}
+
+
+
+	public void setDrug_description(String drug_description) {
+		this.drug_description = drug_description;
+	}
+
+
+
+	public String getDrug_common_uses() {
+		return drug_common_uses;
+	}
+
+
+
+	public void setDrug_common_uses(String drug_common_uses) {
+		this.drug_common_uses = drug_common_uses;
+	}
+
+
+
+	public String getDrug_cautions() {
+		return drug_cautions;
+	}
+
+
+
+	public void setDrug_cautions(String drug_cautions) {
+		this.drug_cautions = drug_cautions;
+	}
+
+
+
+	public String getDrug_side_effects() {
+		return drug_side_effects;
+	}
+
+
+
+	public void setDrug_side_effects(String drug_side_effects) {
+		this.drug_side_effects = drug_side_effects;
+	}
+
+
+
 	/**
 	 * @return the drug_type
 	 */
@@ -139,14 +202,6 @@ public class Drug {
 
 	public void setDrug_dose(String drug_dose) {
 		this.drug_dose = drug_dose;
-	}
-
-	public String getDrug_reaction() {
-		return drug_reaction;
-	}
-
-	public void setDrug_reaction(String drug_reaction) {
-		this.drug_reaction = drug_reaction;
 	}
 
 	public String getDrug_usage() {

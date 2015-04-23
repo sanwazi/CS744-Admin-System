@@ -57,11 +57,11 @@ public class DrugService {
 	public List<Drug> getDrugFromPharmacy(){
 		List<Drug> drugList = new ArrayList<Drug>();
 		try {
-			URL pharmacyDrugList = new URL("http://138.49.101.83/Pharmacy/interface/drugList/all");
-			URLConnection phDL = pharmacyDrugList.openConnection();
+			URL pharmacyDrugJsonList = new URL("http://138.49.101.83/Pharmacy/interface/drugList/all");
+			URLConnection pharmacy_drug_list = pharmacyDrugJsonList.openConnection();
 			BufferedReader in = new BufferedReader(
 			                        new InputStreamReader(
-			                        		phDL.getInputStream()));
+			                        		pharmacy_drug_list.getInputStream()));
 			if (in.ready()) {
 				try {
 					JSONArray json = (JSONArray) new JSONParser().parse(in
@@ -80,8 +80,8 @@ public class DrugService {
 								.get(i)).get("drugNameMedical"));
 						d.setDrug_price( ((JSONObject) json.get(i))
 								.get("drugPrice").toString());
-						d.setDrug_reaction((String) ((JSONObject) json.get(i))
-								.get("drugReaction"));
+						d.setDrug_side_effects((String) ((JSONObject) json.get(i))
+								.get("drugSideEffects"));
 						d.setDrug_status((String) ((JSONObject) json.get(i))
 								.get("drugStatus"));
 						d.setDrug_type((String) ((JSONObject) json.get(i))
@@ -92,6 +92,12 @@ public class DrugService {
 								.get("drugUsage"));
 						d.setDrug_dose((String) ((JSONObject) json.get(i))
 								.get("drugDose"));
+						d.setDrug_cautions((String) ((JSONObject) json.get(i))
+								.get("drugCautions"));
+						d.setDrug_common_uses((String) ((JSONObject) json.get(i))
+								.get("drugCommonUses"));
+						d.setDrug_description((String) ((JSONObject) json.get(i))
+								.get("drugDescription"));
 						drugList.add(d);
 					}
 					return drugList;
