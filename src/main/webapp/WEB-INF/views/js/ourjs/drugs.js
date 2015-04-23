@@ -73,7 +73,7 @@ function loadDrug(drugList) {
 // drugItems.push(drugList[i].drug_name.split('_')[1]);
 		 drugItems.push(drugList[i].drug_unit);
 		 drugItems.push(drugList[i].drug_dose);
-		 drugItems.push(drugList[i].drug_reaction);
+		 drugItems.push(drugList[i].drug_side_effects);
 		 drugItems.push(drugList[i].drug_usage);
 		 var markedStatus = drawMarkForStatus(drugList[i].drug_status);
 		 drugItems.push(markedStatus);
@@ -114,7 +114,7 @@ function loadDrug(drugList) {
 			"title" : "Drug Dose",
 			"class" : "center"
 		},{
-			"title" : "Drug Reaction",
+			"title" : "Drug Side Effect",
 			"class" : "center wd100"
 		},{
 			"title" : "Drug Usage",
