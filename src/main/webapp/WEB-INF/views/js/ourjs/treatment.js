@@ -64,8 +64,38 @@ function addTreatment() {
 	$('#addTreatment').on(
 			'click',
 			function() {
-				var treatmentName = $('#treatmentName').val();
+				var treatmentName = $('#treatmentName').val().trim();
 				var cost = $('#treatmentCost').val();
+				if (treatmentName == "") {
+					$('#nameMessage').html(
+							"Please provide treatment name.");
+					return;
+				}
+				if (!/^[0-9A-Za-z]+$/.test(treatmentName)) {
+					$('#nameMessage')
+							.text(
+									"Please provide treatment name(only includes character and number).")
+							.show();
+					return;
+				}
+				if (cost == "") {
+					$('#costMessage').html(
+							"Please provide treatment cost.");
+					return;
+				}
+				if (!(/^\d*(?:\.\d{0,2})?$/.test(cost))) {
+					$('#costMessage')
+							.html(
+									"Please provide treatment cost like 123.45 or 123");
+					return;
+				}
+
+				if (cost > 999999.99) {
+					$('#costMessage')
+							.html(
+									"Please provide treatment cost which less or equal 999999.99");
+					return;
+				}
 				var can_do = $('#can_ms_do input:radio:checked').val();
 				$.ajax({
 					type : "GET",

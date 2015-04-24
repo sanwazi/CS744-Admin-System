@@ -19,36 +19,68 @@ function gettreatmentBasicContent(treatment_id) {
 	});
 }
 function listeningUpdateButton() {
-	$("#update_treatment").on(
-			'click',
-			function() {
-				var treatment_id = getUrlParameter("treatment_id");
-				var treatment_name = $("#treatment_name").val();
-				var cost = $("#treatment_cost").val();
-				var can_do = $('#can_ms_do input:radio:checked').val();
-				$.ajax({
-					type : "GET",
-					url : "/EMR_Admin/treatment/updateTreatment",
-					data : "treatment_id=" + treatment_id + "&treatment_name="
-							+ treatment_name + "&cost=" + cost + "&can_ms_do="
-							+ can_do,
-					success : function(data) {
-
-						if (data == "s") {
-							$('#addingResult').html("Success!");
-							$('#addingResult').show();
-							// loadAllDrug();
-							setTimeout(jump, 1000);
-
-						} else if (data == "d") {
-							$('#addingResult')
-									.html("Failure! Duplicated Name!");
-							$('#addingResult').show();
+	$("#update_treatment")
+			.on(
+					'click',
+					function() {
+						var treatment_id = getUrlParameter("treatment_id");
+						var treatment_name = $("#treatment_name").val().trim();
+						var cost = $("#treatment_cost").val();
+						if (treatment_name == "") {
+							$('#nameMessage').html(
+									"Please provide treatment name.");
+							return;
 						}
-					},
-					dataType : "text",
-				});
-			});
+						console.log(treatment_name);
+						if (!(/^[0-9A-Za-z| ]+$/.test(treatment_name))) {
+							$('#nameMessage')
+									.text(
+											"Please provide treatment name(only includes character and number).")
+									.show();
+							return;
+						}
+						if (cost == "") {
+							$('#costMessage').html(
+									"Please provide treatment cost.");
+							return;
+						}
+						if (!(/^\d*(?:\.\d{0,2})?$/.test(cost))) {
+							$('#costMessage')
+									.html(
+											"Please provide treatment cost like 123.45 or 123");
+							return;
+						}
+
+						if (cost > 999999.99) {
+							$('#costMessage')
+									.html(
+											"Please provide treatment cost which less or equal 999999.99");
+							return;
+						}
+						var can_do = $('#can_ms_do input:radio:checked').val();
+						$.ajax({
+							type : "GET",
+							url : "/EMR_Admin/treatment/updateTreatment",
+							data : "treatment_id=" + treatment_id
+									+ "&treatment_name=" + treatment_name
+									+ "&cost=" + cost + "&can_ms_do=" + can_do,
+							success : function(data) {
+
+								if (data == "s") {
+									$('#addingResult').html("Success!");
+									$('#addingResult').show();
+									// loadAllDrug();
+									setTimeout(jump, 1000);
+
+								} else if (data == "d") {
+									$('#addingResult').html(
+											"Failure! Duplicated Name!");
+									$('#addingResult').show();
+								}
+							},
+							dataType : "text",
+						});
+					});
 }
 
 function jump() {

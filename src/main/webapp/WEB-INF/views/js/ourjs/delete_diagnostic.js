@@ -43,7 +43,7 @@ function listeningDeleteButton(){
 							
 							$('#deletingResult').html("Success!");
 							$('#deletingResult').show();
-							//setTimeout(jump,1000);
+							setTimeout(jump,1000);
 							
 						}
 						else if(data=="d"){

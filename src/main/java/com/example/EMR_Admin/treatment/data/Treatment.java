@@ -19,7 +19,7 @@ public class Treatment {
 	private String treatment_name;
 	
 	@Column(name="treatment_price")
-	private String treatment_price;
+	private double treatment_price;
 	
 	@Column(name="can_medical_staff")
 	private String can_medical_staff;
@@ -40,11 +40,11 @@ public class Treatment {
 		this.treatment_name = treatment_name;
 	}
 
-	public String getTreatment_price() {
+	public double getTreatment_price() {
 		return treatment_price;
 	}
 
-	public void setTreatment_price(String treatment_price) {
+	public void setTreatment_price(double treatment_price) {
 		this.treatment_price = treatment_price;
 	}
 
