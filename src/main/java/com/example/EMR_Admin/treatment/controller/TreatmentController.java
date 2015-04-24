@@ -39,7 +39,7 @@ public class TreatmentController {
 	public @ResponseBody String updateTreatment(
 			@RequestParam(value = "treatment_id", required = true) int treatment_id,
 			@RequestParam(value = "treatment_name") String treatment_name,
-			@RequestParam(value = "cost") String cost,
+			@RequestParam(value = "cost") double cost,
 			@RequestParam(value = "can_ms_do") String canDo) {
 		Treatment treatment = new Treatment();
 		treatment.setTreatment_id(treatment_id);
@@ -70,7 +70,7 @@ public class TreatmentController {
 	@Secured(value = { "ROLE_ADMIN" })
 	public @ResponseBody String addTreatment(
 			@RequestParam(value = "treatment_name") String treatment_name,
-			@RequestParam(value = "cost") String cost,
+			@RequestParam(value = "cost") double cost,
 			@RequestParam(value = "can_ms_do") String can_ms_do) {
 		Treatment Treatment = new Treatment();
 		Treatment.setTreatment_name(treatment_name);

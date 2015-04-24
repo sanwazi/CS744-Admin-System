@@ -70,14 +70,14 @@
 						<i class="fa fa-caret-down"></i>
 				</a>
 					<ul class="dropdown-menu dropdown-alerts">
-						<li><a >
+						<li><a>
 								<div>
-									<i class="fa fa-ambulance"></i> Disable Drug <label class="text pull-right"
-										id="disable_drug"></lable>
+									<i class="fa fa-ambulance"></i> Disable Drug <label
+										class="text pull-right" id="disable_drug"></lable>
 								</div>
 						</a></li>
 						<li class="divider"></li>
-						<li><a >
+						<li><a>
 								<div>
 									<i class="fa fa-wheelchair"></i> Patients Without EMR<label
 										class="text pull-right" id="patient_without_emr"></label>
@@ -115,12 +115,12 @@
 								Relationship<span class="fa arrow"></span></a>
 							<ul class="nav nav-second-level">
 								<li><a href="Physician_Patient.html"><i
-										class="fa fa-user-md"></i>+<i class="fa fa-user"></i> Physician
-										and Patient</a></li>
+										class="fa fa-user-md"></i>+<i class="fa fa-user"></i>
+										Physician and Patient</a></li>
 
 								<li><a href="Physician_Medical_Staff.html"><i
-										class="fa fa-user-md"></i>+<i class="fa fa-user-plus"></i> Physician
-										and Medical staff </a></li>
+										class="fa fa-user-md"></i>+<i class="fa fa-user-plus"></i>
+										Physician and Medical staff </a></li>
 							</ul></li>
 
 
@@ -193,7 +193,7 @@
 				<fieldset>
 					<legend>Add new treatment</legend>
 					<div class="form-group has-error">
-						<div class="col-lg-9">
+						<div class="col-lg-10">
 							<div class="panel panel-default">
 								<div class="panel-heading">
 									<div class="row">
@@ -209,32 +209,35 @@
 								<div class="panel-body" id='panelcontent' style="display: none;">
 									<div class="form-group has-warning">
 										<div class="row" style="margin-top: 10px">
-											<label for="textArea" class="col-lg-4 control-label">
+											<label for="textArea" class="col-lg-3 control-label">
 												Name </label>
 
-											<div class="col-lg-4">
+											<div class="col-lg-3">
 												<input type="text" id='treatmentName' class="form-control"
 													placeholder="treatment name...">
 											</div>
+											<h6 id="nameMessage" style="color: red"></h6>
 										</div>
 										<div class="row" style="margin-top: 15px">
-											<label for="textArea" class="col-lg-4 control-label">
+											<label for="textArea" class="col-lg-3 control-label">
 												Cost(US Dollars) </label>
 
-											<div class="col-lg-4">
+											<div class="col-lg-3">
 												<input type="number" id='treatmentCost' class="form-control"
-													placeholder="treatment cost...">
+													placeholder="treatment cost..."
+													onkeyup="this.value=this.value.replace(~/^\d*(?:\.\d{0,2})?$/,'')">
 											</div>
+											<h6 id="costMessage" style="color: red"></h6>
 										</div>
 										<div class="row" style="margin-top: 15px">
 											<label for="textArea" class="col-lg-4 control-label">
 												Can Medical Staff do? </label>
 
 											<div class="col-lg-4" id="can_ms_do">
-												<lable>
-												<input type="radio" id='yes' checked="checked" name="canDo" value="yes">  Yes  </lable>
-												<lable>
-												<input type="radio" id='no' name="canDo" value="no">  No  </lable>
+												<lable> <input type="radio" id='yes'
+													checked="checked" name="canDo" value="yes"> Yes </lable>
+												<lable> <input type="radio" id='no' name="canDo"
+													value="no"> No </lable>
 											</div>
 										</div>
 										<div class="row pull-right" style="margin-right: 20px">

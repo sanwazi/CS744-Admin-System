@@ -18,7 +18,7 @@ public class DiagnosticTest {
 	private String diagnostic_test_name;
 
 	@Column(name = "cost")
-	private int cost;
+	private double cost;
 
 	public int getDiagnostic_test_id() {
 		return diagnostic_test_id;
@@ -36,11 +36,11 @@ public class DiagnosticTest {
 		this.diagnostic_test_name = diagnostic_test_name;
 	}
 
-	public int getCost() {
+	public double getCost() {
 		return cost;
 	}
 
-	public void setCost(int cost) {
+	public void setCost(double cost) {
 		this.cost = cost;
 	}
 

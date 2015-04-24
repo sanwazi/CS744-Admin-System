@@ -70,14 +70,14 @@
 						<i class="fa fa-caret-down"></i>
 				</a>
 					<ul class="dropdown-menu dropdown-alerts">
-						<li><a >
+						<li><a>
 								<div>
-									<i class="fa fa-ambulance"></i> Disable Drug <label class="text pull-right"
-										id="disable_drug"></lable>
+									<i class="fa fa-ambulance"></i> Disable Drug <label
+										class="text pull-right" id="disable_drug"></lable>
 								</div>
 						</a></li>
 						<li class="divider"></li>
-						<li><a >
+						<li><a>
 								<div>
 									<i class="fa fa-wheelchair"></i> Patients Without EMR<label
 										class="text pull-right" id="patient_without_emr"></label>
@@ -115,12 +115,12 @@
 								Relationship<span class="fa arrow"></span></a>
 							<ul class="nav nav-second-level">
 								<li><a href="Physician_Patient.html"><i
-										class="fa fa-user-md"></i>+<i class="fa fa-user"></i> Physician
-										and Patient</a></li>
+										class="fa fa-user-md"></i>+<i class="fa fa-user"></i>
+										Physician and Patient</a></li>
 
 								<li><a href="Physician_Medical_Staff.html"><i
-										class="fa fa-user-md"></i>+<i class="fa fa-user-plus"></i> Physician
-										and Medical staff </a></li>
+										class="fa fa-user-md"></i>+<i class="fa fa-user-plus"></i>
+										Physician and Medical staff </a></li>
 							</ul></li>
 
 
@@ -146,22 +146,24 @@
 		<div id="page-wrapper">
 			<div class="form-horizontal">
 				<fieldset>
-					<legend>Editing Diagnostic Test</legend>
+					<legend><h1>Editing Diagnostic Test</h1></legend>
 					<div class="form-group has-success">
-						<label for="inputPassword" class="col-lg-3 control-label">Diagnostic
-							Test Name</label>
-						<div class="col-lg-9">
+						<label for="inputPassword" class="col-lg-3 control-label"> Name</label>
+						<div class="col-lg-4">
 							<input type="text" class="form-control" id="diagnostic_name"
 								placeholder="">
 						</div>
+						<h6 id="nameMessage" style="color: red"></h6>
 					</div>
 					<div class="form-group has-success">
 						<label for="inputPassword" class="col-lg-3 control-label">Cost(US
 							Dollars)</label>
-						<div class="col-lg-9">
-							<input type="text" class="form-control" id="diagnostic_cost"
-								placeholder="">
+						<div class="col-lg-4">
+							<input type="number" class="form-control" id="diagnostic_cost"
+								placeholder=""
+								onkeyup="this.value=this.value.replace(~/^\d*(?:\.\d{0,2})?$/,'')">
 						</div>
+						<h6 id="costMessage" style="color: red"></h6>
 					</div>
 				</fieldset>
 			</div>
