@@ -63,20 +63,17 @@ function addAdmin() {
 		var password1 = $('#password1').val();
 		var password2 = $('#password2').val();
 
-		if (account == "") {
-			$('#addingResult').html("Input admin account please!");
-			$('#addingResult').show();
+		if (account.trim() == "") {
+			alert("Input admin account please!");
 			return;
 		}
 		if (password1 == "") {
-			$('#addingResult').html("Input password please!");
-			$('#addingResult').show();
+			alert("Input password please!");
 			return;
 		}
 
 		if (password1 != password2) {
-			$('#addingResult').html("You input different passwords.");
-			$('#addingResult').show();
+			alert("You input different passwords.");
 			return;
 		}
 

@@ -18,7 +18,7 @@ public class Surgery {
 	private String surgery_name;
 
 	@Column(name = "cost")
-	private int cost;
+	private double cost;
 
 	public int getSurgery_id() {
 		return surgery_id;
@@ -36,11 +36,11 @@ public class Surgery {
 		this.surgery_name = surgery_name;
 	}
 
-	public int getCost() {
+	public double getCost() {
 		return cost;
 	}
 
-	public void setCost(int cost) {
+	public void setCost(double cost) {
 		this.cost = cost;
 	}
 

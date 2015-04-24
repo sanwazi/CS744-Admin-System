@@ -63,29 +63,62 @@ function showAddingDiagnosticTable() {
 }
 
 function addDiagnostic() {
-	$('#addDiagnostic').on(
-			'click',
-			function() {
-				var DiagnosticName = $('#diagnosticName').val();
-				var DiagnosticCost = $('#diagnosticCost').val();
-				$.ajax({
-					type : "GET",
-					url : "/EMR_Admin/diagnostic/addDiagnostic",
-					data : 'diagnosticName=' + DiagnosticName
-							+ '&diagnosticCost=' + DiagnosticCost,
-					success : function(data) {
-						// TODO
-						if (data == "s") {
-							$('#addingResult').html("Success!");
-							$('#addingResult').show();
-							location.reload(true);
-						} else if (data == "d") {
-							$('#addingResult')
-									.html("Failure! Duplicated Name!");
-							$('#addingResult').show();
+	$('#addDiagnostic')
+			.on(
+					'click',
+					function() {
+						var DiagnosticName = $('#diagnosticName').val().trim();
+						if (DiagnosticName == "") {
+							$('#nameMessage').html(
+									"Please provide diagnostic test name.");
+							return;
 						}
-					},
-					dataType : "text",
-				});
-			});
+						if (!/^[0-9A-Za-z]+$/.test(DiagnosticName)) {
+							$('#nameMessage')
+									.text(
+											"Please provide diagnostic test name(only includes character and number).")
+									.show();
+							return;
+						}
+
+						var DiagnosticCost = $('#diagnosticCost').val();
+						if (DiagnosticCost == "") {
+							$('#costMessage').html(
+									"Please provide diagnostic test cost.");
+							return;
+						}
+						if (!(/^\d*(?:\.\d{0,2})?$/.test(DiagnosticCost))) {
+							$('#costMessage')
+									.html(
+											"Please provide diagnostic test cost like 123.45 or 123");
+							return;
+						}
+
+						if (DiagnosticCost > 999999.99) {
+							$('#costMessage')
+									.html(
+											"Please provide diagnostic test cost which less or equal 999999.99");
+							return;
+						}
+
+						$.ajax({
+							type : "GET",
+							url : "/EMR_Admin/diagnostic/addDiagnostic",
+							data : 'diagnosticName=' + DiagnosticName
+									+ '&diagnosticCost=' + DiagnosticCost,
+							success : function(data) {
+								// TODO
+								if (data == "s") {
+									$('#addingResult').html("Success!");
+									$('#addingResult').show();
+									location.reload(true);
+								} else if (data == "d") {
+									$('#addingResult').html(
+											"Failure! Duplicated Name!");
+									$('#addingResult').show();
+								}
+							},
+							dataType : "text",
+						});
+					});
 }

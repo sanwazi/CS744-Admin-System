@@ -62,9 +62,38 @@ function addSurgery() {
 	$('#addSurgery').on(
 			'click',
 			function() {
-				var surgeryName = $('#surgeryName').val();
+				var surgeryName = $('#surgeryName').val().trim();
+				if (surgeryName == "") {
+					$('#nameMessage').html(
+							"Please provide surgery name.");
+					return;
+				}
+				if (!/^[0-9A-Za-z]+$/.test(surgeryName)) {
+					$('#nameMessage')
+							.text(
+									"Please provide surgery name(only includes character and number).")
+							.show();
+					return;
+				}
 				var cost = $('#cost').val();
-				//var amount = $('#amount').val();
+				if (cost == "") {
+					$('#costMessage').html(
+							"Please provide surgery cost.");
+					return;
+				}
+				if (!(/^\d*(?:\.\d{0,2})?$/.test(cost))) {
+					$('#costMessage')
+							.html(
+									"Please provide surgery cost like 123.45 or 123");
+					return;
+				}
+
+				if (cost > 999999.99) {
+					$('#costMessage')
+							.html(
+									"Please provide surgery cost which less or equal 999999.99");
+					return;
+				}
 				$.ajax({
 					type : "GET",
 					url : "/EMR_Admin/surgery/addSurgery",

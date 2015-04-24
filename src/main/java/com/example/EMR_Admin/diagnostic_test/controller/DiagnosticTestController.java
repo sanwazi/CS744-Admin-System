@@ -37,10 +37,10 @@ public class DiagnosticTestController {
 	@Secured(value = { "ROLE_ADMIN" })
 	public @ResponseBody String addDiagnostic(
 			@RequestParam(value = "diagnosticName", required = true) String dt_name,
-			@RequestParam(value = "diagnosticCost", required = true) String dt_cost) {
+			@RequestParam(value = "diagnosticCost", required = true) double dt_cost) {
 		DiagnosticTest dt = new DiagnosticTest();
 		dt.setDiagnostic_test_name(dt_name);
-		dt.setCost(Integer.parseInt(dt_cost));
+		dt.setCost(dt_cost);
 		boolean result = dtService.addDiagnostic(dt);
 		if (result) {
 			return "s";
@@ -68,7 +68,7 @@ public class DiagnosticTestController {
 	public @ResponseBody String updateDiagnostic(
 			@RequestParam(value = "diagnostic_id", required = true) int diagnostic_test_id,
 			@RequestParam(value = "diagnostic_name") String diagnostic_test_name,
-			@RequestParam(value = "cost") int cost) {
+			@RequestParam(value = "cost") double cost) {
 		DiagnosticTest diagnosticTest = new DiagnosticTest();
 		diagnosticTest.setDiagnostic_test_id(diagnostic_test_id);
 		diagnosticTest.setDiagnostic_test_name(diagnostic_test_name);

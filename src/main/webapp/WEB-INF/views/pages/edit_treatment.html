@@ -146,22 +146,24 @@
 		<div id="page-wrapper">
 			<div class="form-horizontal">
 				<fieldset>
-					<legend>Editing Treatment</legend>
+					<legend><h1>Editing Treatment</h1></legend>
 					<div class="form-group has-success">
-						<label for="inputText" class="col-lg-3 control-label">Treatment
+						<label for="inputText" class="col-lg-3 control-label">
 							Name</label>
-						<div class="col-lg-9">
+						<div class="col-lg-4">
 							<input type="text" class="form-control" id="treatment_name"
 								placeholder="">
 						</div>
+						<h6 id="nameMessage" style="color: red"></h6>
 					</div>
 					<div class="form-group has-success">
 						<label for="inputText" class="col-lg-3 control-label">Cost(US
 							Dollars)</label>
-						<div class="col-lg-9">
-							<input type="text" class="form-control" id="treatment_cost"
-								placeholder="">
+						<div class="col-lg-4">
+							<input type="number" class="form-control" id="treatment_cost"
+								placeholder="" onkeyup="this.value=this.value.replace(~/^\d*(?:\.\d{0,2})?$/,'')">
 						</div>
+						<h6 id="costMessage" style="color: red"></h6>
 					</div>
 					<div class="form-group has-success">
 						<label for="inputText" class="col-lg-3 control-label">Can
