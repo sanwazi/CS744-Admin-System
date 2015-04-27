@@ -20,7 +20,7 @@ function loadDiagnosticData(diagnostics) {
 	for (var i = 0; i < diagnostics.length; i++) {
 		var diagnostic = [];
 		diagnostic.push(diagnostics[i].diagnostic_test_name);
-		diagnostic.push(diagnostics[i].cost);
+		diagnostic.push('<i class="fa fa-usd"></i>'+diagnostics[i].cost);
 		var modifyButton = "<a name=\"diagnostic_edit\" id=\""
 				+ diagnostics[i].diagnostic_test_id
 				+ "\" class=\"btn btn-warning btn-xs\" href=\"edit_diagnostic.html?diagnostic_id="

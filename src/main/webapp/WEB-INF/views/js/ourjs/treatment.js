@@ -20,7 +20,7 @@ function loadTreatment(treatmentList) {
 	for ( var i in treatmentList) {
 		var treatmentItems = [];
 		treatmentItems.push(treatmentList[i].treatment_name);
-		treatmentItems.push(treatmentList[i].treatment_price);
+		treatmentItems.push('<i class="fa fa-usd"></i>'+treatmentList[i].treatment_price);
 		treatmentItems.push(treatmentList[i].can_medical_staff);
 		var editButton = generateEditButton(treatmentList[i].treatment_id);
 		var deleteButton = generateDeleteButton(treatmentList[i].treatment_id);

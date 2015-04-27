@@ -22,7 +22,7 @@ function loadSurgery(surgeryList) {
 		var surgeryItems = [];
 		//surgeryItems.push(surgeryList[i].surgery_id);
 		surgeryItems.push(surgeryList[i].surgery_name);
-		surgeryItems.push(surgeryList[i].cost);
+		surgeryItems.push('<i class="fa fa-usd"></i>'+surgeryList[i].cost);
 		var editButton = generateEditButton(surgeryList[i].surgery_id);
 		var deleteButton = generateDeleteButton(surgeryList[i].surgery_id);
 		surgeryItems.push(editButton);
