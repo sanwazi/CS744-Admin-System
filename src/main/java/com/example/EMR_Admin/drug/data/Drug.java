@@ -62,10 +62,38 @@ public class Drug {
 	@Column(name="drug_status")
 	private String drug_status;
 	
-
+	@Column(name="drug_refill_cycle")
+	private String drug_refill_cycle;
 	
-
+	@Column(name="drug_refill_times")
+	private String drug_refill_times;
 	
+	
+	
+	public String getDrug_refill_cycle() {
+		return drug_refill_cycle;
+	}
+
+
+
+	public void setDrug_refill_cycle(String drug_refill_cycle) {
+		this.drug_refill_cycle = drug_refill_cycle;
+	}
+
+
+
+	public String getDrug_refill_times() {
+		return drug_refill_times;
+	}
+
+
+
+	public void setDrug_refill_times(String drug_refill_times) {
+		this.drug_refill_times = drug_refill_times;
+	}
+
+
+
 	public Drug(){
 		
 	}

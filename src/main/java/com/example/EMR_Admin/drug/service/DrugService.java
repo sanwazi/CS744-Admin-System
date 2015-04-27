@@ -77,34 +77,39 @@ public class DrugService {
 					for (int i = 0; i < json.size(); i++) {
 						Drug d = new Drug();
 						d.setDrug_id(Integer.parseInt (  (  (JSONObject)json.get(i)  ).get("id").toString()  )  );
-						d.setDrug_lv((String) ((JSONObject) json.get(i))
-								.get("drugLv"));
+						
 						d.setDrug_unique_id((String) ((JSONObject) json.get(i))
 								.get("drugId"));
-						d.setDrug_name_commercial((String) ((JSONObject) json
-								.get(i)).get("drugNameCommercial"));
+						d.setDrug_type((String) ((JSONObject) json.get(i))
+								.get("drugType"));
 						d.setDrug_name_medical((String) ((JSONObject) json
 								.get(i)).get("drugNameMedical"));
+						d.setDrug_name_commercial((String) ((JSONObject) json
+								.get(i)).get("drugNameCommercial"));					
 						d.setDrug_price( ((JSONObject) json.get(i))
 								.get("drugPrice").toString());
+						d.setDrug_lv((String) ((JSONObject) json.get(i))
+								.get("drugLv"));
+						d.setDrug_dose((String) ((JSONObject) json.get(i))
+								.get("drugDose"));
+						d.setDrug_common_uses((String) ((JSONObject) json.get(i))
+								.get("drugCommonUses"));
+						d.setDrug_usage((String) ((JSONObject) json.get(i))
+								.get("drugUsage"));
+						d.setDrug_cautions((String) ((JSONObject) json.get(i))
+								.get("drugCautions"));
+						d.setDrug_description((String) ((JSONObject) json.get(i))
+								.get("drugDescription"));
 						d.setDrug_side_effects((String) ((JSONObject) json.get(i))
 								.get("drugSideEffects"));
 						d.setDrug_status((String) ((JSONObject) json.get(i))
-								.get("drugStatus"));
-						d.setDrug_type((String) ((JSONObject) json.get(i))
-								.get("drugType"));
-						d.setDrug_unit((String) ((JSONObject) json.get(i))
-								.get("drugUnit"));
-						d.setDrug_usage((String) ((JSONObject) json.get(i))
-								.get("drugUsage"));
-						d.setDrug_dose((String) ((JSONObject) json.get(i))
-								.get("drugDose"));
-						d.setDrug_cautions((String) ((JSONObject) json.get(i))
-								.get("drugCautions"));
-						d.setDrug_common_uses((String) ((JSONObject) json.get(i))
-								.get("drugCommonUses"));
-						d.setDrug_description((String) ((JSONObject) json.get(i))
-								.get("drugDescription"));
+								.get("drugStatus"));				
+//						d.setDrug_unit((String) ((JSONObject) json.get(i))
+//								.get("drugUnit"));
+						d.setDrug_refill_cycle(((JSONObject) json.get(i))
+								.get("drugRefillCycle").toString());
+						d.setDrug_refill_times(((JSONObject) json.get(i))
+								.get("drugRefillTimes").toString());
 						drugList.add(d);
 					}
 					Log log = new Log();

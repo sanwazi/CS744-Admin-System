@@ -1,4 +1,107 @@
 
+//[{"drug_id":1,"drug_name_commercial":"druggg"},{"drug_id":2,"drug_name_commercial":"druggggs"},{"drug_id":3,"drug_name_commercial":"drugs"},{"drug_id":4,"drug_name_commercial":"Abacavir Sulfate (Ziagen)"},{"drug_id":5,"drug_name_commercial":"Abilify (Aripiprazole)"},{"drug_id":6,"drug_name_commercial":"Abiraterone Acetate Tablets (Zytiga)"},{"drug_id":7,"drug_name_commercial":"Actigall (Ursodiol, USP Capsules)"},{"drug_id":8,"drug_name_commercial":"Aflibercept (Eylea)"},{"drug_id":9,"drug_name_commercial":"Baclofen (Kemstro)"},{"drug_id":10,"drug_name_commercial":"Bacteriostatic Water (Bacteriostatic Water for Injection)"},{"drug_id":11,"drug_name_commercial":"Basiliximab (Simulect)"}]
+//[{"drug_id":1,"drug_unique_id":"097a9215-ee07-451f-8ef1-dd66704b1c01","drug_lv":"1","drug_name_medical":"Hydromorphone","drug_name_commercial":"Exalgo","drug_unit":"MG/ML","drug_dose":"50","drug_reaction":null,"drug_usage":null,"drug_status":"Enable"},{"drug_id":2,"drug_unique_id":"f433da5e-e312-40fb-b891-a403e46f53b9","drug_lv":"1","drug_name_medical":"Hydromorphone","drug_name_commercial":"Dilaudid-hp","drug_unit":"MG/ML","drug_dose":"50","drug_reaction":null,"drug_usage":null,"drug_status":"Enable"}]
+//4/27/2015:
+//[  
+//   {  
+//      "id":6,
+//      "drugId":"4ecd9440-9a96-4d64-8d44-4d608741d4f5",
+//      "drugType":"OTC drug",
+//      "drugNameMedical":"Ibuprofen",
+//      "drugNameCommercial":"Advil",
+//      "drugPrice":10.0,
+//      "drugLv":"0",
+//      "drugDose":"2/200mg",
+//      "drugCommonUses":"Relieve pain, tenderness, swelling and stiffness caused by arthritis",
+//      "drugUsage":"4 times per day with food or milk",
+//      "drugCautions":"Adults or children 12 years and older",
+//      "drugDescription":"None",
+//      "drugSideEffects":"None",
+//      "drugStatus":"Enable",
+//      "drugRefillCycle":7,
+//      "drugRefillTimes":1
+//   },
+//   {  
+//      "id":8,
+//      "drugId":"e2e6711b-851b-40cf-b5dd-5fe157d9f659",
+//      "drugType":"OTC drug",
+//      "drugNameMedical":"Acetaminophen, dextromethorphan, doxylamine, & pseudoephedrine",
+//      "drugNameCommercial":"Nyquil Capsule",
+//      "drugPrice":10.0,
+//      "drugLv":"0",
+//      "drugDose":"2 capsules",
+//      "drugCommonUses":"common cold & cough",
+//      "drugUsage":"4 times per day with or without food",
+//      "drugCautions":"12 years and older",
+//      "drugDescription":"None",
+//      "drugSideEffects":"None",
+//      "drugStatus":"Enable",
+//      "drugRefillCycle":7,
+//      "drugRefillTimes":1
+//   },
+//   {  
+//      "id":9,
+//      "drugId":"b510c975-a2b6-4f94-bb17-b1f92ee66660",
+//      "drugType":"OTC drug",
+//      "drugNameMedical":"Lorfast Meltabs Loratadine",
+//      "drugNameCommercial":"Claritin",
+//      "drugPrice":10.0,
+//      "drugLv":"0",
+//      "drugDose":"1/10mg",
+//      "drugCommonUses":"Allergy",
+//      "drugUsage":"1 time per day with or without food",
+//      "drugCautions":"None",
+//      "drugDescription":"None",
+//      "drugSideEffects":"None",
+//      "drugStatus":"Enable",
+//      "drugRefillCycle":7,
+//      "drugRefillTimes":3
+//   },
+//   {  
+//      "id":10,
+//      "drugId":"6d16259f-7e6b-43bb-9ce6-aa8afd59da72",
+//      "drugType":"OTC drug",
+//      "drugNameMedical":"Bismuth Subsalicylate",
+//      "drugNameCommercial":"Pepto-bismol",
+//      "drugPrice":10.0,
+//      "drugLv":"0",
+//      "drugDose":"2/236mg",
+//      "drugCommonUses":"diarrhea, heartburn, and upset stomach",
+//      "drugUsage":"8 times per day",
+//      "drugCautions":"12 and older",
+//      "drugDescription":"None",
+//      "drugSideEffects":"None",
+//      "drugStatus":"Enable",
+//      "drugRefillCycle":7,
+//      "drugRefillTimes":1
+//   }
+//]
+//
+//Pharmacy json: [
+//   {
+//      "id":1,
+//      "drugId":"097a9215-ee07-451f-8ef1-dd66704b1c01",
+//      "drugType":"Prescription drug",
+//      "drugNameMedical":"Hydromorphone",
+//      "drugNameCommercial":"Exalgo",
+//      "drugPrice":10.0,
+//      "drugLv":"1",
+//      "drugUnit":"MG/ML",
+//      "drugDose":"50",
+//      "drugReaction":null,
+//      "drugUsage":null,
+//      "drugStatus":"Enable"
+//   }]
+//var testjson = "[{\"id\":1,\"drugId\":\"097a9215-ee07-451f-8ef1-dd66704b1c01\"," +
+//		"\"drugType\":\"Prescription drug\",\"drugNameMedical\":\"Hydromorphone\"," +
+//		"\"drugNameCommercial\":\"Exalgo\",\"drugPrice\":10.0,\"drugLv\":\"1\"," +
+//		"\"drugUnit\":\"MG/ML\",\"drugDose\":\"50\",\"drugReaction\":null," +
+//		"\"drugUsage\":null,\"drugStatus\":\"Enable\"}," +
+//		"{\"id\":2,\"drugId\":\"097a9215-ee07-451f-8ef1-dd66704b1c02\"," +
+//			"\"drugType\":\"Prescription drug\",\"drugNameMedical\":\"Hydromorphone2\"," +
+//			"\"drugNameCommercial\":\"Exalgo2\",\"drugPrice\":10.0,\"drugLv\":\"1\"," +
+//			"\"drugUnit\":\"MG/ML\",\"drugDose\":\"50\",\"drugReaction\":null," +
+//			"\"drugUsage\":null,\"drugStatus\":\"Enable\"}]";
 $(document).ready(function() {
 	// console.log(testjson);
 	loadAllDrug();
@@ -29,11 +132,18 @@ function loadDrug(drugList) {
 		drugItems.push(drugList[i].drug_name_medical);
 		drugItems.push(drugList[i].drug_name_commercial);
 
-		 drugItems.push(drugList[i].drug_unit);
+		// drugItems.push(drugList[i].drug_id);
+		// drugItems.push(drugList[i].drug_unique_id);
+// drugItems.push(drugList[i].drug_name.split('_')[0]);
+// drugItems.push(drugList[i].drug_name.split('_')[1]);
+		 //drugItems.push(drugList[i].drug_unit);
+		 drugItems.push(drugList[i].drug_description);
 		 drugItems.push(drugList[i].drug_dose);
 		 drugItems.push(drugList[i].drug_side_effects);
 		 drugItems.push(drugList[i].drug_usage);
 		 var markedStatus = drawMarkForStatus(drugList[i].drug_status);
+		 drugItems.push(drugList[i].drug_refill_cycle);
+		 drugItems.push(drugList[i].drug_refill_times);
 		 drugItems.push(markedStatus);
 
 		console.log(drugItems.length);
@@ -57,24 +167,30 @@ function loadDrug(drugList) {
 		data : dataSet,
 		columns : [{
 			"title" : "Drug Medical Name",
-			"class" : "center"
+			"class" : "center wd100"
 		},{
 			"title" : "Drug Commercial Name",
-			"class" : "center"
+			"class" : "center wd100"
 		},{
-			"title" : "Drug Unit",
-			"class" : "center"
+			"title" : "Drug Description",
+			"class" : "center wd100"
 		},{
 			"title" : "Drug Dose",
 			"class" : "center"
 		},{
-			"title" : "Drug Side Effect",
+			"title" : "Drug Side Effects",
 			"class" : "center wd100"
 		},{
 			"title" : "Drug Usage",
 			"class" : "center"
 		},{
 			"title" : "Drug Status",
+			"class" : "center"
+		},{
+			"title" : "Drug Refill Cycle",
+			"class" : "center"
+		},{
+			"title" : "Drug Refill Times",
 			"class" : "center"
 		}]
 	});
