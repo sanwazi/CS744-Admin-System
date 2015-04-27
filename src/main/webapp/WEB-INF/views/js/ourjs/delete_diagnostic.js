@@ -29,16 +29,6 @@ function listeningDeleteButton(){
 					url : "/EMR_Admin/diagnostic/deleteDiagnostic",
 					data: "diagnostic_id=" + diagnostic_id,
 					success : function(data){
-						var req = {
-								table:"diagnostic",
-								action:"delete",
-								object:{
-									id:getUrlParameter("diagnostic_id"),
-									name:$("#diagnostic_name").val(),
-									cost:$("#diagnostic_cost").val()
-								}
-						}
-						console.log(req);
 						if(data=="s"){
 							
 							$('#deletingResult').html("Success!");

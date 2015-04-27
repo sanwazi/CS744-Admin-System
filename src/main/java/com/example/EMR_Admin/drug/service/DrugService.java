@@ -7,6 +7,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import org.json.simple.JSONArray;
@@ -16,14 +17,20 @@ import org.json.simple.parser.ParseException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.example.EMR_Admin.authentication.service.CustomUserDetailsService;
 import com.example.EMR_Admin.drug.dao.DrugDao;
 import com.example.EMR_Admin.drug.data.Drug;
+import com.example.EMR_Admin.log.dao.LogDao;
+import com.example.EMR_Admin.log.data.Log;
 
 @Service
 public class DrugService {
 
 	@Autowired
 	DrugDao drugDao;
+	
+	@Autowired
+	LogDao logDao;
 	
 	public List<Drug> searchWithInput( String input ){
 		return drugDao.searchWithInput(input);
@@ -100,6 +107,12 @@ public class DrugService {
 								.get("drugDescription"));
 						drugList.add(d);
 					}
+					Log log = new Log();
+					log.setAction("GET");
+					log.setAdmin_name(CustomUserDetailsService.currentUserDetails().getUsername());
+					log.setTable("Drug");
+					log.setDate( new Date());
+					logDao.addLog(log);
 					return drugList;
 				} catch (ParseException e) {
 					// TODO Auto-generated catch block

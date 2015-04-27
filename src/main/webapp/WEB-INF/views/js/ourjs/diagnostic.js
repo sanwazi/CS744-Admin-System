@@ -73,7 +73,7 @@ function addDiagnostic() {
 									"Please provide diagnostic test name.");
 							return;
 						}
-						if (!/^[0-9A-Za-z]+$/.test(DiagnosticName)) {
+						if (!/^[0-9A-Za-z| |)|-|(|,|.]+$/.test(DiagnosticName)) {
 							$('#nameMessage')
 									.text(
 											"Please provide diagnostic test name(only includes character and number).")

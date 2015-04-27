@@ -48,9 +48,9 @@ function loadLogData(logs) {
 function actionButton(type) {
 	if (type == "ADD") {
 		return "<a   class=\"btn btn-primary btn-xs\" ><i class=\"fa fa-plus fa-lg\"></i> Add</a>";
-	} else if (type == "DELETE") {
+	} else if (type == "DEL") {
 		return "<a   class=\"btn btn-warning btn-xs\" ><i class=\"fa fa-trash-o fa-lg\"></i> Delete</a>";
-	} else if (type == "UPDATE") {
+	} else if (type == "UPD") {
 		return "<a class=\"btn btn-danger btn-xs\" ><i class=\"fa fa-pencil fa-lg\"></i> Update</a>";
 	} else {
 		return "<a class=\"btn btn-success btn-xs\" ><i class=\"fa fa-cloud-download fa-lg\"></i> Get data from pharmacy</a>";

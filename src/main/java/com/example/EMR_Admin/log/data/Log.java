@@ -23,7 +23,7 @@ public class Log {
 	@Column(name = "admin_name")
 	private String admin_name;
 
-	@Column(name = "table")
+	@Column(name = "table_name")
 	private String table;
 	
 	@Column(name = "action")
@@ -31,10 +31,6 @@ public class Log {
 
 	@Column(name = "date")
 	private Date date;
-	
-	
-
-	
 
 	public int getLog_id() {
 		return log_id;

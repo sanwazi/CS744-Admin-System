@@ -68,7 +68,7 @@ function addSurgery() {
 							"Please provide surgery name.");
 					return;
 				}
-				if (!/^[0-9A-Za-z]+$/.test(surgeryName)) {
+				if (!/^[0-9A-Za-z| |)|-|(|,|.]+$/.test(surgeryName)) {
 					$('#nameMessage')
 							.text(
 									"Please provide surgery name(only includes character and number).")

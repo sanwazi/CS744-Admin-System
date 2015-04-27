@@ -44,4 +44,10 @@ public class DiagnosticTest {
 		this.cost = cost;
 	}
 
+	public String toString() {
+		return  "{\"diagnostic_test_id\":\"" + diagnostic_test_id
+				+ "\", \"diagnostic_test_name\":\"" + diagnostic_test_name
+				+ "\",\"cost\":\"" + cost + "\"}";
+
+	}
 }

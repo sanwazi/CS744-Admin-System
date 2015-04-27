@@ -71,7 +71,7 @@ function addTreatment() {
 							"Please provide treatment name.");
 					return;
 				}
-				if (!/^[0-9A-Za-z]+$/.test(treatmentName)) {
+				if (!/^[0-9A-Za-z| |)|-|(|,|.]+$/.test(treatmentName)) {
 					$('#nameMessage')
 							.text(
 									"Please provide treatment name(only includes character and number).")

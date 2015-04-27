@@ -7,21 +7,21 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="treatment")
+@Table(name = "treatment")
 public class Treatment {
 
 	@Id
 	@Column(name = "treatment_id")
 	@GeneratedValue
 	private int treatment_id;
-	
-	@Column(name="treatment_name")
+
+	@Column(name = "treatment_name")
 	private String treatment_name;
-	
-	@Column(name="treatment_price")
+
+	@Column(name = "treatment_price")
 	private double treatment_price;
-	
-	@Column(name="can_medical_staff")
+
+	@Column(name = "can_medical_staff")
 	private String can_medical_staff;
 
 	public int getTreatment_id() {
@@ -55,6 +55,12 @@ public class Treatment {
 	public void setCan_medical_staff(String can_medical_staff) {
 		this.can_medical_staff = can_medical_staff;
 	}
-	
-	
+
+	public String toString() {
+		return "{\"treatment_id\":\"" + treatment_id
+				+ "\", \"treatment_name\":\"" + treatment_name
+				+ "\",\"treatment_price\":\"" + treatment_price
+				+ "\",\"can_medical_staff\":\"" + can_medical_staff + "\"}";
+
+	}
 }

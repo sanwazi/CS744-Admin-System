@@ -44,4 +44,10 @@ public class Surgery {
 		this.cost = cost;
 	}
 
+	public String toString() {
+		return  "{\"surgery_id\":\"" + surgery_id
+				+ "\", \"surgery_name\":\"" + surgery_name
+				+ "\",\"cost\":\"" + cost + "\"}";
+
+	}
 }
