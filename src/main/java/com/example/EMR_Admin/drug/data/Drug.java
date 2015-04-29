@@ -38,8 +38,8 @@ public class Drug {
 	@Column(name="drug_lv")
 	private String drug_lv;
 	
-	@Column(name="drug_unit")
-	private String drug_unit;
+//	@Column(name="drug_unit")
+//	private String drug_unit;
 	
 	@Column(name="drug_dose")
 	private String drug_dose;
@@ -216,13 +216,13 @@ public class Drug {
 		this.drug_name_commercial = drug_name_commercial;
 	}
 
-	public String getDrug_unit() {
-		return drug_unit;
-	}
-
-	public void setDrug_unit(String drug_unit) {
-		this.drug_unit = drug_unit;
-	}
+//	public String getDrug_unit() {
+//		return drug_unit;
+//	}
+//
+//	public void setDrug_unit(String drug_unit) {
+//		this.drug_unit = drug_unit;
+//	}
 
 	public String getDrug_dose() {
 		return drug_dose;
