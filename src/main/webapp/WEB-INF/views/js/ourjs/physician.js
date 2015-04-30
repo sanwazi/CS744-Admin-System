@@ -51,11 +51,7 @@ function loadPhysicianData(physicians) {
 			physician.push("None");
 		} else
 			physician.push(physicians[i].ssn);
-		var button = "<a name=\"admin_delete"
-			+ "id=\""
-			+ physicians[i].password
-			+ "\" class=\"btn btn-success btn-xs\" ><i class=\"fa fa-eye\"></i> View Password</a>"
-		physician.push(button);
+		physician.push(physicians[i].password);
 		dataSet.push(physician);
 	}
 
@@ -81,7 +77,7 @@ function loadPhysicianData(physicians) {
 			"title" : "SSN",
 			"class" : "center"
 		}, {
-			"title" : "View Password",
+			"title" : "Password",
 			"class" : "center"
 		} ]
 	});
