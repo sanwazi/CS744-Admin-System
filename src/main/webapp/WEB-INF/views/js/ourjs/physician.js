@@ -33,6 +33,7 @@ function loadPhysicianData(physicians) {
 			physician.push("None");
 		} else
 			physician.push(physicians[i].ssn);
+		physician.push(physicians[i].password);
 		dataSet.push(physician);
 	}
 
@@ -56,6 +57,9 @@ function loadPhysicianData(physicians) {
 			"class" : "center"
 		}, {
 			"title" : "SSN",
+			"class" : "center"
+		}, {
+			"title" : "Password",
 			"class" : "center"
 		} ]
 	});
