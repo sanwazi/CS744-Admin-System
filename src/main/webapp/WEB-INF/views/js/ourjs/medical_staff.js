@@ -20,7 +20,7 @@ function loadMedicalStaffData(MedicalStaff) {
 		var MedicalStaffs = [];
 		var names = MedicalStaff[i].ms_name.split(" ");
 		MedicalStaffs.push(names[0]);
-		if( names.length == 1 )
+		if (names.length == 1)
 			MedicalStaffs.push("None");
 		else
 			MedicalStaffs.push(names[1]);
@@ -29,6 +29,7 @@ function loadMedicalStaffData(MedicalStaff) {
 			MedicalStaffs.push("None");
 		else
 			MedicalStaffs.push(MedicalStaff[i].ssn);
+		MedicalStaffs.push(MedicalStaff[i].password);
 		dataSet.push(MedicalStaffs);
 	}
 
@@ -46,6 +47,9 @@ function loadMedicalStaffData(MedicalStaff) {
 			"class" : "center"
 		}, {
 			"title" : "SSN",
+			"class" : "center"
+		}, {
+			"title" : "Password",
 			"class" : "center"
 		} ]
 	});
