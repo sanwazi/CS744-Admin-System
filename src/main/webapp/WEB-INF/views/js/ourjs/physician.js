@@ -1,5 +1,23 @@
 $(document).ready(function() {
 	loadPhysician();
+
+	// $('#dataTables-physician tbody').on('click', 'td.details-control',
+	// function() {
+	// var tr = $(this).closest('tr');
+	// var row = table.row(tr);
+	//
+	// if (row.child.isShown()) {
+	// // This row is already open - close it
+	// row.child.hide();
+	// tr.removeClass('shown');
+	// } else {
+	// // Open this row
+	// row.child(format(row.data())).show();
+	// tr.addClass('shown');
+	// }
+	// });
+
+	
 });
 
 function loadPhysician() {
@@ -19,20 +37,25 @@ function loadPhysicianData(physicians) {
 		var physician = [];
 		var names = physicians[i].physicianName.split(" ");
 		physician.push(names[0]);
-		if(names.length == 1)
+		if (names.length == 1)
 			physician.push("None");
 		else
 			physician.push(names[1]);
 		physician.push(physicians[i].physicianGender);
-		if( physicians[i].specialty == "" )
+		if (physicians[i].specialty == "")
 			physician.push("None");
-		else 
+		else
 			physician.push(physicians[i].specialty)
 		physician.push(physicians[i].account);
 		if (physicians[i].ssn == "") {
 			physician.push("None");
 		} else
 			physician.push(physicians[i].ssn);
+		var button = "<a name=\"admin_delete"
+			+ "id=\""
+			+ physicians[i].password
+			+ "\" class=\"btn btn-success btn-xs\" ><i class=\"fa fa-eye\"></i> View Password</a>"
+		physician.push(button);
 		dataSet.push(physician);
 	}
 
@@ -57,9 +80,29 @@ function loadPhysicianData(physicians) {
 		}, {
 			"title" : "SSN",
 			"class" : "center"
+		}, {
+			"title" : "View Password",
+			"class" : "center"
 		} ]
 	});
 }
+
+function format(d) {
+	// `d` is the original data object for the row
+	return '<table cellpadding="5" cellspacing="0" border="0" style="padding-left:50px;">'
+			+ '<tr>'
+			+ '<td>Account:</td>'
+			+ '<td>'
+			+ d.account
+			+ '</td>'
+			+ '</tr>'
+			+ '<tr>'
+			+ '<td>Password:</td>'
+			+ '<td>'
+			+ d.password
+			+ '</td>' + '</tr>' + '</table>';
+}
+
 function convertTimestampToDate(unix_timestamp) {
 	return unix_timestamp;
 }
