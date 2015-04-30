@@ -134,4 +134,8 @@ public class DrugService {
 		}
 		return drugList;
 	}
+	
+	public boolean clearTable(){
+		return drugDao.clearTable();
+	}
 }

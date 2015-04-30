@@ -99,6 +99,7 @@ public class DrugController {
 	@RequestMapping(value = "/drug/getDrugListFromPharmacy", method = RequestMethod.GET)
 	@Secured(value = {"ROLE_ADMIN"})
 	public @ResponseBody String getDrugListFromPharmacy(){
+		drugService.clearTable();
 		List<Drug> drugList = drugService.getDrugFromPharmacy();
 		boolean result = drugList.isEmpty();
 		if(!result){
