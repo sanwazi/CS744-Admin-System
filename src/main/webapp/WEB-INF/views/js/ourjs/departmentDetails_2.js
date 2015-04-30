@@ -91,7 +91,7 @@ function drawTable(physicianList) {
 	var physicianLastName;
 	for ( var i in physicianList) {
 		var physicianItems = [];
-		if(physicianlist[i].physicianname != 'null'){
+		if(physicianList[i].physicianname != 'null'){
 			if(physicianList[i].physicianName.indexOf(' ')>-1){
 				physicianFirstName = physicianList[i].physicianName.split(' ')[0];
 				physicianLastName = physicianList[i].physicianName.split(' ')[1];
