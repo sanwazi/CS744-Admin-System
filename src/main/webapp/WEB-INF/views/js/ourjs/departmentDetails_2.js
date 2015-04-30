@@ -91,34 +91,40 @@ function drawTable(physicianList) {
 	var physicianLastName;
 	for ( var i in physicianList) {
 		var physicianItems = [];
-		if(physicianList[i].physicianName.indexOf(' ')>-1){
-			physicianFirstName = physicianList[i].physicianName.split(' ')[0];
-			physicianLastName = physicianList[i].physicianName.split(' ')[1];
+		if(physicianlist[i].physicianname != 'null'){
+			if(physicianList[i].physicianName.indexOf(' ')>-1){
+				physicianFirstName = physicianList[i].physicianName.split(' ')[0];
+				physicianLastName = physicianList[i].physicianName.split(' ')[1];
+			}
+			else{
+				physicianFirstName = physicianList[i].physicianName;
+				physicianLastName = "Bach";
+			}
+		
+			console.log(physicianFirstName,physicianLastName);
+			physicianItems.push(physicianFirstName);
+			physicianItems.push(physicianLastName);
+			physicianItems.push(physicianList[i].physicianGender);
+			physicianItems.push(physicianList[i].specialty);
+	//		physicianItems.push(convertMillisecondsToDate(physicianList[i].physicianBirthday));
+	//		physicianItems.push(physicianList[i].account);
+	//		physicianItems.push(physicianList[i].password);
+	//		if (primary[i].access_right == '11') {
+	//			patientItem.push('read/write');
+	//		} else if (primary[i].access_right == '10') {
+	//			patientItem.push('read');
+	//		}
+			// patientItem.push(primary[i].access_right);
+			//var editButton = generateEditButton(physicianList[i].physicianId);
+			//var deleteButton = generateDeleteButton(physicianList[i].physicianId);
+			//physicianItems.push(editButton);
+			//physicianItems.push(deleteButton);
+			//physicianItems.push(deleteButton);
+			dataSet.push(physicianItems);
 		}
 		else{
-			physicianFirstName = physicianList[i].physicianName;
-			physicianLastName = "Bach";
+			dataSet == null;
 		}
-		console.log(physicianFirstName,physicianLastName);
-		physicianItems.push(physicianFirstName);
-		physicianItems.push(physicianLastName);
-		physicianItems.push(physicianList[i].physicianGender);
-		physicianItems.push(physicianList[i].specialty);
-//		physicianItems.push(convertMillisecondsToDate(physicianList[i].physicianBirthday));
-//		physicianItems.push(physicianList[i].account);
-//		physicianItems.push(physicianList[i].password);
-//		if (primary[i].access_right == '11') {
-//			patientItem.push('read/write');
-//		} else if (primary[i].access_right == '10') {
-//			patientItem.push('read');
-//		}
-		// patientItem.push(primary[i].access_right);
-		//var editButton = generateEditButton(physicianList[i].physicianId);
-		//var deleteButton = generateDeleteButton(physicianList[i].physicianId);
-		//physicianItems.push(editButton);
-		//physicianItems.push(deleteButton);
-		//physicianItems.push(deleteButton);
-		dataSet.push(physicianItems);
 	}
 	// console.log(dataSet);
 	$('#dataTables-example').DataTable({
