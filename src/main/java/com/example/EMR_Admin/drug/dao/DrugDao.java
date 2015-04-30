@@ -135,5 +135,19 @@ public class DrugDao {
 		}
 		return true;
 	}
+	
+	public boolean clearTable(){
+		try{
+			Session session = sessionFactory.openSession();
+			Query q = session.createQuery("delete from Drug");
+			q.executeUpdate();
+			session.beginTransaction();
+			session.close();
+		}catch(HibernateException e){
+			e.printStackTrace();
+			return false;
+		}
+		return true;
+	}
 
 }

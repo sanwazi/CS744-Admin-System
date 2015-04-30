@@ -142,9 +142,9 @@ function loadDrug(drugList) {
 		 drugItems.push(drugList[i].drug_side_effects);
 		 drugItems.push(drugList[i].drug_usage);
 		 var markedStatus = drawMarkForStatus(drugList[i].drug_status);
+		 drugItems.push(markedStatus);
 		 drugItems.push(drugList[i].drug_refill_cycle);
 		 drugItems.push(drugList[i].drug_refill_times);
-		 drugItems.push(markedStatus);
 
 		console.log(drugItems.length);
 		dataSet.push(drugItems);
